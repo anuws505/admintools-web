@@ -1,1 +1,101 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$admintools-web-primary: mat.define-palette(mat.$indigo-palette);
+$admintools-web-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$admintools-web-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$admintools-web-theme: mat.define-light-theme((
+  color: (
+    primary: $admintools-web-primary,
+    accent: $admintools-web-accent,
+    warn: $admintools-web-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($admintools-web-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import 'material-icons/iconfont/material-icons.css';
+@import 'assets/fonts/noto-sans-thai-looped/noto-sans-thai-looped.scss';
+@import url('~reset-css');
+@import url('~normalize.css');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans Thai Looped', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #121212;
+  font-size: 0.812em;
+  line-height: 1.5;
+
+  a {
+    color: #2389fd;
+    text-decoration: none;
+
+    &:hover {
+      color: #006be8;
+    }
+  }
+
+  p {
+    margin: 0.67em 0;
+  }
+
+  h1 {
+    font-family: 'Noto Sans Thai Looped Light';
+    font-size: 2em;
+    letter-spacing: -0.05em;
+    margin: 0.67em 0;
+  }
+  h2 {
+    font-family: 'Noto Sans Thai Looped Light';
+    font-size: 1.6em;
+    letter-spacing: -0.02em;
+    margin: 0.67em 0;
+  }
+  h3 {
+    font-family: 'Noto Sans Thai Looped Light';
+    font-size: 1.3em;
+    letter-spacing: -0.005em;
+    margin: 0.67em 0;
+  }
+  h4 {
+    font-family: 'Noto Sans Thai Looped Light';
+    font-size: 1.2em;
+    letter-spacing: -0.005em;
+    margin: 0.67em 0;
+  }
+  h5 {
+    font-family: 'Noto Sans Thai Looped Light';
+    font-size: 1.1em;
+    letter-spacing: -0.005em;
+    margin: 0.67em 0;
+  }
+}

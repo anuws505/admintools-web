@@ -1,21 +1,15 @@
 @font-face {
   font-family: 'Noto Sans Thai Looped Light';
-  src: url('./webfonts/noto-sans-thai-looped-thai-300-normal.woff2') format('woff2'),
-       url('./webfonts/noto-sans-thai-looped-thai-300-normal.woff') format('woff'),
-       url('./ttf/noto-sans-thai-looped-thai-300-normal.ttf') format('truetype');
+  src: url('./NotoSansThaiLooped-Light.ttf') format('truetype');
   font-weight: 300;
 }
 @font-face {
   font-family: 'Noto Sans Thai Looped';
-  src: url('./webfonts/noto-sans-thai-looped-thai-400-normal.woff2') format('woff2'),
-       url('./webfonts/noto-sans-thai-looped-thai-400-normal.woff') format('woff'),
-       url('./ttf/noto-sans-thai-looped-thai-400-normal.ttf') format('truetype');
+  src: url('./NotoSansThaiLooped-Regular.ttf') format('truetype');
   font-weight: 400;
 }
 @font-face {
   font-family: 'Noto Sans Thai Looped Medium';
-  src: url('./webfonts/noto-sans-thai-looped-thai-500-normal.woff2') format('woff2'),
-       url('./webfonts/noto-sans-thai-looped-thai-500-normal.woff') format('woff'),
-       url('./ttf/noto-sans-thai-looped-thai-500-normal.ttf') format('truetype');
+  src: url('./NotoSansThaiLooped-Medium.ttf') format('truetype');
   font-weight: 500;
 }
