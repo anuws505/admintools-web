@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +6,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  li: any = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
   active: any = '';
+  innerWidth: any;
 
   activeClass() {
     if (this.active === '') { this.active = 'active'; }
     else if (this.active === 'active') { this.active = ''; }
+  }
+
+  ngOnInit() {
+    this.innerWidth = window.innerWidth;
+    this.setActiveByWidth();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.innerWidth = window.innerWidth;
+    this.setActiveByWidth();
+  }
+
+  setActiveByWidth() {
+    if (this.innerWidth >= 768) {
+      this.active = 'active';
+    } else {
+      this.active = '';
+    }
   }
 }

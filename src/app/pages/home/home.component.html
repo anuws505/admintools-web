@@ -1,28 +1,34 @@
-<div>
-  <div>home work!</div>
-  <p>adalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfj lskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajf --9kfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajkdfjskfjlksjfklajfkfjlk===========jfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjf----99999</p>
-  <p>adalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfj lskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajkdfjskfjlksjfklajfkfjlk===========jfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjf----99999</p>
-  <h2>adalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfj lskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajkdfjskfjlksjfklajfkfjlk===========jfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjf----99999</h2>
-  <div>aside adalkfjlskfjslkdfjskfjlksjf---------skfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjf---55555</div>
-  <ul>
-    <li *ngFor="let i of li">content {{i}}</li>
-  </ul>
-  <ul>
-    <li *ngFor="let i of li">content {{i}}</li>
-  </ul>
-  <ul>
-    <li *ngFor="let i of li">content {{i}}</li>
-  </ul>
-  <ul>
-    <li *ngFor="let i of li">content {{i}}</li>
-  </ul>
-  <ul>
-    <li *ngFor="let i of li">content {{i}}</li>
-  </ul>
-  <ul>
-    <li *ngFor="let i of li">content {{i}}</li>
-  </ul>
-  <ul>
-    <li *ngFor="let i of li">content {{i}}</li>
-  </ul>
+<div class="component-content">
+  <table mat-table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>

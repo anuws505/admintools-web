@@ -1,15 +1,37 @@
-<div class="admintools-web {{active}}">
+<div class="main-container {{active}}">
   <aside>
-    <h1 class="title">Admintools Web</h1>
-    <div>aside adalkfjlskfjslkdfjskfjlksjf---------skfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjfadalkfjlskfjslkdfjskfjlksjfklajfkfjlkjf---55555</div>
-    <ul>
-      <li *ngFor="let i of li">aside {{i}}</li>
-    </ul>
+    <div class="aside">
+      <div class="list-ctn">
+        <div class="list-block">
+          <div class="list-title">Hi, Pepper</div>
+          <div class="list-item"><a [routerLink]="['/']">Logout</a></div>
+        </div>
+        <div class="list-block">
+          <div class="list-title">Orders</div>
+          <div class="list-item"><a [routerLink]="['/']">Order List</a></div>
+          <div class="list-item"><a [routerLink]="['/']">Reserve Order</a></div>
+          <div class="list-item"><a [routerLink]="['/']">Action Logs</a></div>
+        </div>
+        <div class="list-block">
+          <div class="list-title">Configuration</div>
+          <div class="list-item"><a [routerLink]="['/']">Action Logs</a></div>
+          <div class="list-item"><a [routerLink]="['/']">Order Export</a></div>
+        </div>
+      </div>
+    </div>
   </aside>
+
   <main>
-    <header (click)="activeClass()">header</header>
+    <header>
+      <button mat-icon-button aria-label="Example icon button with a menu icon" (click)="activeClass()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="head-title">Admintools Lego <a mat-button [routerLink]="['/']" class="click-login">/ Login</a></h1>
+    </header>
+    <mat-divider></mat-divider>
 
     <router-outlet></router-outlet>
+    <mat-divider></mat-divider>
 
     <footer>
       <div class="footer">
