@@ -1,7 +1,4 @@
 .component-content {
   padding: 12px;
-
-  table {
-    width: 100%;
-  }
+  min-height: calc(100vh - 54px - 40px); // (content - header - footer)
 }

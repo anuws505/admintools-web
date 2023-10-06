@@ -20,7 +20,7 @@ export class AppComponent {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize() {
     this.innerWidth = window.innerWidth;
     this.setActiveByWidth();
   }
