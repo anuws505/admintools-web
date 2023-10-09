@@ -1,7 +1,36 @@
 .component-content {
+  .comp-title {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+
   .search-section {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    position: relative;
+    overflow: auto;
+    max-width: 1200px;
+
+    mat-form-field {
+      width: 220px;
+      margin: 6px;
+
+      &.order-code {
+        width: 120px;
+      }
+    }
+
+    button {
+      &.search-btn {
+        margin: 6px;
+        width: 220px;
+        &.clear {
+          width: 120px;
+          height: 42px;
+        }
+        &.search {
+          width: 220px;
+          height: 42px;
+        }
+      }
+    }
   }
 }

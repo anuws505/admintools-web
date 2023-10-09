@@ -1,20 +1,22 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   active: any = '';
   innerWidth: any;
+
+  constructor() {}
 
   activeClass() {
     if (this.active === '') { this.active = 'active'; }
     else if (this.active === 'active') { this.active = ''; }
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     this.setActiveByWidth();
   }
