@@ -2,6 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
 
+const ELEMENT_DATA: any = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',position2: 1, name2: 'Hydrogen2', weight2: 1.0079, symbol2: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He',position2: 2, name2: 'Helium2', weight2: 4.0026, symbol2: 'He'},
+  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li',position2: 3, name2: 'Lithium2', weight2: 6.941, symbol2: 'Li'},
+  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be',position2: 4, name2: 'Beryllium2', weight2: 9.0122, symbol2: 'Be'},
+  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B',position2: 5, name2: 'Boron2', weight2: 10.811, symbol2: 'B'},
+  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C',position2: 6, name2: 'Carbon2', weight2: 12.0107, symbol2: 'C'},
+  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N',position2: 7, name2: 'Nitrogen2', weight2: 14.0067, symbol2: 'N'},
+  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O',position2: 8, name2: 'Oxygen2', weight2: 15.9994, symbol2: 'O'},
+  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F',position2: 9, name2: 'Fluorine2', weight2: 18.9984, symbol2: 'F'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne',position2: 10, name2: 'Neon2', weight2: 20.1797, symbol2: 'Ne'},
+];
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -14,6 +27,8 @@ export class ListComponent implements OnInit {
     orderCode: '',
     dateCreated: ''
   }
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' ,'position2', 'name2', 'weight2', 'symbol2' ,'position3', 'name3', 'weight3', 'symbol3'];
+  dataSource = ELEMENT_DATA;
 
   constructor() {}
 

@@ -37,4 +37,71 @@
       class="search-btn search" (click)="submitSearch()">Search</button>
     </div>
   </form>
+
+  <div class="data-table-section">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef> Weight </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef> Symbol </th>
+        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="position2">
+        <th mat-header-cell *matHeaderCellDef> No.2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.position2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name2">
+        <th mat-header-cell *matHeaderCellDef> Name2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.name2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight2">
+        <th mat-header-cell *matHeaderCellDef> Weight2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol2">
+        <th mat-header-cell *matHeaderCellDef> Symbol2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.symbol2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="position3">
+        <th mat-header-cell *matHeaderCellDef> No3. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position3}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name3">
+        <th mat-header-cell *matHeaderCellDef> Name3 </th>
+        <td mat-cell *matCellDef="let element"> {{element.name3}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight3">
+        <th mat-header-cell *matHeaderCellDef> Weight3 </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight3}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol3">
+        <th mat-header-cell *matHeaderCellDef> Symbol3 </th>
+        <td mat-cell *matCellDef="let element"> {{element.symbol3}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </div>
