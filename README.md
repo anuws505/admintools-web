@@ -1,10 +1,12 @@
 # AdmintoolsWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+Or run `ng serve --configuration=sit` for a system integration test server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -12,11 +14,15 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run command.
+
+- `ng build --configuration=development` to build the `local development` project. The build artifacts will be stored in the `dist/` directory.
+- `ng build --configuration=sit` to build the `system integration test` project. The build artifacts will be stored in the `dist/` directory.
+- `ng build` to build the `production` project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+No unit test options.
 
 ## Running end-to-end tests
 

@@ -86,11 +86,11 @@
                 }
               ]
             },
-            "staging": {
+            "sit": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.staging.ts"
+                  "with": "src/environments/environment.sit.ts"
                 }
               ]
             }
@@ -106,8 +106,8 @@
             "development": {
               "browserTarget": "admintools-web:build:development"
             },
-            "staging": {
-              "browserTarget": "admintools-web:build:staging"
+            "sit": {
+              "browserTarget": "admintools-web:build:sit"
             }
           },
           "defaultConfiguration": "development"
