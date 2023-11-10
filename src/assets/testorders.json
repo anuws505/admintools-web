@@ -16,8 +16,8 @@
                 "customerName": "Paktest TEST",
                 "customerContact": "0937019776",
                 "simMobileNo": "0937019776",
-                "statusProgress": "waiting",
-                "statusProvisioning": "waiting",
+                "statusProgress": "Waiting",
+                "statusProvisioning": "Waiting",
                 "progressApi": {
                     "key": "",
                     "progress": {}
@@ -38,8 +38,8 @@
                 "customerName": "Paktest TEST",
                 "customerContact": "0937019776",
                 "simMobileNo": "0937019776",
-                "statusProgress": "waiting",
-                "statusProvisioning": "waiting",
+                "statusProgress": "Waiting",
+                "statusProvisioning": "Waiting",
                 "progressApi": {
                     "key": "",
                     "progress": {}
@@ -60,7 +60,7 @@
                 "customerName": "Kanin Adam",
                 "customerContact": "0812399990",
                 "simMobileNo": "0812399990",
-                "statusProgress": "Waiting",
+                "statusProgress": "Fail",
                 "statusProvisioning": "Fail",
                 "progressApi": {
                     "key": "order_list",
@@ -156,8 +156,8 @@
                 "kyc_result": "Y",
                 "mobileNo": "",
                 "customerContact": "0880220376",
-                "simMtatusProgress": "test",
-                "statusProvisioning": "test",
+                "simMtatusProgress": "In Progress",
+                "statusProvisioning": "In Progress",
                 "progressApi": {
                     "key": "",
                     "progress": {}
@@ -179,13 +179,13 @@
                 "mobileNo": "0880220376",
                 "customerContact": "0880220376",
                 "simMtatusProgress": "Customer Received",
-                "statusProvisioning": "fail",
+                "statusProvisioning": "Fail",
                 "progressApi": {
                     "key": "auto_sale_trans",
                     "progress": {
                         "status": {
                             "status_code": "003",
-                            "status_description": "fail"
+                            "status_description": "Fail"
                         },
                         "request": {
                             "receiptNo": null,
