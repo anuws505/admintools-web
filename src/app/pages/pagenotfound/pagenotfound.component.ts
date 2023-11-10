@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pagenotfound',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./pagenotfound.component.scss']
 })
 export class PagenotfoundComponent {
-
+  constructor(private title: Title) {
+    this.title.setTitle('Page not found - LEGO Admintools');
+  }
 }

@@ -1,0 +1,484 @@
+{
+    "transactionID": "xx1234",
+    "resultCode": "20000",
+    "resultMessage": "success",
+    "result": {
+        "recordsFiltered": 1188,
+        "data": [
+            {
+                "orderNo": "WSA1008040027",
+                "reserveId": "reserveWSA1008040027",
+                "orderCode": "6",
+                "transactionId": "201909240927123201909240927123201909240927123201909240927123201909240927123",
+                "createTime": "11-09-2020 16:53:06",
+                "updateTime": "11-09-2020",
+                "kyc_result": "Y",
+                "customerName": "Paktest TEST",
+                "customerContact": "0937019776",
+                "simMobileNo": "0937019776",
+                "statusProgress": "waiting",
+                "statusProvisioning": "waiting",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "KERRY1234",
+                    "trackingURL": "https://kerry123.com/KERRY1234"
+                }
+            },
+            {
+                "orderNo": "WSA100804002701",
+                "reserveId": "reserve201909240927123",
+                "orderCode": "6",
+                "transactionId": "201909240927123",
+                "createTime": "11-09-2020 16:53:06",
+                "updateTime": "11-09-2020",
+                "kyc_result": "Y",
+                "customerName": "Paktest TEST",
+                "customerContact": "0937019776",
+                "simMobileNo": "0937019776",
+                "statusProgress": "waiting",
+                "statusProvisioning": "waiting",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "KERRY5678",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS2010210500300",
+                "reserveId": "reserveWS2010210500300",
+                "orderCode": "6",
+                "transactionId": "APM2010221326000002",
+                "createTime": "01-12-2020 13:29:45",
+                "updateTime": "01-12-2020",
+                "kyc_result": "Y",
+                "customerName": "Kanin Adam",
+                "customerContact": "0812399990",
+                "simMobileNo": "0812399990",
+                "statusProgress": "Waiting",
+                "statusProvisioning": "Fail",
+                "progressApi": {
+                    "key": "order_list",
+                    "progress": {
+                        "sequence": 1,
+                        "api": "createOrderList",
+                        "status": {
+                            "status_code": "003",
+                            "status_description": "Fail"
+                        },
+                        "request": {
+                            "soId": "136529",
+                            "locationSource": "4289",
+                            "transactionID": "202012011606795647990",
+                            "locationReceipt": "4289",
+                            "grandTotalAmt": "5048.00",
+                            "userId": "OCP",
+                            "saleCode": "",
+                            "queueNo": "",
+                            "cusNameOrder": "Kanin Adam",
+                            "taxCardId": "7207874380288",
+                            "cusMobileNoOrder": "081239999",
+                            "paymentRemark": "[DV][CC],[T]TP20093558,[D]0,[RC],",
+                            "paymentMethod": "",
+                            "bankCode": "",
+                            "installmentTerm": "",
+                            "installmentRate": "",
+                            "focCode": "",
+                            "bankAbbr": "",
+                            "preBookingNo": "",
+                            "depositAmt": "",
+                            "qrAmt": "",
+                            "soChannelType": "OCP",
+                            "soDocumentType": "RECEIPT",
+                            "shipCusName": "- Kanin Adam",
+                            "shipCusAddr": "เลขที่ 17/4 อาคาร Bann suan thon ถ.Bamoongrat RoadBamoongrat Road Pibulsongkram Bangkok 10400 ",
+                            "shipLocation": "",
+                            "receiptType": "",
+                            "customerType": "N",
+                            "taxBranchNo": "",
+                            "taxPassportId": "",
+                            "saleEmpId": "",
+                            "orderNo": "WS2010210500300",
+                            "kycFlg": "",
+                            "productList": [
+                                {
+                                    "productType": "DEVICE",
+                                    "productSubType": "HANDSET",
+                                    "brand": "REALME",
+                                    "model": "5I(4/64)CDMSL",
+                                    "color": "AQUA BLUE",
+                                    "matCode": "NEW0RM5I6XL-AB01",
+                                    "affProductName": "",
+                                    "qty": "1",
+                                    "matAirTime": "",
+                                    "soCompany": "AWN",
+                                    "priceIncAmt": "4999.00",
+                                    "priceDiscountAmt": "0",
+                                    "tradeNo": "TP20093558",
+                                    "tradeDiscountId": "142549",
+                                    "tradeAirtimeId": "",
+                                    "ussdCode": "",
+                                    "returnCode": "",
+                                    "orderCode": "5",
+                                    "listMatFreeGoods": []
+                                }
+                            ],
+                            "customerAddress": {}
+                        },
+                        "response": {
+                            "resultCode": "50000",
+                            "resultMessage": "Fail",
+                            "transactionID": "202012011606795647990",
+                            "result": {
+                                "msg": "Error : Not found item in cart.(NEW0RM5I6XL-AB01|5I(4/64)CDMSL)"
+                            }
+                        }
+                    }
+                },
+                "trackingData": {
+                    "trackingNo": "",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS2010210510",
+                "reserveId": "reserveTESTWS2010210510",
+                "orderCode": "6",
+                "transactionId": "201909240927123",
+                "createTime": "24-11-2020",
+                "updateTime": "24-11-2020",
+                "customerName": "",
+                "kyc_result": "Y",
+                "mobileNo": "",
+                "customerContact": "0880220376",
+                "simMtatusProgress": "test",
+                "statusProvisioning": "test",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS2010210511",
+                "reserveId": "reserveWS2010210511WS2010210511",
+                "orderCode": "6",
+                "transactionId": "201909240927124",
+                "createTime": "21-08-2020",
+                "updateTime": "21-08-2020",
+                "customerName": "Paktest TEST",
+                "kyc_result": "Y",
+                "mobileNo": "0880220376",
+                "customerContact": "0880220376",
+                "simMtatusProgress": "Customer Received",
+                "statusProvisioning": "fail",
+                "progressApi": {
+                    "key": "auto_sale_trans",
+                    "progress": {
+                        "status": {
+                            "status_code": "003",
+                            "status_description": "fail"
+                        },
+                        "request": {
+                            "receiptNo": null,
+                            "company": "AWN",
+                            "transactionID": "201909240927124",
+                            "serialNo": "999999999",
+                            "returnCode": "AE6031619"
+                        },
+                        "response": {
+                            "resultCode": "50000",
+                            "resultMessage": "Fail.",
+                            "transactionID": "201909240927124",
+                            "result": {
+                                "message": "Receipt No. is empty"
+                            }
+                        }
+                    }
+                },
+                "trackingData": {
+                    "trackingNo": "",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS201215050111",
+                "reserveId": "2020121500002",
+                "orderCode": "6",
+                "transactionId": "APM2019092409271113",
+                "createTime": "15-12-2020 09:44:06",
+                "updateTime": "15-12-2020",
+                "kyc_result": "Y",
+                "customerName": "Botest TEST",
+                "customerContact": "0937019779",
+                "simMobileNo": "0937019779",
+                "statusProgress": "Shop Received",
+                "statusProvisioning": "Success",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS201215050110",
+                "reserveId": "2020121500001",
+                "orderCode": "6",
+                "transactionId": "APM2019092409271113",
+                "createTime": "15-12-2020 09:43:06",
+                "updateTime": "15-12-2020",
+                "kyc_result": "Y",
+                "customerName": "Botest TEST",
+                "customerContact": "0937019779",
+                "simMobileNo": "0937019779",
+                "statusProgress": "Payment Complete",
+                "statusProvisioning": "Fail",
+                "progressApi": {
+                    "key": "create_receipt",
+                    "progress": {
+                        "sequence": 3,
+                        "api": "createReceipts",
+                        "status": {
+                            "status_code": "003",
+                            "status_description": "Fail"
+                        },
+                        "request": {
+                            "orderDate": "15/12/2020 09:43:06",
+                            "locationCode": "4289",
+                            "transactionID": "APM2019092409271113",
+                            "shiftId": "",
+                            "shiftNum": "",
+                            "terminalId": "",
+                            "channelType": "OLS",
+                            "saleType": "PRE",
+                            "documentType": "RECEIPT",
+                            "receiptType": "ABB",
+                            "customerTitle": "-",
+                            "customerName": "Botest TEST",
+                            "cusMobileNo": "0937019779",
+                            "cusNetworkType": "",
+                            "saleCode": null,
+                            "saleEmpId": null,
+                            "ascCode": null,
+                            "soId": "148577",
+                            "shipCusName": "- botest TEST",
+                            "trackingNo": "KAOS220130576",
+                            "shipCusAddr": "เลขที่ 3 อาคาร ห้างโลตัส ระยอง สาขาโลตัส ระยอง ",
+                            "shipCustAddr2": "ท่าประดู่ เมืองระยอง ระยอง 21000 ",
+                            "mobilePhone": "0937019779",
+                            "qrOrderId": "",
+                            "chargeType": "",
+                            "instanceName": "",
+                            "receiptAddr": {
+                                "mobileNo": "0937019779",
+                                "addrNo": "12",
+                                "moo": "",
+                                "mooban": "",
+                                "buildingName": "",
+                                "floor": "",
+                                "room": "",
+                                "soi": "",
+                                "streetName": "ดินแดง",
+                                "tumbon": "จตุจักร",
+                                "amphur": "จตุจักร",
+                                "province": "กรุงเทพ",
+                                "postCode": "10900",
+                                "country": ""
+                            },
+                            "shiptoAddr": "1100",
+                            "orderNo": "WS201215050110",
+                            "mobileNo": "",
+                            "pickupLocation": "4289",
+                            "customerType": "N",
+                            "taxBranchNo": "",
+                            "passportNo": "",
+                            "citizenId": "7207874380288",
+                            "taxNo": "",
+                            "taxPassportId": "",
+                            "taxCardId": "7207874380288",
+                            "preBookingNo": "",
+                            "channelTransection": "OCP",
+                            "contactEmail": "",
+                            "userId": "OCP",
+                            "remark": "",
+                            "affCampaignID": "",
+                            "affClickRef": "",
+                            "affCustomerType": "",
+                            "affPubId": "",
+                            "listReceipt": [
+                                {
+                                    "posNo": "",
+                                    "vatRate": "",
+                                    "grandTotalAmt": "6990.00",
+                                    "pointMobileNo": "",
+                                    "pointUssd": "",
+                                    "pointReturnCode": "",
+                                    "pointDiscAmt": "",
+                                    "pointAmt": "",
+                                    "products": [
+                                        {
+                                            "productType": "DEVICE",
+                                            "company": "AWN",
+                                            "brand": "APPLE",
+                                            "model": "IPHONEXS256",
+                                            "color": "SILVER",
+                                            "matcode": "NEW0APXS256-SV01",
+                                            "matcodeAirTime": null,
+                                            "subStock": "OLS",
+                                            "freeGoodsFlg": "N",
+                                            "qty": "1",
+                                            "ussdCode": null,
+                                            "returnCode": null,
+                                            "incAmt": "45900.00",
+                                            "totalAmt": "45900.00",
+                                            "discount": "0.00",
+                                            "voucherAmt": null,
+                                            "voucherCode": null,
+                                            "voucherCampaignId": null,
+                                            "groupPrice": "EUP",
+                                            "tradeNo": null,
+                                            "focCode": null,
+                                            "contractId": null,
+                                            "projectCode": null,
+                                            "tradeProductId": null,
+                                            "tradeDiscountId": null,
+                                            "matAirtimeId": "",
+                                            "refMatCode": null,
+                                            "tradeInNo": null,
+                                            "depositAmt": null,
+                                            "simMobileNo": null,
+                                            "serviceFeature": null,
+                                            "affProductName": ""
+                                        }
+                                    ],
+                                    "receiptMethods": [
+                                        {
+                                            "paymentMethod": "CC",
+                                            "cardType": "CREDIT",
+                                            "docType": "CREDIT",
+                                            "docDate": null,
+                                            "creditCardNo": "455596xxxxxx0006",
+                                            "cardExpireDate": "09/25",
+                                            "installmentTerm": "",
+                                            "installmentRate": "",
+                                            "paidAmt": "45900.00",
+                                            "bankRefNo": null
+                                        }
+                                    ],
+                                    "kycFlg": null
+                                }
+                            ]
+                        },
+                        "response": {
+                            "resultCode": "50000",
+                            "resultMessage": "Fail.",
+                            "transactionID": "APM2019092409271113",
+                            "result": {
+                                "msg": "Create Receipt Fail. Grand Total Amount will be = 45900.00"
+                            }
+                        }
+                    }
+                },
+                "trackingData": {
+                    "trackingNo": "",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS201214050023",
+                "reserveId": "2020121400023",
+                "orderCode": "6",
+                "transactionId": "APM20201103024",
+                "createTime": "14-12-2020 07:43:45",
+                "updateTime": "14-12-2020",
+                "kyc_result": "Y",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0937019773",
+                "simMobileNo": "0937019773",
+                "statusProgress": "Order Complete",
+                "statusProvisioning": "Success",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS201214050022",
+                "reserveId": "2020121400022",
+                "orderCode": "6",
+                "transactionId": "APM20201103024",
+                "createTime": "14-12-2020 07:43:45",
+                "updateTime": "14-12-2020",
+                "kyc_result": "Y",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0937019771",
+                "simMobileNo": "0937019771",
+                "statusProgress": "Order Complete",
+                "statusProvisioning": "Success",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS201214050130",
+                "reserveId": "2020121400021",
+                "orderCode": "6",
+                "transactionId": "APM2019092409271113",
+                "createTime": "14-12-2020 16:54:06",
+                "updateTime": "14-12-2020",
+                "kyc_result": "Y",
+                "customerName": "Botest TEST",
+                "customerContact": "0937019779",
+                "simMobileNo": "0937019779",
+                "statusProgress": "Delivery",
+                "statusProvisioning": "Success",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "",
+                    "trackingURL": ""
+                }
+            },
+            {
+                "orderNo": "WS201214050020",
+                "reserveId": "2020121400020",
+                "orderCode": "6",
+                "transactionId": "APM20201103024",
+                "createTime": "14-12-2020 07:43:45",
+                "updateTime": "14-12-2020",
+                "kyc_result": "Y",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0937019776",
+                "simMobileNo": "0937019776",
+                "statusProgress": "Customer Received",
+                "statusProvisioning": "In Progress",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                }
+            }
+        ]
+    }
+}

@@ -1,19 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
-
-const ELEMENT_DATA: any = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',position2: 1, name2: 'Hydrogen2', weight2: 1.0079, symbol2: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He',position2: 2, name2: 'Helium2', weight2: 4.0026, symbol2: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li',position2: 3, name2: 'Lithium2', weight2: 6.941, symbol2: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be',position2: 4, name2: 'Beryllium2', weight2: 9.0122, symbol2: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B',position2: 5, name2: 'Boron2', weight2: 10.811, symbol2: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C',position2: 6, name2: 'Carbon2', weight2: 12.0107, symbol2: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N',position2: 7, name2: 'Nitrogen2', weight2: 14.0067, symbol2: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O',position2: 8, name2: 'Oxygen2', weight2: 15.9994, symbol2: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F',position2: 9, name2: 'Fluorine2', weight2: 18.9984, symbol2: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne',position2: 10, name2: 'Neon2', weight2: 20.1797, symbol2: 'Ne'},
-];
+import { Title } from '@angular/platform-browser';
+import { lastValueFrom } from 'rxjs';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-list',
@@ -21,19 +11,48 @@ const ELEMENT_DATA: any = [
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  reqOrderList: any = {
+    transactionID: this.orderService.getTransactionID(),
+    find: {'status_provisioning.status_code': {$in: ['001','002','003','004','007','018']}},
+    pages: 1,
+    limit: 25,
+    sort: {$natural: -1}
+  };
+
   search: any = {
     orderNo: '',
     transactionId: '',
     orderCode: '',
     dateCreated: ''
   }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' ,'position2', 'name2', 'weight2', 'symbol2' ,'position3', 'name3', 'weight3', 'symbol3'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: any = [
+    'orderNo',
+    'reserveId',
+    'orderCode',
+    'transactionId',
+    'createTime',
+    'updateTime',
+    'kyc_result',
+    'customerName',
+    'customerContact',
+    'simMobileNo',
+    'statusProgress',
+    'statusProvisioning',
+    'progressApi',
+    'trackingData'
+  ];
+  dataSource: any = [];
 
-  constructor() {}
+  constructor(
+    private title: Title,
+    private orderService: OrderService,
+  ) {
+    this.title.setTitle('Order list - LEGO Admintools');
+  }
 
   ngOnInit(): void {
-    console.log(this.search);
+    // console.log(this.search);
+    this.getOrders(this.reqOrderList);
   }
 
   searchOrderNo($event: any) {
@@ -73,12 +92,55 @@ export class ListComponent implements OnInit {
   submitSearch() {
     // let flag = false;
     let findObj: any = {};
-    findObj['status_provisioning.status_code'] = {$in: ['001','003','004','007']};
+    findObj['status_provisioning.status_code'] = {$in: ['001','002','003','004','007','018']};
 
     /* Object.keys(this.search).forEach((prop: any) => {
       console.log(prop);
       // if (this.search[prop].trim() !== '') {}
     }); */
     console.log(this.search);
+  }
+
+  async getOrders(request: any) {
+    console.log(request);
+    try {
+      const data = await lastValueFrom(this.orderService.getExOrders(request));
+      if (data.resultCode && data.resultCode === '20000') {
+        if (data.result && data.result.data.length > 0) {
+          console.log(data);
+          let someList: any = [];
+          data.result.data.forEach((prop: any) => {
+            let someObj: any = {};
+            {
+              someObj.orderNo = prop.orderNo;
+              someObj.reserveId = prop.reserveId;
+              someObj.orderCode = prop.orderCode;
+              someObj.transactionId = prop.transactionId;
+              someObj.createTime = prop.createTime;
+              someObj.updateTime = prop.updateTime;
+              someObj.kyc_result = prop.kyc_result;
+              someObj.customerName = prop.customerName;
+              someObj.customerContact = prop.customerContact;
+              someObj.simMobileNo = prop.simMobileNo;
+              someObj.statusProgress = prop.statusProgress;
+              someObj.statusProvisioning = prop.statusProvisioning;
+              someObj.progressApi = (prop.progressApi?.progress?.api) ? prop.progressApi.progress.api : '';
+              someObj.trackingData = (prop.trackingData) ? prop.trackingData : { trackingNo: '', trackingURL: '' };
+              /* if (prop.trackingData?.trackingNo && prop.trackingData.trackingNo !== '') {
+                someObj.trackingData = prop.trackingData.trackingNo;
+              }
+              if (prop.trackingData?.trackingURL && prop.trackingData.trackingURL !== '') {
+                someObj.trackingData = '<a href="'+prop.trackingData.trackingURL+'">'+prop.trackingData.trackingNo+'</a>';
+              } */
+            }
+            someList.push(someObj);
+          });
+
+          this.dataSource = someList;
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

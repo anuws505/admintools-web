@@ -1,4 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-root',
@@ -6,14 +8,18 @@ import { Component, OnInit, HostListener } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  active: any = '';
+  activeNavbar: any = '';
   innerWidth: any;
 
-  constructor() {}
+  constructor(
+    private title: Title
+  ) {
+    this.title.setTitle('App - LEGO Admintools');
+  }
 
   activeClass() {
-    if (this.active === '') { this.active = 'active'; }
-    else if (this.active === 'active') { this.active = ''; }
+    if (this.activeNavbar === '') { this.activeNavbar = 'active'; }
+    else if (this.activeNavbar === 'active') { this.activeNavbar = ''; }
   }
 
   ngOnInit(): void {
@@ -29,9 +35,9 @@ export class AppComponent implements OnInit {
 
   setActiveByWidth() {
     if (this.innerWidth >= 768) {
-      this.active = 'active';
+      this.activeNavbar = 'active';
     } else {
-      this.active = '';
+      this.activeNavbar = '';
     }
   }
 }

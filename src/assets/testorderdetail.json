@@ -1,0 +1,534 @@
+{
+    "transactionID": "xxaa1234",
+    "resultCode": "20000",
+    "resultMessage": "success",
+    "result": {
+        "status": 1,
+        "_id": "5f5b21889bd1253b87854491",
+        "log_cancel": [],
+        "id": 378,
+        "reserve_id": "2020091100502",
+        "transaction_id": "201909240927123",
+        "reference_order_no": "WSA1008040027",
+        "order_no": "WSA1008040027",
+        "order_date": "04/08/2020 16:53:06",
+        "soid": "131310",
+        "data_order": {
+            "transactionID": "201909240927123",
+            "orderNo": "WSA1008040027",
+            "referenceOrderNo": "WSA1008040027",
+            "orderDate": "04/08/2020 16:53:06",
+            "reserveID": "2020091100502",
+            "locationSource": "4289",
+            "locationDestination": "4289",
+            "grandTotalAmt": "41900.00",
+            "orderCode": "6",
+            "products": [
+                {
+                    "locationStock": "4289",
+                    "locationStockType": "DEPO",
+                    "company": "AWN",
+                    "productType": "DEVICE",
+                    "productSubType": "HANDSET",
+                    "brand": "APPLE",
+                    "model": "IPHONE11P256",
+                    "color": "MID GREEN",
+                    "matCode": "NEW0AP011P3-MG01",
+                    "freeGoodsFlg": "N",
+                    "qty": "1",
+                    "incAmt": "41900.00",
+                    "totalAmt": "41900.00",
+                    "discount": "0.00",
+                    "matAirtimeId": "",
+                    "matAirTime": "",
+                    "affProductName": "",
+                    "campaignName": "",
+                    "promotionName": "",
+                    "promotionCode": ""
+                }
+            ],
+            "payments": [
+                {
+                    "paymentCompleteFlag": "Y",
+                    "depositType": "3",
+                    "qrAmt": "",
+                    "queueNo": "",
+                    "shiftId": "",
+                    "shiftNum": "",
+                    "terminalId": "",
+                    "posNo": "",
+                    "paymentMethod": "CC",
+                    "cardType": "VISA",
+                    "creditCardNo": "498765XXXXXX8769",
+                    "bankCode": "",
+                    "bankAbbr": "",
+                    "cardExpireDate": "05/25",
+                    "installmentTerm": "",
+                    "installmentRate": "",
+                    "paidAmt": "41900.00"
+                }
+            ],
+            "shipping": {
+                "title": "-",
+                "firstName": "maytest",
+                "lastName": "TEST",
+                "houseNo": "3",
+                "villageNo": "",
+                "village": "",
+                "buildingName": "ห้างโลตัส ระยอง สาขาโลตัส ระยอง",
+                "floor": "",
+                "room": "",
+                "soi": "",
+                "streetName": "",
+                "province": "ระยอง",
+                "district": "เมืองระยอง",
+                "subDistrict": "ท่าประดู่",
+                "zipCode": "21000",
+                "country": "",
+                "mobileNo": "0937019776",
+                "email": ""
+            },
+            "receipt": {
+                "type": "FULL",
+                "title": "-",
+                "customerType": "N",
+                "taxBranchNo": "",
+                "taxNo": "",
+                "taxPassportId": "",
+                "taxCardId": "7207874380288",
+                "firstName": "Paktest",
+                "lastName": "TEST",
+                "houseNo": "12",
+                "villageNo": "",
+                "village": "",
+                "buildingName": "",
+                "floor": "",
+                "room": "",
+                "soi": "",
+                "streetName": "ดินแดง",
+                "province": "กรุงเทพ",
+                "district": "จตุจักร",
+                "subDistrict": "จตุจักร",
+                "zipCode": "10900",
+                "country": "",
+                "mobileNo": "0937019776",
+                "remark": ""
+            },
+            "seller": {
+                "ascCode": "",
+                "saleUsername": "",
+                "saleEmpId": "",
+                "userId": "OCP"
+            },
+            "soId": "131310"
+        },
+        "progress": {
+            "order_list": {
+                "sequence": 1,
+                "api": "createOrderList",
+                "status": {
+                    "status_code": "004",
+                    "status_description": "Success"
+                },
+                "request": {
+                    "transactionID": "201909240927123",
+                    "soId": "131310",
+                    "locationSource": "4289",
+                    "locationReceipt": "4289",
+                    "grandTotalAmt": "41900.00",
+                    "userId": "OCP",
+                    "saleCode": "",
+                    "queueNo": "",
+                    "cusNameOrder": "Paktest TEST",
+                    "taxCardId": "7207874380288",
+                    "cusMobileNoOrder": "0937019776",
+                    "paymentRemark": "[DV][CC],[D]0.00,[RC],",
+                    "paymentMethod": "",
+                    "bankCode": "",
+                    "installmentTerm": "",
+                    "installmentRate": "",
+                    "focCode": "",
+                    "bankAbbr": "",
+                    "preBookingNo": null,
+                    "depositAmt": null,
+                    "qrAmt": "",
+                    "soChannelType": "OCP",
+                    "soDocumentType": "RECEIPT",
+                    "shipCusName": "- maytest TEST",
+                    "shipCusAddr": "เลขที่ 3 อาคาร ห้างโลตัส ระยอง สาขาโลตัส ระยอง  เมืองระยอง ระยอง 21000 ",
+                    "shipLocation": "",
+                    "receiptType": null,
+                    "customerType": "N",
+                    "taxBranchNo": "",
+                    "taxPassportId": "",
+                    "saleEmpId": "",
+                    "orderNo": "WSA1008040027",
+                    "productList": [
+                        {
+                            "productType": "DEVICE",
+                            "productSubType": "HANDSET",
+                            "brand": "APPLE",
+                            "model": "IPHONE11P256",
+                            "color": "MID GREEN",
+                            "matCode": "NEW0AP011P3-MG01",
+                            "freeGoodsFlg": "N",
+                            "qty": "1",
+                            "matAirTime": "",
+                            "affProductName": "",
+                            "campaignName": "",
+                            "promotionName": "",
+                            "promotionCode": "",
+                            "soCompany": "AWN",
+                            "priceIncAmt": "41900.00",
+                            "priceDiscountAmt": "0.00",
+                            "tradeNo": null,
+                            "tradeDiscountId": null,
+                            "tradeAirtimeId": null,
+                            "ussdCode": null,
+                            "returnCode": null,
+                            "listMatFreeGoods": []
+                        }
+                    ]
+                },
+                "response": {
+                    "transactionID": "201909240927123",
+                    "resultCode": "20000",
+                    "resultMessage": "Success.",
+                    "result": {
+                        "soId": "131310",
+                        "reserveNo": "RE20091131310",
+                        "queueNo": ""
+                    }
+                }
+            },
+            "get_tracking": {
+                "sequence": 2,
+                "api": "getTracking",
+                "status": {
+                    "status_code": "004",
+                    "status_description": "Success"
+                },
+                "request": {
+                    "transactionID": "OCP2019092409271234334710000",
+                    "mobileNo": "0937019776",
+                    "email": null,
+                    "channelOrderNo": "OCP2019092409271234334710000",
+                    "prefixItem": "AOS",
+                    "channel": "OCP",
+                    "customerName": "คุณ maytest TEST",
+                    "address": "เลขที่ 3 อาคาร ห้างโลตัส ระยอง สาขาโลตัส ระยอง   เมืองระยอง ระยอง 21000 ",
+                    "zipcode": "21000",
+                    "contactPhone": "0937019776",
+                    "village": null,
+                    "soi": null,
+                    "subdistrict": null,
+                    "district": "เมืองระยอง",
+                    "province": "ระยอง",
+                    "option": "create",
+                    "amount": "41900.00",
+                    "isCOD": null,
+                    "weight": null
+                },
+                "response": {
+                    "transactionID": "OCP2019092409271234334710000",
+                    "resultCode": "20000",
+                    "resultMessage": "Success.",
+                    "result": {
+                        "trackingNo": "AOSOCP2000216",
+                        "message": "Operating system error.",
+                        "forwarderName": "KERRY"
+                    }
+                }
+            },
+            "create_receipt": {
+                "sequence": 3,
+                "api": "createReceipts",
+                "status": {
+                    "status_code": "004",
+                    "status_description": "Success"
+                },
+                "request": {
+                    "transactionID": "201909240927123",
+                    "orderDate": "04/08/2020 16:53:06",
+                    "locationCode": "4289",
+                    "shiftId": "",
+                    "shiftNum": "",
+                    "terminalId": "",
+                    "channelType": "OLS",
+                    "saleType": "PRE",
+                    "documentType": "RECEIPT",
+                    "receiptType": "FULL",
+                    "customerTitle": "-",
+                    "customerName": "Paktest TEST",
+                    "cusMobileNo": "0937019776",
+                    "cusNetworkType": "",
+                    "saleCode": "",
+                    "saleEmpId": "",
+                    "ascCode": "",
+                    "soId": "131310",
+                    "shipCusName": "- maytest TEST",
+                    "trackingNo": "",
+                    "shipCusAddr": "เลขที่ 3 อาคาร ห้างโลตัส ระยอง สาขาโลตัส ระยอง ",
+                    "shipCustAddr2": " เมืองระยอง ระยอง 21000 ",
+                    "mobilePhone": "0937019776",
+                    "qrOrderId": "",
+                    "chargeType": "",
+                    "instanceName": "",
+                    "receiptAddr": {
+                        "mobileNo": "0937019776",
+                        "addrNo": "12",
+                        "moo": "",
+                        "mooban": "",
+                        "buildingName": "",
+                        "floor": "",
+                        "room": "",
+                        "soi": "",
+                        "streetName": "ดินแดง",
+                        "tumbon": "จตุจักร",
+                        "amphur": "จตุจักร",
+                        "province": "กรุงเทพ",
+                        "postCode": "10900",
+                        "country": ""
+                    },
+                    "shiptoAddr": "",
+                    "orderNo": "WSA1008040027",
+                    "mobileNo": "0937019776",
+                    "pickupLocation": "4289",
+                    "customerType": "N",
+                    "taxBranchNo": "",
+                    "passportNo": "",
+                    "citizenId": "7207874380288",
+                    "taxNo": "",
+                    "taxPassportId": "",
+                    "taxCardId": "7207874380288",
+                    "preBookingNo": "",
+                    "channelTransection": "OCP",
+                    "contactEmail": "",
+                    "userId": "OCP",
+                    "remark": "",
+                    "affCampaignID": "",
+                    "affClickRef": "",
+                    "affCustomerType": "",
+                    "affPubId": "",
+                    "listReceipt": [
+                        {
+                            "posNo": "",
+                            "vatRate": "",
+                            "grandTotalAmt": "41900.00",
+                            "pointMobileNo": "",
+                            "pointUssd": "",
+                            "pointReturnCode": "",
+                            "pointDiscAmt": "",
+                            "pointAmt": "",
+                            "products": [
+                                {
+                                    "productType": "DEVICE",
+                                    "company": "AWN",
+                                    "brand": "APPLE",
+                                    "model": "IPHONE11P256",
+                                    "color": "MID GREEN",
+                                    "matcode": "NEW0AP011P3-MG01",
+                                    "subStock": "DEPO",
+                                    "freeGoodsFlg": "N",
+                                    "qty": "1",
+                                    "ussdCode": null,
+                                    "returnCode": null,
+                                    "incAmt": "41900.00",
+                                    "totalAmt": "41900.00",
+                                    "discount": "0.00",
+                                    "voucherAmt": null,
+                                    "voucherCode": null,
+                                    "voucherCampaignId": null,
+                                    "groupPrice": "EUP",
+                                    "tradeNo": null,
+                                    "focCode": null,
+                                    "contractId": null,
+                                    "projectCode": null,
+                                    "tradeProductId": null,
+                                    "tradeDiscountId": null,
+                                    "matAirtimeId": "",
+                                    "refMatCode": null,
+                                    "tradeInNo": null,
+                                    "depositAmt": null,
+                                    "serviceFeature": null,
+                                    "affProductName": ""
+                                }
+                            ],
+                            "receiptMethods": [
+                                {
+                                    "paymentMethod": "CC",
+                                    "cardType": "VISA",
+                                    "docType": "CREDIT",
+                                    "docDate": null,
+                                    "creditCardNo": "498765XXXXXX8769",
+                                    "cardExpireDate": "05/25",
+                                    "installmentTerm": "",
+                                    "installmentRate": "",
+                                    "paidAmt": 41900,
+                                    "bankRefNo": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "response": {
+                    "transactionID": "201909240927123",
+                    "resultCode": "20000",
+                    "resultMessage": "Success.",
+                    "result": {
+                        "receipts": [
+                            {
+                                "receipts": [
+                                    {
+                                        "receiptCompany": "AWN",
+                                        "receiptNo": "4289200800000035",
+                                        "receiptId": "3036616",
+                                        "receiptMethods": [
+                                            {
+                                                "paymentMethod": "CC",
+                                                "paidAmt": "41900"
+                                            }
+                                        ],
+                                        "listMapInvSeqSimMobileNo": [
+                                            {
+                                                "invSeq": "1"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            "create_contract": {
+                "sequence": 4,
+                "api": "createContract",
+                "status": {
+                    "status_code": "001",
+                    "status_description": "waiting"
+                }
+            }
+        },
+        "status_progress": {
+            "status_code": "010",
+            "status_description": "Waiting Pick & Pack"
+        },
+        "status_provisioning": {
+            "status_code": "002",
+            "status_description": "In Progress"
+        },
+        "created_at": "Fri Sep 11 2020 14:04:40 GMT+0700 (Indochina Time)",
+        "updated_at": "Fri Sep 11 2020 14:04:43 GMT+0700 (Indochina Time)",
+        "__v": 0,
+        "log_activity": [
+            {
+                "api": "createOrderList",
+                "request": {
+                    "transactionID": "201909240927123",
+                    "soId": "131310",
+                    "locationSource": "4289",
+                    "locationReceipt": "4289",
+                    "grandTotalAmt": "41900.00",
+                    "userId": "OCP",
+                    "saleCode": "",
+                    "queueNo": "",
+                    "cusNameOrder": "Paktest TEST",
+                    "taxCardId": "7207874380288",
+                    "cusMobileNoOrder": "0937019776",
+                    "paymentRemark": "[DV][CC],[D]0.00,[RC],",
+                    "paymentMethod": "",
+                    "bankCode": "",
+                    "installmentTerm": "",
+                    "installmentRate": "",
+                    "focCode": "",
+                    "bankAbbr": "",
+                    "preBookingNo": null,
+                    "depositAmt": null,
+                    "qrAmt": "",
+                    "soChannelType": "OCP",
+                    "soDocumentType": "RECEIPT",
+                    "shipCusName": "- maytest TEST",
+                    "shipCusAddr": "เลขที่ 3 อาคาร ห้างโลตัส ระยอง สาขาโลตัส ระยอง  เมืองระยอง ระยอง 21000 ",
+                    "shipLocation": "",
+                    "receiptType": null,
+                    "customerType": "N",
+                    "taxBranchNo": "",
+                    "taxPassportId": "",
+                    "saleEmpId": "",
+                    "orderNo": "WSA1008040027",
+                    "productList": [
+                        {
+                            "productType": "DEVICE",
+                            "productSubType": "HANDSET",
+                            "brand": "APPLE",
+                            "model": "IPHONE11P256",
+                            "color": "MID GREEN",
+                            "matCode": "NEW0AP011P3-MG01",
+                            "freeGoodsFlg": "N",
+                            "qty": "1",
+                            "matAirTime": "",
+                            "affProductName": "",
+                            "campaignName": "",
+                            "promotionName": "",
+                            "promotionCode": "",
+                            "soCompany": "AWN",
+                            "priceIncAmt": "41900.00",
+                            "priceDiscountAmt": "0.00",
+                            "tradeNo": null,
+                            "tradeDiscountId": null,
+                            "tradeAirtimeId": null,
+                            "ussdCode": null,
+                            "returnCode": null,
+                            "listMatFreeGoods": []
+                        }
+                    ]
+                },
+                "response": {
+                    "transactionID": "201909240927123",
+                    "resultCode": "20000",
+                    "resultMessage": "Success.",
+                    "result": {
+                        "soId": "131310",
+                        "reserveNo": "RE20091131310",
+                        "queueNo": ""
+                    }
+                }
+            },
+            {
+                "api": "getKerryTracking",
+                "request": {
+                    "transactionID": "OCP2019092409271234334710000",
+                    "mobileNo": "0937019776",
+                    "email": null,
+                    "channelOrderNo": "OCP2019092409271234334710000",
+                    "prefixItem": "AOS",
+                    "channel": "OCP",
+                    "customerName": "คุณ maytest TEST",
+                    "address": "เลขที่ 3 อาคาร ห้างโลตัส ระยอง สาขาโลตัส ระยอง   เมืองระยอง ระยอง 21000 ",
+                    "zipcode": "21000",
+                    "contactPhone": "0937019776",
+                    "village": null,
+                    "soi": null,
+                    "subdistrict": null,
+                    "district": "เมืองระยอง",
+                    "province": "ระยอง",
+                    "option": "create",
+                    "amount": "41900.00",
+                    "isCOD": null,
+                    "weight": null
+                },
+                "response": {
+                    "transactionID": "OCP2019092409271234334710000",
+                    "resultCode": "20000",
+                    "resultMessage": "Success.",
+                    "result": {
+                        "trackingNo": "AOSOCP2000216",
+                        "message": "Operating system error.",
+                        "forwarderName": "KERRY"
+                    }
+                }
+            }
+        ]
+    }
+}

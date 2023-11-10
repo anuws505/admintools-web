@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<saml2p:LogoutRequest Destination="SAML_DESTINATION"
+                      ID="kcinlgflhlmhipjbmleihlacnoaepodoeilobbnb"
+                      IssueInstant="2021-03-09T11:17:14.535Z"
+                      NotOnOrAfter="2021-03-09T11:17:14.535Z"
+                      Reason="Single Logout"
+                      Version="2.0"
+                      xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
+                      >
+    <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">SAML_ISSUER</saml2:Issuer>
+    <saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+                  xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
+                  >SAML_NAME_ID_LOGIN</saml2:NameID>
+    <saml2p:SessionIndex>SAML_SESSION_INDEX</saml2p:SessionIndex>
+</saml2p:LogoutRequest>
