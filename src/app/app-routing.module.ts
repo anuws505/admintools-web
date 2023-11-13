@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { OrderComponent } from './pages/order/order.component';
 import { ListComponent } from './pages/order/list/list.component';
+import { DetailComponent } from './pages/order/detail/detail.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,8 +14,8 @@ const routes: Routes = [
     children: [
       { path: '', component: ListComponent },
       // { path: 'status/:orderno', component: StatusComponent },
-      { path: ':orderno', component: ListComponent },
-      // { path: ':orderno/:progress', component: OrderdetailComponent }
+      { path: ':orderno', component: DetailComponent },
+      { path: ':orderno/:progress', component: DetailComponent }
     ]
   },
   { path: '**', component: PagenotfoundComponent }

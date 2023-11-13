@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import { OrderService } from '../order.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
   reqOrderList: any = {
     transactionID: this.orderService.getTransactionID(),
     find: {'status_provisioning.status_code': {$in: ['001','002','003','004','007','018']}},
@@ -48,10 +48,10 @@ export class ListComponent implements OnInit {
     private title: Title,
     private orderService: OrderService,
   ) {
-    this.title.setTitle('Order list - LEGO Admintools');
+    this.title.setTitle('Order List - LEGO Admintools');
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     // console.log(this.search);
     this.getOrders(this.reqOrderList);
   }
@@ -103,7 +103,6 @@ export class ListComponent implements OnInit {
   }
 
   async getOrders(request: any) {
-    console.log(request);
     try {
       const data = await lastValueFrom(this.orderService.getExOrders(request));
       if (data.resultCode && data.resultCode === '20000') {

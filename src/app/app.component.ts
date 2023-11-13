@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 
@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   activeNavbar: any = '';
   innerWidth: any;
 
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     else if (this.activeNavbar === 'active') { this.activeNavbar = ''; }
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.innerWidth = window.innerWidth;
     this.setActiveByWidth();
   }

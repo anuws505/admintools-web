@@ -19,6 +19,7 @@ import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.compone
 import { HttpClientModule } from '@angular/common/http';
 import { OrderComponent } from './pages/order/order.component';
 import { ListComponent } from './pages/order/list/list.component';
+import { DetailComponent } from './pages/order/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListComponent } from './pages/order/list/list.component';
     HomeComponent,
     PagenotfoundComponent,
     OrderComponent,
-    ListComponent
+    ListComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
