@@ -28,18 +28,19 @@ export class ListComponent implements OnInit {
   displayedColumns: any = [
     'orderNo',
     'reserveId',
-    'orderCode',
     'transactionId',
+    'orderCode',
     'createTime',
     'updateTime',
-    'kyc_result',
+    'kycResult',
     'customerName',
     'customerContact',
     'simMobileNo',
-    'statusProgress',
     'statusProvisioning',
     'progressApi',
-    'trackingData'
+    'statusProgress',
+    'trackingData',
+    'editData'
   ];
   dataSource: any = [];
 
@@ -107,7 +108,6 @@ export class ListComponent implements OnInit {
       const data = await lastValueFrom(this.orderService.getExOrders(request));
       if (data.resultCode && data.resultCode === '20000') {
         if (data.result && data.result.data.length > 0) {
-          console.log(data);
           let someList: any = [];
           data.result.data.forEach((prop: any) => {
             let someObj: any = {};
@@ -118,20 +118,17 @@ export class ListComponent implements OnInit {
               someObj.transactionId = prop.transactionId;
               someObj.createTime = prop.createTime;
               someObj.updateTime = prop.updateTime;
-              someObj.kyc_result = prop.kyc_result;
-              someObj.customerName = prop.customerName;
-              someObj.customerContact = prop.customerContact;
-              someObj.simMobileNo = prop.simMobileNo;
-              someObj.statusProgress = prop.statusProgress;
+              someObj.kycResult = prop.kycResult;
+              someObj.kycResultTextColor = (prop.kycResult.trim().toUpperCase() === 'N') ? 'txt-stat-fail' : '';
+              someObj.customerName = (prop.customerName) ? this.markCusName(prop.customerName, true, ' ') : prop.customerName;
+              someObj.customerContact = (prop.customerContact) ? this.markMobileNo(prop.customerContact, true, ',') : prop.customerContact;
+              someObj.simMobileNo = (prop.simMobileNo) ? this.markMobileNo(prop.simMobileNo, true, ',') : prop.simMobileNo;
               someObj.statusProvisioning = prop.statusProvisioning;
+              someObj.statusProvisioningTextColor = this.setStatusColor(prop.statusProvisioning),
+              someObj.statusProgress = prop.statusProgress;
+              someObj.statusProgressTextColor = (prop.statusProgress.trim().toUpperCase() === 'FAIL') ? 'txt-stat-fail' : '';
               someObj.progressApi = (prop.progressApi?.progress?.api) ? prop.progressApi.progress.api : '';
               someObj.trackingData = (prop.trackingData) ? prop.trackingData : { trackingNo: '', trackingURL: '' };
-              /* if (prop.trackingData?.trackingNo && prop.trackingData.trackingNo !== '') {
-                someObj.trackingData = prop.trackingData.trackingNo;
-              }
-              if (prop.trackingData?.trackingURL && prop.trackingData.trackingURL !== '') {
-                someObj.trackingData = '<a href="'+prop.trackingData.trackingURL+'">'+prop.trackingData.trackingNo+'</a>';
-              } */
             }
             someList.push(someObj);
           });
@@ -142,5 +139,65 @@ export class ListComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  setStatusColor(keyStat: any) {
+    let resp: any = '';
+    const keyStr: any = keyStat.trim().toUpperCase();
+
+    if ('SUCCESS' === keyStr || 'REPAIRSUCCESS' === keyStr) {
+      resp = 'txt-stat-success';
+    }
+    else if ('FAIL' === keyStr) {
+      resp = 'txt-stat-fail';
+    }
+    else if ('WAITING' === keyStr) {
+      resp = 'txt-stat-waiting';
+    }
+    else if ('IN PROGRESS' === keyStr) {
+      resp = 'txt-stat-in-progress';
+    }
+
+    return resp;
+  }
+
+  markCusName(data: any, flag: boolean, trace: any) {
+    if (!flag) {
+      return data;
+    }
+
+    let splitX = data.split(trace);
+    if (splitX.length > 0) {
+      let retData: any = [];
+      splitX.forEach((data: any) => {
+        let len = data.length;
+        if (len >= 3) {
+          retData.push(data.substring(0, 3).concat(new Array(len-3).fill('x').join('')));
+        }
+      });
+      return retData.join(trace);
+    }
+
+    return data;
+  }
+
+  markMobileNo(data: any, flag: boolean, trace: any) {
+    if (!flag) {
+      return data;
+    }
+
+    let splitX = data.split(trace);
+    if (splitX.length > 0) {
+      let retData: any = [];
+      splitX.forEach((data: any) => {
+        let len = data.length;
+        if (len >= 3) {
+          retData.push(data.substring(0, 3).concat('xxxx').concat(data.substring(7, len)));
+        }
+      });
+      return retData.join(trace);
+    }
+
+    return data;
   }
 }

@@ -53,16 +53,33 @@
       height: 48px;
     }
 
-    .mdc-data-table__row {
-      &:hover {
-        background-color: #f8f8f8;
-      }
-    }
     // .mdc-data-table__row:nth-child(even){
     //   background-color: #f5f5f5;
     // }
     // .mdc-data-table__row:nth-child(odd){
     //   background-color: #fff;
     // }
+    .mdc-data-table__row {
+      &:hover {
+        background-color: #f8f8f8;
+      }
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .txt-stat-success, .txt-stat-repair-success {
+      color: #4ec753;
+    }
+    .txt-stat-fail {
+      color: #fd2424;
+    }
+    .txt-stat-waiting {
+      color: #ff9800;
+    }
+    .txt-stat-in-progress {
+      color: #03a9f4;
+    }
   }
 }
