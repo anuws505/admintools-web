@@ -1,3 +1,29 @@
 <div class="component-content">
   <h3 class="comp-title">Order Detail</h3>
+
+  <div class="aside-block">
+    <ul class="todo-action" *ngFor="let progress of orderProgress">
+      <li class="{{progress.textClassStatus}}" [routerLinkActive]="'active'">
+        <a href="#" [routerLink]="['/order', orderRouteData.orderNo, progress.progressName]">
+          {{progress.textLabel}}
+          <span *ngIf="'' !== progress.actionLabel" class="action-label-{{progress.actionLabel}}">{{progress.actionLabel}}</span>
+        </a>
+      </li>
+      <!-- <li class="active"><a href="#">Create order</a></li>
+      <li class="txt-stat-success"><a href="#">Get tracking</a></li>
+      <li class="txt-stat-fail"><a href="#">Create receipt</a></li>
+      <li><a href="#">Create contract</a></li>
+      <li><a href="#">Change account promotion</a></li>
+      <li><a href="#">Auto sale trans</a></li> -->
+    </ul>
+  </div>
+
+  <div class="content-block">
+    <div class="zone-input">
+      <json-editor [options]="editorOptions"
+                   [data]="jsonDataToDisplay"
+                   (change)="getJsonData($event)">
+      </json-editor>
+    </div>
+  </div>
 </div>

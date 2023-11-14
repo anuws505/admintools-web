@@ -1,9 +1,141 @@
 .component-content {
   padding: 12px;
   min-height: calc(100vh - 54px - 40px);
+  position: relative;
+  overflow: auto;
+  max-width: 1040px;
 
   .comp-title {
     margin-left: 6px;
     margin-right: 6px;
+  }
+
+  .content-block {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    float: left;
+
+    @media all and (min-width: 900px) {
+      width: calc(100% - 220px - 15px);
+    }
+  }
+
+  .aside-block {
+    width: 100%;
+    position: relative;
+    overflow: visible;
+    float: left;
+    margin-bottom: 16px;
+
+    @media all and (min-width: 900px) {
+      width: 220px;
+      float: right;
+      margin-bottom: 0;
+    }
+
+    .todo-action {
+      li {
+        font-size: 13px;
+        margin: 13px 0;
+        padding: 0 0 0 11px;
+        cursor: pointer;
+
+        &:before {
+          bottom: 0;
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          border-left: 1px solid #dbdbdb;
+          z-index: 0;
+        }
+
+        a {
+          color: #999;
+          position: relative;
+          overflow: visible;
+          text-transform: capitalize;
+
+          &:before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            position: absolute;
+            top: 7px;
+            left: -15px;
+            background-color: rgba(219, 219, 219, 0);
+            border-radius: 50%;
+            z-index: 1;
+          }
+
+          .action-label-success, .action-label-repair-success, .action-label-fail,
+          .action-label-waiting, .label-action-auto-cancel, .action-label-in-progress {
+            font-size: 11px;
+            padding: 0 6px;
+            border-radius: 3px;
+          }
+          .action-label-success, .action-label-repair-success {
+            color: #4ec753;
+            background-color: #b0ffb4;
+            border-color: #8be690;
+          }
+          .action-label-fail {
+            color: #ff6060;
+            background-color: #ffdede;
+            border-color: #ff9595;
+          }
+          .action-label-waiting, .auto-cancel {
+            color: #ea9416;
+            background-color: #ffedb6;
+            border-color: #ffeeba;
+          }
+          .action-label-in-progress {
+            color: #03a9f4;
+            background-color: #d9f3ff;
+            border-color: #a5e3ff;
+          }
+        }
+
+        &:hover {
+          a {
+            color: #03a9f4;
+            &:before {
+              background-color: rgba(219, 219, 219, 1);
+            }
+          }
+        }
+
+        &.active {
+          a {
+            color: #1976d2;
+            &:before {
+              background-color: rgba(25, 118, 210, 1);
+            }
+          }
+        }
+
+        &.txt-stat-success, .txt-stat-repair-success {
+          a {
+            color: #4ec753;
+          }
+        }
+        &.txt-stat-fail {
+          a {
+            color: #fd2424;
+          }
+        }
+        &.txt-stat-waiting, .txt-stat-auto-cancel {
+          a {
+            color: #ff9800;
+          }
+        }
+        &.txt-stat-in-progress {
+          a {
+            color: #03a9f4;
+          }
+        }
+      }
+    }
   }
 }

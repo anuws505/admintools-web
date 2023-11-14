@@ -67,7 +67,7 @@ export class ListComponent {
   }
 
   searchOrderCode($event: any) {
-    if ($event === undefined) { this.search.orderCode = ''; } else { this.search.orderCode = $event; }
+    if ($event === 'undefined') { this.search.orderCode = ''; } else { this.search.orderCode = $event; }
     console.log(this.search);
   }
 
