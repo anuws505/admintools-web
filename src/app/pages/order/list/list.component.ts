@@ -21,9 +21,14 @@ export class ListComponent {
 
   search: any = {
     orderNo: '',
+    reserveId: '',
     transactionId: '',
     orderCode: '',
-    dateCreated: ''
+    dateCreated: '',
+    kycResult: '',
+    customerContact: '',
+    simMobileNo: '',
+    orderStatus: ''
   }
   displayedColumns: any = [
     'orderNo',
@@ -40,7 +45,7 @@ export class ListComponent {
     'progressApi',
     'statusProgress',
     'trackingData',
-    'editData'
+    'repairData'
   ];
   dataSource: any = [];
 
@@ -61,13 +66,18 @@ export class ListComponent {
     console.log(this.search);
   }
 
+  searchReserveId($event: any) {
+    this.search.reserveId = $event.target.value;
+    console.log(this.search);
+  }
+
   searchTransactionId($event: any) {
     this.search.transactionId = $event.target.value;
     console.log(this.search);
   }
 
   searchOrderCode($event: any) {
-    if ($event === 'undefined') { this.search.orderCode = ''; } else { this.search.orderCode = $event; }
+    if ($event === undefined) { this.search.orderCode = ''; } else { this.search.orderCode = $event; }
     console.log(this.search);
   }
 
@@ -75,7 +85,29 @@ export class ListComponent {
     if (`${event.value}` !== null) {
       let pipe = new DatePipe('en-US');
       this.search.dateCreated = pipe.transform(`${event.value}`, 'yyyy-MM-dd');
+    } else {
+      this.search.dateCreated = '';
     }
+    console.log(this.search);
+  }
+
+  searchKYCResult($event: any) {
+    if ($event === undefined) { this.search.kycResult = ''; } else { this.search.kycResult = $event; }
+    console.log(this.search);
+  }
+
+  searchCustomerContact($event: any) {
+    this.search.customerContact = $event.target.value;
+    console.log(this.search);
+  }
+
+  searchSimMobileNo($event: any) {
+    this.search.simMobileNo = $event.target.value;
+    console.log(this.search);
+  }
+
+  searchOrderStatus($event: any) {
+    if ($event === undefined) { this.search.orderStatus = ''; } else { this.search.orderStatus = $event; }
     console.log(this.search);
   }
 

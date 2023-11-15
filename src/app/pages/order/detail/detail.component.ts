@@ -101,11 +101,11 @@ export class DetailComponent {
           if (typeof(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result) !== 'undefined') {
             this.actionMessage.message = this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result;
           }
-          else if (typeof(this.actionMessage.message = this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultData) !== 'undefined') {
+          else if (typeof(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultData) !== 'undefined') {
             this.actionMessage.message = this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultData;
           }
 
-          // "create_contract" progress because respone is [] another is {}
+          // because "create_contract" progress respone is [] other is {}
           if ('create_contract' === this.orderRouteData.orderProgress) {
             let stat = '';
             if (undefined !== this.orderData?.progress['create_contract']?.response) {

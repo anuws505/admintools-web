@@ -10,14 +10,23 @@
   .search-section {
     position: relative;
     overflow: auto;
-    max-width: 1200px;
+    max-width: 1600px;
 
     mat-form-field {
       width: 220px;
       margin: 6px;
 
       &.order-code {
-        width: 120px;
+        width: 136px;
+      }
+      &.kyc-result {
+        width: 136px;
+      }
+      &.order-status {
+        width: 200px;
+      }
+      &.progress-status {
+        width: 200px;
       }
     }
 
@@ -44,6 +53,37 @@
       font-family: 'Noto Sans Thai Looped Semi Bold';
       vertical-align: middle;
       max-width: 320px;
+
+      &.mat-column-orderNo {
+        min-width: 166px;
+      }
+      &.mat-column-createTime {
+        min-width: 140px;
+      }
+      &.mat-column-updateTime {
+        min-width: 140px;
+      }
+      &.mat-column-customerName {
+        min-width: 163px;
+      }
+      &.mat-column-customerContact {
+        min-width: 140px;
+      }
+      &.mat-column-simMobileNo {
+        min-width: 140px;
+      }
+      &.mat-column-statusProvisioning {
+        min-width: 150px;
+      }
+      &.mat-column-progressApi {
+        min-width: 140px;
+      }
+      &.mat-column-statusProgress {
+        min-width: 150px;
+      }
+      &.mat-column-trackingData {
+        min-width: 146px;
+      }
     }
 
     .mdc-data-table__cell {
@@ -76,6 +116,7 @@
       color: #4ec753;
     }
     .txt-stat-fail {
+      font-family: 'Noto Sans Thai Looped Semi Bold';
       color: #fd2424;
     }
     .txt-stat-waiting {
