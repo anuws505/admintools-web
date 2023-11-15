@@ -12,6 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { NgJsonEditorModule } from 'ang-jsoneditor';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,7 +50,8 @@ import { DetailComponent } from './pages/order/detail/detail.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatChipsModule,
-    NgJsonEditorModule
+    NgJsonEditorModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

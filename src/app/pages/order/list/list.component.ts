@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { lastValueFrom } from 'rxjs';
 import { OrderService } from '../order.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,7 @@ export class ListComponent {
     transactionID: this.orderService.getTransactionID(),
     find: {'status_provisioning.status_code': {$in: ['001','002','003','004','007','018']}},
     pages: 1,
-    limit: 25,
+    limit: 20,
     sort: {$natural: -1}
   };
 
@@ -31,6 +32,7 @@ export class ListComponent {
     orderStatus: ''
   }
   displayedColumns: any = [
+    'no',
     'orderNo',
     'reserveId',
     'transactionId',
@@ -49,15 +51,21 @@ export class ListComponent {
   ];
   dataSource: any = [];
 
+  pageEvent: PageEvent = new PageEvent;
+  length = 0;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
+
   constructor(
     private title: Title,
-    private orderService: OrderService,
+    private orderService: OrderService
   ) {
     this.title.setTitle('Order List - LEGO Admintools');
   }
 
   ngOnInit() {
-    // console.log(this.search);
+    this.reqOrderList.limit = this.pageSize;
     this.getOrders(this.reqOrderList);
   }
 
@@ -140,9 +148,11 @@ export class ListComponent {
       if (data.resultCode && data.resultCode === '20000') {
         if (data.result && data.result.data.length > 0) {
           let someList: any = [];
+          let no = 1;
           data.result.data.forEach((prop: any) => {
             let someObj: any = {};
             {
+              someObj.no = this.pageSize * this.pageIndex + no;
               someObj.orderNo = prop.orderNo;
               someObj.reserveId = prop.reserveId;
               someObj.orderCode = prop.orderCode;
@@ -162,9 +172,11 @@ export class ListComponent {
               someObj.trackingData = (prop.trackingData) ? prop.trackingData : { trackingNo: '', trackingURL: '' };
             }
             someList.push(someObj);
+            no++;
           });
 
           this.dataSource = someList;
+          this.length = data.result.recordsFiltered;
         }
       }
     } catch (error) {
@@ -230,5 +242,19 @@ export class ListComponent {
     }
 
     return data;
+  }
+
+  handlePageEvent(e: any) {
+    this.pageEvent = e;
+    this.length = e.length;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+    // console.log(this.pageEvent);
+
+    // get an order data
+    this.reqOrderList.transactionID = this.orderService.getTransactionID();
+    this.reqOrderList.pages = this.pageIndex;
+    this.reqOrderList.limit = this.pageSize;
+    this.getOrders(this.reqOrderList);
   }
 }
