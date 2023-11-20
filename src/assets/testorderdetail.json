@@ -407,7 +407,19 @@
                 "status": {
                     "status_code": "001",
                     "status_description": "waiting"
-                }
+                },
+                "request": {
+                    "transactionID": "201909240927123",
+                    "orderDate": "04/08/2020 16:53:06",
+                    "locationCode": "4289"
+                },
+                "response": [
+                    {
+                        "transactionID": "201909240927123",
+                        "resultCode": "12345",
+                        "resultMessage": "Mockup 12345"
+                    }
+                ]
             }
         },
         "status_progress": {

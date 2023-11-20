@@ -30,17 +30,23 @@
       }
     }
 
-    button {
-      &.search-btn {
-        margin: 6px;
-        width: 220px;
-        &.clear {
-          width: 120px;
-          height: 44px;
-        }
-        &.search {
+    .form-button {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+
+      button {
+        &.search-btn {
+          margin: 6px;
           width: 220px;
-          height: 44px;
+          &.clear {
+            width: 120px;
+            height: 44px;
+          }
+          &.search {
+            width: 220px;
+            height: 44px;
+          }
         }
       }
     }

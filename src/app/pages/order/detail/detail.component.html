@@ -3,27 +3,47 @@
 
   <div class="aside-block">
     <ul class="todo-action" *ngFor="let progress of orderProgress">
-      <li class="{{progress.textClassStatus}}" [routerLinkActive]="'active'">
+      <li class="{{progress.textClassStatus}}" routerLinkActive="active">
         <a href="#" [routerLink]="['/order', orderRouteData.orderNo, progress.progressName]">
           {{progress.textLabel}}
           <span *ngIf="'' !== progress.actionLabel" class="action-label-{{progress.actionLabel}}">{{progress.actionLabel}}</span>
         </a>
       </li>
-      <!-- <li class="active"><a href="#">Create order</a></li>
-      <li class="txt-stat-success"><a href="#">Get tracking</a></li>
-      <li class="txt-stat-fail"><a href="#">Create receipt</a></li>
-      <li><a href="#">Create contract</a></li>
-      <li><a href="#">Change account promotion</a></li>
-      <li><a href="#">Auto sale trans</a></li> -->
     </ul>
+    <!-- <ul class="todo-action">
+      <li><a href="#">Default Link</a></li>
+      <li class="active"><a href="#">Create order</a></li>
+      <li class="txt-stat-success"><a href="#">Get tracking <span class="action-label-success">success</span></a></li>
+      <li class="txt-stat-fail"><a href="#">Create receipt <span class="action-label-fail">fail</span></a></li>
+      <li class="txt-stat-waiting"><a href="#">Create contract <span class="action-label-waiting">waiting</span></a></li>
+      <li class="txt-stat-in-progress"><a href="#">Change account promotion <span class="action-label-in-progress">in progress</span></a></li>
+    </ul> -->
   </div>
 
   <div class="content-block">
-    <div class="zone-input">
+    <div class="zone-resend-editor">
       <json-editor [options]="editorOptions"
                    [data]="jsonDataToDisplay"
                    (change)="getJsonData($event)">
       </json-editor>
+    </div>
+
+    <div class="zone-resend-button">
+      <button mat-raised-button color="default" disabled
+              class="resend-btn"
+              *ngIf="!resendButton">Resend Data</button>
+      <button mat-raised-button color="primary"
+              class="resend-btn"
+              *ngIf="resendButton"
+              (click)="actionJsonResend()">Resend Data</button>
+    </div>
+
+    <div class="zone-resend-message {{actionMessage.status}}">
+      <!-- <pre>{{ actionMessage | json }}</pre> -->
+      <h4 class="txt-title">{{actionMessage.title}}</h4>
+      <h4 class="txt-title">Status : {{actionMessage.status}}</h4>
+      <json-editor [options]="msgDisplayOptions"
+                   [data]="actionMessage.message"></json-editor>
     </div>
   </div>
 </div>

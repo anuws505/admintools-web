@@ -135,11 +135,18 @@ export class ListComponent {
     let findObj: any = {};
     findObj['status_provisioning.status_code'] = {$in: ['001','002','003','004','007','018']};
 
+    this.reqOrderList.find = findObj;
+
     /* Object.keys(this.search).forEach((prop: any) => {
       console.log(prop);
       // if (this.search[prop].trim() !== '') {}
     }); */
     console.log(this.search);
+    this.reqOrderList.transactionID = this.orderService.getTransactionID();
+    this.reqOrderList.pages = this.pageIndex;
+    this.reqOrderList.limit = this.pageSize;
+    console.log(this.reqOrderList);
+    this.getOrders(this.reqOrderList);
   }
 
   async getOrders(request: any) {
@@ -251,7 +258,6 @@ export class ListComponent {
     this.pageIndex = e.pageIndex;
     // console.log(this.pageEvent);
 
-    // get an order data
     this.reqOrderList.transactionID = this.orderService.getTransactionID();
     this.reqOrderList.pages = this.pageIndex;
     this.reqOrderList.limit = this.pageSize;

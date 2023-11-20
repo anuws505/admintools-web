@@ -40,10 +40,10 @@ export class DetailComponent {
 
   ngOnInit() {
     this.activeroute.params.subscribe((event) => {
-      if (event['orderno'] && event['orderno'] !== undefined) {
+      if (event['orderno'] && typeof(event['orderno']) !== 'undefined') {
         this.orderRouteData.orderNo = event['orderno'].trim();
       }
-      if (event['progress'] && event['progress'] !== undefined) {
+      if (event['progress'] && typeof(event['progress']) !== 'undefined') {
         this.orderRouteData.orderProgress = event['progress'].trim().toLowerCase();
       } else {
         this.orderRouteData.orderProgress = 'order_list';
@@ -97,7 +97,7 @@ export class DetailComponent {
             }
           }
           this.actionMessage.status = stat;
-          this.actionMessage.title = 'Result Message ('+this.orderRouteData.orderProgress+' progress)';
+          this.actionMessage.title = 'Result Message : ('+this.orderRouteData.orderProgress+' progress)';
           if (typeof(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result) !== 'undefined') {
             this.actionMessage.message = this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result;
           }
@@ -116,7 +116,7 @@ export class DetailComponent {
               }
             }
             this.actionMessage.status = stat;
-            this.actionMessage.title = 'Result Message ('+this.orderRouteData.orderProgress+' progress)';
+            this.actionMessage.title = 'Result Message : ('+this.orderRouteData.orderProgress+' progress)';
             this.actionMessage.message = this.orderData?.progress['create_contract']?.response;
           }
 
@@ -140,7 +140,6 @@ export class DetailComponent {
   orderingOrderProgress(progress: any) {
     const myArr: any = [];
     Object.keys(progress).forEach((prop: any) => {
-      console.log(prop);
       let actionLabel = '';
       let textclassStatus = '';
 
@@ -177,7 +176,6 @@ export class DetailComponent {
         progressName: prop,
         progressApi: progress[prop].api
       };
-      console.log(tmp);
       myArr.push(tmp);
     });
 
@@ -186,6 +184,15 @@ export class DetailComponent {
 
   getJsonData($event: any): any {
     this.jsonDataDoAction = $event;
+  }
+
+  async actionJsonResend() {
+    let repairObj: any = {
+      resultCode: '50000',
+      resultMessage: 'Unknown message',
+      result: {}
+    };
+    console.log(repairObj);
     console.log(this.jsonDataDoAction);
   }
 }
