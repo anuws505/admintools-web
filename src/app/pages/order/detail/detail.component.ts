@@ -71,7 +71,7 @@ export class DetailComponent {
 
   async getOrderDetail(request: any) {
     try {
-      const data = await lastValueFrom(this.orderService.getExOrderDetail(request));
+      const data = await lastValueFrom(this.orderService.getOrderDetailExample(request));
       if (data.resultCode && data.resultCode === '20000') {
         if (data.result && data.result !== undefined) {
           // order data origin

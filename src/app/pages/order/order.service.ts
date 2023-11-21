@@ -20,15 +20,20 @@ export class OrderService {
   constructor(private httpClient: HttpClient) {}
 
   // example result from local files
-  getExOrders(request: any): Observable<any> {
+  getOrdersExample(request: any): Observable<any> {
     return this.httpClient.get<any>('assets/testorders.json');
   }
-  // const resultA = await lastValueFrom(this.orderService.getExOrders(request));
+  // const resultA = await lastValueFrom(this.orderService.getOrdersExample(request));
 
-  getExOrderDetail(request: any): Observable<any> {
+  getOrderDetailExample(request: any): Observable<any> {
     return this.httpClient.get<any>('assets/testorderdetail.json');
   }
-  // const resultB = await lastValueFrom(this.orderService.getExOrderDetail(request));
+  // const resultA = await lastValueFrom(this.orderService.getOrderDetailExample(request));
+
+  getExportOrderExample(request: any): Observable<any> {
+    return this.httpClient.get<any>('assets/testorders.json');
+  }
+  // const resultA = await lastValueFrom(this.orderService.getExportOrderExample(request));
 
   getTransactionID(): any {
     const dateNow: Date = new Date();

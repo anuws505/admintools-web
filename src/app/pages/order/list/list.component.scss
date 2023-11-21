@@ -1,5 +1,5 @@
 .component-content {
-  padding: 12px;
+  padding: 11px;
   min-height: calc(100vh - 54px - 40px);
 
   .comp-title {
@@ -38,14 +38,24 @@
       button {
         &.search-btn {
           margin: 6px;
-          width: 220px;
+          min-width: 220px;
           &.clear {
-            width: 120px;
+            min-width: 136px;
             height: 44px;
           }
           &.search {
-            width: 220px;
+            min-width: 220px;
             height: 44px;
+          }
+          &.disabled-btn {
+            min-width: 220px;
+            height: 44px;
+          }
+          &.export-btn {
+            min-width: 220px;
+            height: 44px;
+            background-color: #39973c;
+            color: #fff;
           }
         }
       }
@@ -53,7 +63,21 @@
   }
 
   .data-table-section {
-    padding: 24px 11px 16px 11px;
+    padding: 24px 7px 5px 7px;
+
+    .zero-order-data {
+      text-align: center;
+      font-family: 'Noto Sans Thai Looped Semi Bold';
+    }
+
+    .custom-mat-icon {
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      margin-left: 3px;
+      position: relative;
+      top: 4px;
+    }
 
     .mdc-data-table__header-cell{
       font-family: 'Noto Sans Thai Looped Semi Bold';

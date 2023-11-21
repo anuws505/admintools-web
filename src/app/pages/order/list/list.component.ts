@@ -29,8 +29,23 @@ export class ListComponent {
     kycResult: '',
     customerContact: '',
     simMobileNo: '',
-    orderStatus: ''
-  }
+    orderStatus: '',
+    progressApiStatus: ''
+  };
+
+  searchKey: any = {
+    orderNo: 'order_no',
+    reserveId: 'reserve_id',
+    transactionId: 'transaction_id',
+    orderCode: 'data_order.items.orderCode',
+    dateCreated: 'created_at',
+    kycResult: 'data_order.kycResult',
+    customerContact: 'data_order.shipping.mobileNo',
+    simMobileNo: 'data_order.items.sim.simMobileNo',
+    orderStatus: 'status_provisioning.status_code',
+    progressApiStatus: 'status_progress.status_code'
+  };
+
   displayedColumns: any = [
     'no',
     'orderNo',
@@ -51,11 +66,19 @@ export class ListComponent {
   ];
   dataSource: any = [];
 
+  exportCSV: any = {
+    flag: false,
+    queryObj: {},
+    data: [],
+    rows: 0
+  };
+
   pageEvent: PageEvent = new PageEvent;
   length = 0;
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
+  zeroDataMessage = 'List of data';
 
   constructor(
     private title: Title,
@@ -65,8 +88,8 @@ export class ListComponent {
   }
 
   ngOnInit() {
-    this.reqOrderList.limit = this.pageSize;
-    this.getOrders(this.reqOrderList);
+    // this.reqOrderList.limit = this.pageSize;
+    // this.getOrders(this.reqOrderList);
   }
 
   searchOrderNo($event: any) {
@@ -90,9 +113,9 @@ export class ListComponent {
   }
 
   searchDateCreated(event: MatDatepickerInputEvent<Date>) {
-    if (`${event.value}` !== null) {
+    if (event.value !== null) {
       let pipe = new DatePipe('en-US');
-      this.search.dateCreated = pipe.transform(`${event.value}`, 'yyyy-MM-dd');
+      this.search.dateCreated = pipe.transform(event.value, 'yyyy-MM-dd');
     } else {
       this.search.dateCreated = '';
     }
@@ -119,39 +142,72 @@ export class ListComponent {
     console.log(this.search);
   }
 
-  clearSearch() {
-    // let flag = false;
-    Object.keys(this.search).forEach((prop: any) => {
-      // if (this.search[prop] !== '') {
-      //   flag = true;
-      // }
-      this.search[prop] = '';
-    });
+  searchProgressStatus($event: any) {
+    if ($event === undefined) { this.search.progressApiStatus = ''; } else { this.search.progressApiStatus = $event; }
     console.log(this.search);
   }
 
+  clearSearch() {
+    Object.keys(this.search).forEach((prop: any) => {
+      this.search[prop] = '';
+    });
+
+    this.exportCSV.flag = false;
+    this.exportCSV.queryObj = {};
+    this.exportCSV.data = [];
+    this.exportCSV.rows = 0;
+  }
+
   submitSearch() {
-    // let flag = false;
     let findObj: any = {};
     findObj['status_provisioning.status_code'] = {$in: ['001','002','003','004','007','018']};
 
-    this.reqOrderList.find = findObj;
+    let configDays = 7; // from configuration
+    let searchDateNow = new Date();
+    searchDateNow.setDate(searchDateNow.getDate() - configDays);
+    let searchPipe = new DatePipe('en-US');
+    findObj['created_at'] = {$gte: searchPipe.transform(searchDateNow, 'yyyy-MM-dd'+' 00:00:00'), $lte: searchPipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')};
 
-    /* Object.keys(this.search).forEach((prop: any) => {
-      console.log(prop);
-      // if (this.search[prop].trim() !== '') {}
-    }); */
-    console.log(this.search);
+    Object.keys(this.search).forEach((prop: any) => {
+      if (this.search[prop].trim() !== '') {
+        if (this.searchKey[prop] === 'created_at') {
+          if (this.search.dateCreated !== null && this.search.dateCreated.trim() !== '') {
+            findObj[this.searchKey[prop]] = {$gte: this.search.dateCreated.trim() + ' 00:00:00', $lte: this.search.dateCreated.trim() + ' 23:59:59'};
+          }
+        }
+        else if (this.searchKey[prop] === 'data_order.shipping.mobileNo') {
+          findObj['data_order.shipping.mobileNo'] = {$regex: this.search.customerContact.trim(), $options: "i"};
+          findObj['data_order.receipt.mobileNo'] = {$regex: this.search.customerContact.trim(), $options: "i"};
+        }
+        else if (this.searchKey[prop] === 'data_order.items.orderCode') {
+          findObj[this.searchKey[prop]] = {$in: [parseInt(this.search[prop].trim())]};
+        }
+        else if (this.searchKey[prop] === 'status_provisioning.status_code') {
+          findObj[this.searchKey[prop]] = {$in: [this.search.orderStatus.trim()]};
+        }
+        else if (this.searchKey[prop] === 'status_progress.status_code') {
+          findObj[this.searchKey[prop]] = {$in: [this.search.progressApiStatus.trim()]};
+        }
+        else {
+          findObj[this.searchKey[prop]] = {$regex: this.search[prop].trim(), $options: "i"};
+        }
+      }
+    });
+
+    this.reqOrderList.find = findObj;
     this.reqOrderList.transactionID = this.orderService.getTransactionID();
     this.reqOrderList.pages = this.pageIndex;
     this.reqOrderList.limit = this.pageSize;
     console.log(this.reqOrderList);
+
     this.getOrders(this.reqOrderList);
+
+    this.exportCSV.queryObj = findObj;
   }
 
   async getOrders(request: any) {
     try {
-      const data = await lastValueFrom(this.orderService.getExOrders(request));
+      const data = await lastValueFrom(this.orderService.getOrdersExample(request));
       if (data.resultCode && data.resultCode === '20000') {
         if (data.result && data.result.data.length > 0) {
           let someList: any = [];
@@ -184,6 +240,12 @@ export class ListComponent {
 
           this.dataSource = someList;
           this.length = data.result.recordsFiltered;
+          this.exportCSV.flag = true;
+
+          if (this.length == 0) {
+            this.zeroDataMessage = 'No data found';
+            this.exportCSV.flag = false;
+          }
         }
       }
     } catch (error) {
@@ -256,11 +318,73 @@ export class ListComponent {
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    // console.log(this.pageEvent);
 
     this.reqOrderList.transactionID = this.orderService.getTransactionID();
     this.reqOrderList.pages = this.pageIndex;
     this.reqOrderList.limit = this.pageSize;
     this.getOrders(this.reqOrderList);
+  }
+
+  async exportOrder() {
+    if (this.exportCSV.flag) {
+      let expObj: any = {
+        find: this.exportCSV.queryObj
+      };
+      const data = await lastValueFrom(this.orderService.getExportOrderExample(expObj));
+      if (data.resultCode && data.resultCode === '20000') {
+        // write logs orderExport to db
+        /* const logData: any = {};
+        logData.progressName = 'exportOrders';
+        logData.requestData = JSON.stringify(expObj);
+        let xBar: any = {};
+        xBar.resultCode = data.resultCode;
+        xBar.resultMessage = data.resultMessage;
+        xBar.resultData = [{'data':'mark xxx data'}];
+        xBar.resultRows = data.resultRows;
+        logData.responseData = xBar;
+        this.logger.writelog(this.authenService.getTokenData(), logData); */
+
+        if (data.resultData && data.resultData.length > 0) {
+          this.exportCSV.data = data.resultData;
+          this.exportCSV.rows = data.resultRows;
+
+          let propNames = Object.keys(this.exportCSV.data[0]);
+          let rowWithPropNames: any = propNames.join(',')+'\n';
+          let csvContent = rowWithPropNames;
+          let rows: any = [];
+
+          this.exportCSV.data.forEach((item: any) => {
+            let values: any = [];
+            propNames.forEach((key: any) => {
+              let val = item[key];
+              if (val !== undefined && val !== null) {
+                val = JSON.stringify(val);
+              } else {
+                val = '';
+              }
+              values.push(val);
+            });
+            rows.push(values.join(','));
+          });
+
+          csvContent += rows.join('\n');
+
+          let dateNow: Date = new Date();
+          let pipe = new DatePipe('en-US');
+          let myFormattedDate = pipe.transform(dateNow, 'yyyyMMddHHmmss');
+
+          let hiddenElement = document.createElement('a');
+          hiddenElement.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURI(csvContent);
+          hiddenElement.target = '_blank';
+          hiddenElement.download = 'NCP_Admintools_Orders_Report_'+myFormattedDate+'.csv';
+          hiddenElement.click();
+        }
+
+        this.exportCSV.flag = false;
+        this.exportCSV.queryObj = {};
+        this.exportCSV.data = [];
+        this.exportCSV.rows = 0;
+      }
+    }
   }
 }
