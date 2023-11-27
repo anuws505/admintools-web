@@ -94,57 +94,46 @@ export class ListComponent {
 
   searchOrderNo($event: any) {
     this.search.orderNo = $event.target.value;
-    console.log(this.search);
   }
 
   searchReserveId($event: any) {
     this.search.reserveId = $event.target.value;
-    console.log(this.search);
   }
 
   searchTransactionId($event: any) {
     this.search.transactionId = $event.target.value;
-    console.log(this.search);
   }
 
   searchOrderCode($event: any) {
     if ($event === undefined) { this.search.orderCode = ''; } else { this.search.orderCode = $event; }
-    console.log(this.search);
   }
 
   searchDateCreated(event: MatDatepickerInputEvent<Date>) {
     if (event.value !== null) {
-      let pipe = new DatePipe('en-US');
-      this.search.dateCreated = pipe.transform(event.value, 'yyyy-MM-dd');
+      this.search.dateCreated = event.value;
     } else {
       this.search.dateCreated = '';
     }
-    console.log(this.search);
   }
 
   searchKYCResult($event: any) {
     if ($event === undefined) { this.search.kycResult = ''; } else { this.search.kycResult = $event; }
-    console.log(this.search);
   }
 
   searchCustomerContact($event: any) {
     this.search.customerContact = $event.target.value;
-    console.log(this.search);
   }
 
   searchSimMobileNo($event: any) {
     this.search.simMobileNo = $event.target.value;
-    console.log(this.search);
   }
 
   searchOrderStatus($event: any) {
     if ($event === undefined) { this.search.orderStatus = ''; } else { this.search.orderStatus = $event; }
-    console.log(this.search);
   }
 
   searchProgressStatus($event: any) {
     if ($event === undefined) { this.search.progressApiStatus = ''; } else { this.search.progressApiStatus = $event; }
-    console.log(this.search);
   }
 
   clearSearch() {
@@ -165,14 +154,17 @@ export class ListComponent {
     let configDays = 7; // from configuration
     let searchDateNow = new Date();
     searchDateNow.setDate(searchDateNow.getDate() - configDays);
-    let searchPipe = new DatePipe('en-US');
-    findObj['created_at'] = {$gte: searchPipe.transform(searchDateNow, 'yyyy-MM-dd'+' 00:00:00'), $lte: searchPipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')};
+    let searchDatePipe = new DatePipe('en-US');
+    findObj['created_at'] = {$gte: searchDatePipe.transform(searchDateNow, 'yyyy-MM-dd'+' 00:00:00'), $lte: searchDatePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')};
 
     Object.keys(this.search).forEach((prop: any) => {
-      if (this.search[prop].trim() !== '') {
+      if (this.search[prop] && this.search[prop] !== '') {
         if (this.searchKey[prop] === 'created_at') {
-          if (this.search.dateCreated !== null && this.search.dateCreated.trim() !== '') {
-            findObj[this.searchKey[prop]] = {$gte: this.search.dateCreated.trim() + ' 00:00:00', $lte: this.search.dateCreated.trim() + ' 23:59:59'};
+          if (this.search.dateCreated && this.search.dateCreated !== null) {
+            let thisDate = new Date();
+            thisDate.setDate(this.search.dateCreated.getDate() - configDays);
+            let thisPipe = new DatePipe('en-US');
+            findObj['created_at'] = {$gte: thisPipe.transform(thisDate, 'yyyy-MM-dd'+' 00:00:00'), $lte: thisPipe.transform(this.search.dateCreated, 'yyyy-MM-dd'+' 23:59:59')};
           }
         }
         else if (this.searchKey[prop] === 'data_order.shipping.mobileNo') {
@@ -198,7 +190,7 @@ export class ListComponent {
     this.reqOrderList.transactionID = this.orderService.getTransactionID();
     this.reqOrderList.pages = this.pageIndex;
     this.reqOrderList.limit = this.pageSize;
-    console.log(this.reqOrderList);
+    // console.log(this.reqOrderList);
 
     this.getOrders(this.reqOrderList);
 
@@ -322,6 +314,8 @@ export class ListComponent {
     this.reqOrderList.transactionID = this.orderService.getTransactionID();
     this.reqOrderList.pages = this.pageIndex;
     this.reqOrderList.limit = this.pageSize;
+    // console.log(this.reqOrderList);
+
     this.getOrders(this.reqOrderList);
   }
 
