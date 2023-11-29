@@ -30,6 +30,21 @@ export class DetailComponent {
   orderProgress: any = [];
   resendButton = false;
 
+  updateProgressMessage: any = {
+    display: false,
+    title: 'title',
+    status: 'unknown',
+    statusMessage: 'Status : Unknown.',
+    resultData: {}
+  };
+  repairDataDB: any = {
+    display: false,
+    title: 'title',
+    status: 'unknown',
+    statusMessage: 'Status : Unknown.',
+    resultData:  {}
+  };
+
   constructor(
     private title: Title,
     private activeroute: ActivatedRoute,
@@ -70,6 +85,18 @@ export class DetailComponent {
   }
 
   async getOrderDetail(request: any) {
+    this.updateProgressMessage.display = false;
+    this.updateProgressMessage.status = 'unknown';
+    this.updateProgressMessage.title = 'UpdateProgress Title';
+    this.updateProgressMessage.statusMessage = 'Status : Unknown.';
+    this.updateProgressMessage.resultData =  {};
+
+    this.repairDataDB.display = false;
+    this.repairDataDB.status = 'unknown';
+    this.repairDataDB.title = 'RepairDB Title';
+    this.repairDataDB.statusMessage = 'Status : Unknown.';
+    this.repairDataDB.resultData =  {};
+
     try {
       const data = await lastValueFrom(this.orderService.getOrderDetailExample(request));
       if (data.resultCode && data.resultCode === '20000') {
@@ -192,7 +219,115 @@ export class DetailComponent {
       resultMessage: 'Unknown message',
       result: {}
     };
-    console.log(repairObj);
-    console.log(this.jsonDataDoAction);
+
+    try {
+      // 1. resend progress request data for repair the order
+      const data = await lastValueFrom(this.orderService.actionDoResendData(this.orderRouteData.orderProgress, this.jsonDataDoAction));
+      repairObj = data;
+
+      if (data.resultCode && data.resultCode === '20000') {
+        if (data.result) {
+          this.actionMessage.status = 'success';
+          this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress)';
+          this.actionMessage.message = data.result;
+        }
+
+        // when success then disable resend button
+        this.resendButton = false;
+
+        // and then modify progress label in html-aside
+        for (let prog of this.orderProgress) {
+          if (this.orderRouteData.orderProgress === prog.progressName) {
+            prog.actionLabel = '';
+            prog.textClassStatus = 'txt-stat-success';
+          }
+        }
+      } else {
+        if (data.result) {
+          this.actionMessage.status = 'fail';
+          this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress)';
+          this.actionMessage.message = data.result;
+        }
+      }
+    } catch (error: any) {
+      this.actionMessage.status = 'fail';
+      this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress)';
+      this.actionMessage.message = error.error.toString();
+    }
+
+    try {
+      // general order progress
+      let updateResp: any = {
+        transactionID: this.jsonDataDoAction?.transactionID,
+        resultCode: repairObj.resultCode,
+        resultMessage: repairObj.resultMessage,
+        result: repairObj.result
+      };
+      // when progress is create_contract set response data is array()
+      if ('create_contract' === this.orderRouteData.orderProgress) {
+        updateResp = [{
+          transactionID: this.jsonDataDoAction?.transactionID,
+          resultCode: repairObj.resultCode,
+          resultMessage: repairObj.resultMessage,
+          result: repairObj.result
+        }];
+      }
+      // prepare request update progress data
+      const updateProgress = {
+        transactionID: this.jsonDataDoAction?.transactionID,
+        reserveId: this.orderData?.reserve_id,
+        progressName: this.orderRouteData.orderProgress,
+        request: this.jsonDataDoAction,
+        response: updateResp
+      };
+
+      // 2. call update order progress status
+      const dataUpdate = await lastValueFrom(this.orderService.callUpdateProgress(updateProgress));
+      if (dataUpdate.resultCode && dataUpdate.resultCode === '20000') {
+        this.updateProgressMessage.display = true;
+        this.updateProgressMessage.status = 'success';
+        this.updateProgressMessage.title = '=> Update progress ' + this.orderRouteData.orderProgress +' : Success';
+        this.updateProgressMessage.statusMessage = 'Status : ' + dataUpdate.resultMessage;
+        this.updateProgressMessage.resultData = dataUpdate.result;
+      } else {
+        this.updateProgressMessage.display = true;
+        this.updateProgressMessage.status = 'fail';
+        this.updateProgressMessage.title = '=> Update progress ' + this.orderRouteData.orderProgress +' : Fail.';
+        this.updateProgressMessage.statusMessage = 'Status : ' + dataUpdate.resultMessage;
+        this.updateProgressMessage.resultData = dataUpdate.result;
+      }
+
+    } catch (error: any) {
+      this.updateProgressMessage.display = true;
+      this.updateProgressMessage.status = 'fail';
+      this.updateProgressMessage.title = '=> Update progress ' + this.orderRouteData.orderProgress +' : Fail.';
+      this.updateProgressMessage.statusMessage = 'Error message.' + error.error.toString();
+      this.updateProgressMessage.resultData = {};
+    }
+
+    try {
+      // 3. call repair order when order progress repair was done focus result "success" (statusCode is "20000")
+      if (undefined !== repairObj.resultCode && '20000' === repairObj.resultCode) {
+        const respRepairData = await lastValueFrom(this.orderService.callRepairDataDB());
+        this.repairDataDB.display = true;
+        this.repairDataDB.title = '=> Repair order : Success, Next progress (todo automatic - repairDataDB By Job)';
+        this.repairDataDB.status = 'success';
+        this.repairDataDB.statusMessage = 'Status : Success.';
+        this.repairDataDB.resultData =  respRepairData;
+      } else {
+        this.repairDataDB.display = true;
+        this.repairDataDB.title = '=> Repair order : Fail';
+        this.repairDataDB.status = 'fail';
+        this.repairDataDB.statusMessage = 'Status : Fail.';
+        this.repairDataDB.resultData =  {};
+      }
+
+    } catch (error: any) {
+      this.repairDataDB.display = true;
+      this.repairDataDB.title = '=> Repair order : Fail';
+      this.repairDataDB.status = 'fail';
+      this.repairDataDB.statusMessage = 'Error message.' + error.error.toString();
+      this.repairDataDB.resultData = {};
+    }
   }
 }
