@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { lastValueFrom } from 'rxjs';
 import { OrderService } from '../order.service';
 import { PageEvent } from '@angular/material/paginator';
+import { LogService } from '../../../shared/log.service';
 
 @Component({
   selector: 'app-list',
@@ -82,7 +83,8 @@ export class ListComponent {
 
   constructor(
     private title: Title,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private logger: LogService
   ) {
     this.title.setTitle('Order List - LEGO Admintools');
   }
@@ -326,17 +328,19 @@ export class ListComponent {
       };
       const data = await lastValueFrom(this.orderService.getExportOrderExample(expObj));
       if (data.resultCode && data.resultCode === '20000') {
-        // write logs orderExport to db
-        /* const logData: any = {};
+        // save logs data
+        const logData: any = {};
         logData.progressName = 'exportOrders';
-        logData.requestData = JSON.stringify(expObj);
+        logData.requestData = expObj;
         let xBar: any = {};
         xBar.resultCode = data.resultCode;
         xBar.resultMessage = data.resultMessage;
-        xBar.resultData = [{'data':'mark xxx data'}];
+        xBar.resultData = [{'exportdata':'force mark xxx data'}];
         xBar.resultRows = data.resultRows;
         logData.responseData = xBar;
-        this.logger.writelog(this.authenService.getTokenData(), logData); */
+        logData.username = {'username':'anuwas49','role':'admin101','name':'megapom101'};
+        this.logger.log('export orders data', logData);
+        // this.logger.writelog(this.authenService.getTokenData(), logData);
 
         if (data.resultData && data.resultData.length > 0) {
           this.exportCSV.data = data.resultData;
