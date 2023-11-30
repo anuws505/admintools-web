@@ -18,6 +18,7 @@ export class ListComponent {
     find: {'status_provisioning.status_code': {$in: ['001','002','003','004','007','018']}},
     pages: 1,
     limit: 20,
+    skip: 0,
     sort: {$natural: -1}
   };
 
@@ -80,6 +81,8 @@ export class ListComponent {
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
   zeroDataMessage = 'List of data';
+
+  spinner: boolean = false;
 
   constructor(
     private title: Title,
@@ -192,8 +195,10 @@ export class ListComponent {
     this.reqOrderList.transactionID = this.orderService.getTransactionID();
     this.reqOrderList.pages = this.pageIndex;
     this.reqOrderList.limit = this.pageSize;
+    this.reqOrderList.skip = this.pageSize * this.pageIndex;
     // console.log(this.reqOrderList);
 
+    this.spinner = true;
     this.getOrders(this.reqOrderList);
 
     this.exportCSV.queryObj = findObj;
@@ -201,7 +206,7 @@ export class ListComponent {
 
   async getOrders(request: any) {
     try {
-      const data = await lastValueFrom(this.orderService.getOrdersExample(request));
+      const data = await lastValueFrom(this.orderService.getOrders(request));
       if (data.resultCode && data.resultCode === '20000') {
         if (data.result && data.result.data.length > 0) {
           let someList: any = [];
@@ -245,6 +250,8 @@ export class ListComponent {
     } catch (error) {
       console.log(error);
     }
+
+    this.spinner = false;
   }
 
   setStatusColor(keyStat: any) {
@@ -316,17 +323,21 @@ export class ListComponent {
     this.reqOrderList.transactionID = this.orderService.getTransactionID();
     this.reqOrderList.pages = this.pageIndex;
     this.reqOrderList.limit = this.pageSize;
+    this.reqOrderList.skip = this.pageSize * this.pageIndex;
     // console.log(this.reqOrderList);
 
+    this.spinner = true;
     this.getOrders(this.reqOrderList);
   }
 
   async exportOrder() {
     if (this.exportCSV.flag) {
+      this.spinner = true;
+
       let expObj: any = {
         find: this.exportCSV.queryObj
       };
-      const data = await lastValueFrom(this.orderService.getExportOrderExample(expObj));
+      const data = await lastValueFrom(this.orderService.getExportOrder(expObj));
       if (data.resultCode && data.resultCode === '20000') {
         // save logs data
         const logData: any = {};
@@ -384,5 +395,7 @@ export class ListComponent {
         this.exportCSV.rows = 0;
       }
     }
+
+    this.spinner = false;
   }
 }

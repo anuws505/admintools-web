@@ -5,6 +5,7 @@ import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.compone
 import { OrderComponent } from './pages/order/order.component';
 import { ListComponent } from './pages/order/list/list.component';
 import { DetailComponent } from './pages/order/detail/detail.component';
+import { ReserveComponent } from './pages/order/reserve/reserve.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
     path: 'order', component: OrderComponent,
     children: [
       { path: '', component: ListComponent },
+      { path: 'reserve', component: ReserveComponent },
       // { path: 'status/:orderno', component: StatusComponent },
       { path: ':orderno', component: DetailComponent },
       { path: ':orderno/:progress', component: DetailComponent }

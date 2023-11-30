@@ -14,6 +14,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { NgJsonEditorModule } from 'ang-jsoneditor';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrderComponent } from './pages/order/order.component';
 import { ListComponent } from './pages/order/list/list.component';
 import { DetailComponent } from './pages/order/detail/detail.component';
+import { ReserveComponent } from './pages/order/reserve/reserve.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { DetailComponent } from './pages/order/detail/detail.component';
     PagenotfoundComponent,
     OrderComponent,
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    ReserveComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { DetailComponent } from './pages/order/detail/detail.component';
     MatChipsModule,
     NgJsonEditorModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
