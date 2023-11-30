@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { OrderService } from '../order.service';
 import { JsonEditorOptions } from 'ang-jsoneditor';
+import { LogService } from '../../../shared/log.service';
 
 @Component({
   selector: 'app-detail',
@@ -48,7 +49,8 @@ export class DetailComponent {
   constructor(
     private title: Title,
     private activeroute: ActivatedRoute,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private logger: LogService
   ) {
     this.title.setTitle('Order Detail - LEGO Admintools');
   }
@@ -224,6 +226,14 @@ export class DetailComponent {
       // 1. resend progress request data for repair the order
       const data = await lastValueFrom(this.orderService.actionDoResendData(this.orderRouteData.orderProgress, this.jsonDataDoAction));
       repairObj = data;
+      // save logs data
+      const logData: any = {};
+      logData.progressName = this.orderRouteData.orderProgress;
+      logData.requestData = this.jsonDataDoAction;
+      logData.responseData = data;
+      logData.username = {'username':'anuwas49','role':'admin101','name':'megapom101'};
+      this.logger.log('RESEND ORDER DATA', logData);
+      // this.logger.writelog(this.authenService.getTokenData(), logData);
 
       if (data.resultCode && data.resultCode === '20000') {
         if (data.result) {

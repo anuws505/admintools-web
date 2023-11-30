@@ -339,7 +339,7 @@ export class ListComponent {
         xBar.resultRows = data.resultRows;
         logData.responseData = xBar;
         logData.username = {'username':'anuwas49','role':'admin101','name':'megapom101'};
-        this.logger.log('export orders data', logData);
+        this.logger.log('EXPORT ORDER DATA', logData);
         // this.logger.writelog(this.authenService.getTokenData(), logData);
 
         if (data.resultData && data.resultData.length > 0) {
