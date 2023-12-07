@@ -207,7 +207,7 @@ export class ListComponent {
   async getOrders(request: any) {
     try {
       const data = await lastValueFrom(this.orderService.getOrders(request));
-      if (data.resultCode && data.resultCode === '20000') {
+      if (data.resultCode && Number(data.resultCode) === 20000) {
         if (data.result && data.result.data.length > 0) {
           let someList: any = [];
           let no = 1;
@@ -338,7 +338,7 @@ export class ListComponent {
         find: this.exportCSV.queryObj
       };
       const data = await lastValueFrom(this.orderService.getExportOrder(expObj));
-      if (data.resultCode && data.resultCode === '20000') {
+      if (data.resultCode && Number(data.resultCode) === 20000) {
         // save logs data
         const logData: any = {};
         logData.progressName = 'exportOrders';

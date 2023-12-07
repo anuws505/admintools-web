@@ -59,12 +59,14 @@ export class OrderService {
     );
   }
   callUpdateProgress(request: any): Observable<any> {
+    // return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE_INTRA + '/be/admintoolsservice/action/callUpdateProgress',
       request, this.httpOptions
     );
   }
   callRepairDataDB(): Observable<any> {
+    // return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE + '/be/repairDataDb/action/repairDataDB',
       {}, this.httpOptions

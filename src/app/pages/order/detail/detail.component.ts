@@ -46,6 +46,8 @@ export class DetailComponent {
     resultData:  {}
   };
 
+  spinner: boolean = false;
+
   constructor(
     private title: Title,
     private activeroute: ActivatedRoute,
@@ -57,10 +59,10 @@ export class DetailComponent {
 
   ngOnInit() {
     this.activeroute.params.subscribe((event) => {
-      if (event['orderno'] && typeof(event['orderno']) !== 'undefined') {
+      if (event['orderno'] && typeof event['orderno'] != 'undefined') {
         this.orderRouteData.orderNo = event['orderno'].trim();
       }
-      if (event['progress'] && typeof(event['progress']) !== 'undefined') {
+      if (event['progress'] && typeof event['progress'] != 'undefined') {
         this.orderRouteData.orderProgress = event['progress'].trim().toLowerCase();
       } else {
         this.orderRouteData.orderProgress = 'order_list';
@@ -70,6 +72,8 @@ export class DetailComponent {
         transactionID: this.orderService.getTransactionID(),
         orderNo: this.orderRouteData.orderNo
       };
+
+      this.spinner = true;
       this.getOrderDetail(request);
     });
 
@@ -101,13 +105,13 @@ export class DetailComponent {
 
     try {
       const data = await lastValueFrom(this.orderService.getOrderDetailExample(request));
-      if (data.resultCode && data.resultCode === '20000') {
-        if (data.result && data.result !== undefined) {
+      if (data.resultCode && Number(data.resultCode) == 20000) {
+        if (data.result && typeof data.result != 'undefined') {
           // order data origin
           this.orderData = data.result;
 
           // display progress data default by order_list progress
-          if (typeof(this.orderData?.progress[this.orderRouteData.orderProgress]?.request) === 'undefined') {
+          if (typeof this.orderData?.progress[this.orderRouteData.orderProgress]?.request == 'undefined') {
             this.jsonDataToDisplay = this.orderData?.progress[Object.keys(data.result?.progress)[0]]?.request;
             this.orderRouteData.orderProgress = Object.keys(data.result?.progress)[0];
           } else {
@@ -118,29 +122,29 @@ export class DetailComponent {
 
           // default progress message data
           let stat = '';
-          if (undefined !== this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultCode) {
-            if (20000 === Number(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultCode)) {
+          if (typeof this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultCode != 'undefined') {
+            if (Number(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultCode) == 20000) {
               stat = 'success';
-            } else if (50000 <= Number(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultCode)) {
+            } else if (Number(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultCode) >= 50000) {
               stat = 'fail';
             }
           }
           this.actionMessage.status = stat;
           this.actionMessage.title = 'Result Message : ('+this.orderRouteData.orderProgress+' progress)';
-          if (typeof(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result) !== 'undefined') {
+          if (typeof this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result != 'undefined') {
             this.actionMessage.message = this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result;
           }
-          else if (typeof(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultData) !== 'undefined') {
+          else if (typeof this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultData != 'undefined') {
             this.actionMessage.message = this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultData;
           }
 
           // because "create_contract" progress respone is [] other is {}
-          if ('create_contract' === this.orderRouteData.orderProgress) {
+          if ('create_contract' == this.orderRouteData.orderProgress) {
             let stat = '';
-            if (undefined !== this.orderData?.progress['create_contract']?.response) {
-              if (20000 === Number(this.orderData?.progress['create_contract']?.response[0]?.resultCode)) {
+            if (typeof this.orderData?.progress['create_contract']?.response != 'undefined') {
+              if (Number(this.orderData?.progress['create_contract']?.response[0]?.resultCode) == 20000) {
                 stat = 'success';
-              } else if (50000 <= Number(this.orderData?.progress['create_contract']?.response[0]?.resultCode)) {
+              } else if (Number(this.orderData?.progress['create_contract']?.response[0]?.resultCode >= 50000)) {
                 stat = 'fail';
               }
             }
@@ -153,8 +157,8 @@ export class DetailComponent {
           this.orderProgress = this.orderingOrderProgress(this.orderData?.progress);
 
           // order progress disable zone-button
-          if (undefined !== this.orderData?.progress[this.orderRouteData.orderProgress]?.status?.status_code &&
-                  '003' === this.orderData?.progress[this.orderRouteData.orderProgress]?.status?.status_code) {
+          if (typeof this.orderData?.progress[this.orderRouteData.orderProgress]?.status?.status_code != 'undefined' &&
+                     this.orderData?.progress[this.orderRouteData.orderProgress]?.status?.status_code == '003') {
             this.resendButton = true;
           } else {
             this.resendButton = false;
@@ -164,6 +168,8 @@ export class DetailComponent {
     } catch (error) {
       console.log(error);
     }
+
+    this.spinner = false;
   }
 
   orderingOrderProgress(progress: any) {
@@ -172,27 +178,27 @@ export class DetailComponent {
       let actionLabel = '';
       let textclassStatus = '';
 
-      if (undefined !== progress[prop]?.status?.status_code) {
-        if ('001' === progress[prop].status.status_code) {
+      if (typeof progress[prop]?.status?.status_code != 'undefined') {
+        if ('001' == progress[prop].status.status_code) {
           actionLabel = 'waiting';
           textclassStatus = 'txt-stat-waiting';
         }
-        else if ('002' === progress[prop].status.status_code) {
+        else if ('002' == progress[prop].status.status_code) {
           actionLabel = 'in-progress';
           textclassStatus = 'txt-stat-in-progress';
         }
-        else if ('003' === progress[prop].status.status_code) {
+        else if ('003' == progress[prop].status.status_code) {
           actionLabel = 'fail';
           textclassStatus = 'txt-stat-fail';
         }
-        else if ('004' === progress[prop].status.status_code) {
+        else if ('004' == progress[prop].status.status_code) {
           textclassStatus = 'txt-stat-success';
         }
-        else if ('006' === progress[prop].status.status_code) {
+        else if ('006' == progress[prop].status.status_code) {
           actionLabel = 'auto-cancel';
           textclassStatus = 'txt-stat-auto-cancel';
         }
-        else if ('007' === progress[prop].status.status_code) {
+        else if ('007' == progress[prop].status.status_code) {
           textclassStatus = 'txt-stat-repair-success';
         }
       }
@@ -201,7 +207,7 @@ export class DetailComponent {
         actionLabel: actionLabel,
         textLabel: prop.replace(/_/g, " "),
         textClassStatus: textclassStatus,
-        activeClass: ('order_list' === prop) ? 'active' : '',
+        activeClass: ('order_list' == prop) ? 'active' : '',
         progressName: prop,
         progressApi: progress[prop].api
       };
@@ -216,6 +222,8 @@ export class DetailComponent {
   }
 
   async actionJsonResend() {
+    this.spinner = true;
+
     let repairObj: any = {
       resultCode: '50000',
       resultMessage: 'Unknown message',
@@ -235,7 +243,7 @@ export class DetailComponent {
       this.logger.log('RESEND ORDER DATA', logData);
       // this.logger.writelog(this.authenService.getTokenData(), logData);
 
-      if (data.resultCode && data.resultCode === '20000') {
+      if (data.resultCode && Number(data.resultCode) == 20000) {
         if (data.result) {
           this.actionMessage.status = 'success';
           this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress)';
@@ -247,7 +255,7 @@ export class DetailComponent {
 
         // and then modify progress label in html-aside
         for (let prog of this.orderProgress) {
-          if (this.orderRouteData.orderProgress === prog.progressName) {
+          if (this.orderRouteData.orderProgress == prog.progressName) {
             prog.actionLabel = '';
             prog.textClassStatus = 'txt-stat-success';
           }
@@ -274,7 +282,7 @@ export class DetailComponent {
         result: repairObj.result
       };
       // when progress is create_contract set response data is array()
-      if ('create_contract' === this.orderRouteData.orderProgress) {
+      if (this.orderRouteData.orderProgress == 'create_contract') {
         updateResp = [{
           transactionID: this.jsonDataDoAction?.transactionID,
           resultCode: repairObj.resultCode,
@@ -293,51 +301,51 @@ export class DetailComponent {
 
       // 2. call update order progress status
       const dataUpdate = await lastValueFrom(this.orderService.callUpdateProgress(updateProgress));
-      if (dataUpdate.resultCode && dataUpdate.resultCode === '20000') {
+      if (dataUpdate.resultCode && Number(dataUpdate.resultCode) == 20000) {
         this.updateProgressMessage.display = true;
         this.updateProgressMessage.status = 'success';
         this.updateProgressMessage.title = '=> Update progress ' + this.orderRouteData.orderProgress +' : Success';
-        this.updateProgressMessage.statusMessage = 'Status : ' + dataUpdate.resultMessage;
+        this.updateProgressMessage.statusMessage = dataUpdate.resultMessage;
         this.updateProgressMessage.resultData = dataUpdate.result;
       } else {
         this.updateProgressMessage.display = true;
         this.updateProgressMessage.status = 'fail';
         this.updateProgressMessage.title = '=> Update progress ' + this.orderRouteData.orderProgress +' : Fail.';
-        this.updateProgressMessage.statusMessage = 'Status : ' + dataUpdate.resultMessage;
+        this.updateProgressMessage.statusMessage = dataUpdate.resultMessage;
         this.updateProgressMessage.resultData = dataUpdate.result;
       }
-
     } catch (error: any) {
       this.updateProgressMessage.display = true;
       this.updateProgressMessage.status = 'fail';
       this.updateProgressMessage.title = '=> Update progress ' + this.orderRouteData.orderProgress +' : Fail.';
-      this.updateProgressMessage.statusMessage = 'Error message.' + error.error.toString();
+      this.updateProgressMessage.statusMessage = error.error.toString();
       this.updateProgressMessage.resultData = {};
     }
 
     try {
       // 3. call repair order when order progress repair was done focus result "success" (statusCode is "20000")
-      if (undefined !== repairObj.resultCode && '20000' === repairObj.resultCode) {
+      if (repairObj.resultCode && Number(repairObj.resultCode) == 20000) {
         const respRepairData = await lastValueFrom(this.orderService.callRepairDataDB());
         this.repairDataDB.display = true;
         this.repairDataDB.title = '=> Repair order : Success, Next progress (todo automatic - repairDataDB By Job)';
         this.repairDataDB.status = 'success';
-        this.repairDataDB.statusMessage = 'Status : Success.';
+        this.repairDataDB.statusMessage = 'Repair order success.';
         this.repairDataDB.resultData =  respRepairData;
       } else {
         this.repairDataDB.display = true;
         this.repairDataDB.title = '=> Repair order : Fail';
         this.repairDataDB.status = 'fail';
-        this.repairDataDB.statusMessage = 'Status : Fail.';
+        this.repairDataDB.statusMessage = 'Repair order fails.';
         this.repairDataDB.resultData =  {};
       }
-
     } catch (error: any) {
       this.repairDataDB.display = true;
       this.repairDataDB.title = '=> Repair order : Fail';
       this.repairDataDB.status = 'fail';
-      this.repairDataDB.statusMessage = 'Error message.' + error.error.toString();
+      this.repairDataDB.statusMessage = error.error.toString();
       this.repairDataDB.resultData = {};
     }
+
+    this.spinner = false;
   }
 }

@@ -105,7 +105,7 @@ export class ReserveComponent {
 
     Object.keys(this.search).forEach((prop: any) => {
       if (this.search[prop] && this.search[prop] !== '') {
-        if (this.searchKey[prop] === 'created_at') {
+        if (this.searchKey[prop] == 'created_at') {
           if (this.search.dateCreated && this.search.dateCreated !== null) {
             let thisDate = new Date();
             thisDate.setDate(this.search.dateCreated.getDate() - configDays);
@@ -133,7 +133,7 @@ export class ReserveComponent {
   async getReserveOrder(request: any) {
     try {
       const result = await lastValueFrom(this.orderService.getOrdersExample(request));
-      if (result.resultCode && result.resultCode === '20000') {
+      if (result.resultCode && Number(result.resultCode) == 20000) {
         // if (result.resultData?.data && result.resultData.data.length > 0) {
         if (result.result?.data && result.result.data.length > 0) {
           let someList: any = [];
@@ -151,7 +151,7 @@ export class ReserveComponent {
               someObj.statusOrder = prop.statusProvisioning;
               someObj.statusOrderTextColor = this.setStatusColor(prop.statusProvisioning);
               someObj.statusProgress = prop.statusProgress;
-              someObj.statusProgressTextColor = (prop.statusProgress.trim().toUpperCase() === 'FAIL') ? 'txt-stat-fail' : '';
+              someObj.statusProgressTextColor = (prop.statusProgress.trim().toUpperCase() == 'FAIL') ? 'txt-stat-fail' : '';
               // someObj.no = this.pageSize * this.pageIndex + no;
               // someObj.reserveId = prop.reserve_id;
               // someObj.transactionId = prop.transaction_id;
@@ -184,16 +184,16 @@ export class ReserveComponent {
     let resp: any = '';
     const keyStr: any = keyStat.trim().toUpperCase();
 
-    if ('SUCCESS' === keyStr || 'REPAIRSUCCESS' === keyStr) {
+    if ('SUCCESS' == keyStr || 'REPAIRSUCCESS' == keyStr) {
       resp = 'txt-stat-success';
     }
-    else if ('FAIL' === keyStr) {
+    else if ('FAIL' == keyStr) {
       resp = 'txt-stat-fail';
     }
-    else if ('WAITING' === keyStr) {
+    else if ('WAITING' == keyStr) {
       resp = 'txt-stat-waiting';
     }
-    else if ('IN PROGRESS' === keyStr) {
+    else if ('IN PROGRESS' == keyStr) {
       resp = 'txt-stat-in-progress';
     }
 

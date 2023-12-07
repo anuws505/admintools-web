@@ -104,7 +104,7 @@
           }
         }
 
-        &.txt-stat-success, .txt-stat-repair-success {
+        &.txt-stat-success, &.txt-stat-repair-success {
           a {
             color: #4ec753;
           }
@@ -114,7 +114,7 @@
             color: #fd2424;
           }
         }
-        &.txt-stat-waiting, .txt-stat-auto-cancel {
+        &.txt-stat-waiting, &.txt-stat-auto-cancel {
           a {
             color: #ff9800;
           }
