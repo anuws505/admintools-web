@@ -322,28 +322,22 @@ export class DetailComponent {
       this.updateProgressMessage.resultData = {};
     }
 
-    try {
-      // 3. call repair order when order progress repair was done focus result "success" (statusCode is "20000")
-      if (repairObj.resultCode && Number(repairObj.resultCode) == 20000) {
+    // 3. call repair order when order progress repair was done focus result "success" (statusCode is "20000")
+    if (repairObj.resultCode && Number(repairObj.resultCode) == 20000) {
+      try {
         const respRepairData = await lastValueFrom(this.orderService.callRepairDataDB());
         this.repairDataDB.display = true;
         this.repairDataDB.title = '=> Repair order : Success, Next progress (todo automatic - repairDataDB By Job)';
         this.repairDataDB.status = 'success';
         this.repairDataDB.statusMessage = 'Repair order success.';
         this.repairDataDB.resultData =  respRepairData;
-      } else {
+      } catch (error: any) {
         this.repairDataDB.display = true;
         this.repairDataDB.title = '=> Repair order : Fail';
         this.repairDataDB.status = 'fail';
-        this.repairDataDB.statusMessage = 'Repair order fails.';
-        this.repairDataDB.resultData =  {};
+        this.repairDataDB.statusMessage = error.error.toString();
+        this.repairDataDB.resultData = {};
       }
-    } catch (error: any) {
-      this.repairDataDB.display = true;
-      this.repairDataDB.title = '=> Repair order : Fail';
-      this.repairDataDB.status = 'fail';
-      this.repairDataDB.statusMessage = error.error.toString();
-      this.repairDataDB.resultData = {};
     }
 
     this.spinner = false;
