@@ -1,0 +1,120 @@
+{
+    "transactionID": "xx1234",
+    "resultCode": "20000",
+    "resultMessage": "success",
+    "resultData": {
+        "recordsFiltered": 106,
+        "data": [
+            {
+                "transaction_id": "201909240927123201909240927123201909240927123201909240927123201909240927123",
+                "reserve_id": "reserveWSA1008040027",
+                "order_no": "WSA1008040027",
+                "channel": "NCP",
+                "created_at": "11-09-2020 16:53:06",
+                "updated_at": "11-09-2020 16:53:06",
+                "status": "Waiting",
+                "status_progress": "Waiting"
+            },
+            {
+                "transaction_id": "201909240927123",
+                "reserve_id": "reserve201909240927123",
+                "order_no": "WSA100804002701",
+                "channel": "NCP",
+                "created_at": "11-09-2020 16:53:06",
+                "updated_at": "11-09-2020 16:53:06",
+                "status": "Waiting",
+                "status_progress": "Waiting"
+            },
+            {
+                "transaction_id": "APM2010221326000002",
+                "reserve_id": "reserveWS2010210500300",
+                "order_no": "WS2010210500300",
+                "channel": "NCP",
+                "created_at": "01-12-2020 13:29:45",
+                "updated_at": "01-12-2020 16:53:06",
+                "status": "Fail",
+                "status_progress": "Fail"
+            },
+            {
+                "transaction_id": "201909240927123",
+                "reserve_id": "reserveTESTWS2010210510",
+                "order_no": "WS2010210510",
+                "channel": "ABC",
+                "created_at": "24-11-2020 16:53:06",
+                "updated_at": "24-11-2020 16:53:06",
+                "status": "In Progress",
+                "status_progress": "In Progress"
+            },
+            {
+                "transaction_id": "201909240927124",
+                "reserve_id": "reserveWS2010210511WS2010210511",
+                "order_no": "WS2010210511",
+                "channel": "AB6",
+                "created_at": "21-08-2020 16:53:06",
+                "updated_at": "21-08-2020 16:53:06",
+                "status": "Customer Received",
+                "status_progress": "Fail"
+            },
+            {
+                "transaction_id": "APM2019092409271113",
+                "reserve_id": "2020121500002",
+                "order_no": "WS201215050111",
+                "channel": "CC6",
+                "created_at": "15-12-2020 09:44:06",
+                "updated_at": "15-12-2020",
+                "status": "Shop Received",
+                "status_progress": "Success"
+            },
+            {
+                "transaction_id": "APM2019092409271113",
+                "reserve_id": "2020121500001",
+                "order_no": "WS201215050110",
+                "channel": "ABC",
+                "created_at": "15-12-2020 09:43:06",
+                "updated_at": "15-12-2020",
+                "status": "Fail",
+                "status_progress": "Fail"
+            },
+            {
+                "transaction_id": "APM20201103024",
+                "reserve_id": "2020121400023",
+                "order_no": "WS201214050023",
+                "channel": "FF6",
+                "created_at": "14-12-2020 07:43:45",
+                "updated_at": "14-12-2020",
+                "status": "Order Complete",
+                "status_progress": "Success"
+            },
+            {
+                "transaction_id": "APM20201103024",
+                "reserve_id": "2020121400022",
+                "order_no": "WS201214050022",
+                "channel": "HHH6",
+                "created_at": "14-12-2020 07:43:45",
+                "updated_at": "14-12-2020",
+                "status": "Order Complete",
+                "status_progress": "Success"
+            },
+            {
+                "transaction_id": "APM2019092409271113",
+                "reserve_id": "2020121400021",
+                "order_no": "WS201214050130",
+                "channel": "HHH6",
+                "created_at": "14-12-2020 16:54:06",
+                "updated_at": "14-12-2020",
+                "status": "Delivery",
+                "status_progress": "Success"
+            },
+            {
+                "transaction_id": "APM20201103024",
+                "reserve_id": "2020121400020",
+                "order_no": "WS201214050020",
+                "channel": "HHH6",
+                "created_at": "14-12-2020 07:43:45",
+                "updated_at": "14-12-2020",
+                "status": "Customer Received",
+                "status_progress": "In Progress"
+            }
+        ]
+    }
+}

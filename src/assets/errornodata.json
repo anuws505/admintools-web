@@ -1,10 +1,10 @@
 {
     "transactionID": "ERROR_NO_API_PROGRESS_NAME",
-    "resultCode": "50000",
+    "resultCode": "20000",
     "resultMessage": "Error no api progress name",
     "result": {
-        "transactionID": "ERROR_NO_API_PROGRESS_NAME",
-        "resultCode": "50000",
+        "transactionID": "ERROR_NO_API_PROGRESS_NAME - result",
+        "resultCode": "20000",
         "resultMessage": "Error no api progress name - result"
     }
 }

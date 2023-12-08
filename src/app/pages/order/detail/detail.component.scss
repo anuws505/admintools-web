@@ -177,7 +177,18 @@
         background-color: #f8d7da;
         border-color: #f5c6cb;
       }
+      &.waiting {
+        color: #343434;
+        background-color: #fff8e2;
+        border-color: #ffeeba;
+      }
+      &.in-progress {
+        color: #343434;
+        background-color: #d9f3ff;
+        border-color: #d9f3ff;
+      }
       &.repair-data {
+        color: #343434;
         background-color: #fff8e2;
         border-color: #ffeeba;
       }

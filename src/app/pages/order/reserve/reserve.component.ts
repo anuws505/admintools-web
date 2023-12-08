@@ -132,41 +132,31 @@ export class ReserveComponent {
 
   async getReserveOrder(request: any) {
     try {
-      const result = await lastValueFrom(this.orderService.getOrdersExample(request));
+      const result = await lastValueFrom(this.orderService.getReserveOrder(request));
       if (result.resultCode && Number(result.resultCode) == 20000) {
-        // if (result.resultData?.data && result.resultData.data.length > 0) {
-        if (result.result?.data && result.result.data.length > 0) {
+        if (result.resultData?.data && result.resultData.data.length > 0) {
           let someList: any = [];
           let no = 1;
-          result.result.data.forEach((prop: any) => {
+          result.resultData.data.forEach((prop: any) => {
             let someObj: any = {};
             {
               someObj.no = this.pageSize * this.pageIndex + no;
-              someObj.reserveId = prop.reserveId;
-              someObj.transactionId = prop.transactionId;
-              someObj.orderNo = prop.orderNo;
-              someObj.channel = 'NCP';
-              someObj.createdDate = prop.createTime;
-              someObj.updatedDate = prop.updateTime;
-              someObj.statusOrder = prop.statusProvisioning;
-              someObj.statusOrderTextColor = this.setStatusColor(prop.statusProvisioning);
-              someObj.statusProgress = prop.statusProgress;
-              someObj.statusProgressTextColor = (prop.statusProgress.trim().toUpperCase() == 'FAIL') ? 'txt-stat-fail' : '';
-              // someObj.no = this.pageSize * this.pageIndex + no;
-              // someObj.reserveId = prop.reserve_id;
-              // someObj.transactionId = prop.transaction_id;
-              // someObj.orderNo = prop.order_no;
-              // someObj.channel = prop.channel;
-              // someObj.createdDate = prop.created_at;
-              // someObj.updatedDate = prop.updated_at;
-              // someObj.statusOrder = prop.status;
-              // someObj.statusProgress = prop.status_progress;
+              someObj.reserveId = prop.reserve_id;
+              someObj.transactionId = prop.transaction_id;
+              someObj.orderNo = prop.order_no;
+              someObj.channel = prop.channel;
+              someObj.createdDate = prop.created_at;
+              someObj.updatedDate = prop.updated_at;
+              someObj.statusOrder = prop.status;
+              someObj.statusOrderTextColor = this.setStatusColor(prop.status);
+              someObj.statusProgress = prop.status_progress;
+              someObj.statusProgressTextColor = (prop.status_progress.trim().toUpperCase() == 'FAIL') ? 'txt-stat-fail' : '';
             }
             someList.push(someObj);
             no++;
           });
           this.dataSource = someList;
-          this.length = result.result.recordsFiltered;
+          this.length = result.resultData.recordsFiltered;
 
           if (this.length == 0) {
             this.zeroDataMessage = 'No data found';
@@ -184,16 +174,16 @@ export class ReserveComponent {
     let resp: any = '';
     const keyStr: any = keyStat.trim().toUpperCase();
 
-    if ('SUCCESS' == keyStr || 'REPAIRSUCCESS' == keyStr) {
+    if (keyStr == 'SUCCESS' || keyStr == 'REPAIRSUCCESS') {
       resp = 'txt-stat-success';
     }
-    else if ('FAIL' == keyStr) {
+    else if (keyStr == 'FAIL') {
       resp = 'txt-stat-fail';
     }
-    else if ('WAITING' == keyStr) {
+    else if (keyStr == 'WAITING') {
       resp = 'txt-stat-waiting';
     }
-    else if ('IN PROGRESS' == keyStr) {
+    else if (keyStr == 'IN PROGRESS') {
       resp = 'txt-stat-in-progress';
     }
 

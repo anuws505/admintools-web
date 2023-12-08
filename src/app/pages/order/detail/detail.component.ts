@@ -104,7 +104,7 @@ export class DetailComponent {
     this.repairDataDB.resultData =  {};
 
     try {
-      const data = await lastValueFrom(this.orderService.getOrderDetailExample(request));
+      const data = await lastValueFrom(this.orderService.getOrderDetail(request));
       if (data.resultCode && Number(data.resultCode) == 20000) {
         if (data.result && typeof data.result != 'undefined') {
           // order data origin
@@ -122,6 +122,10 @@ export class DetailComponent {
 
           // default progress message data
           let stat = '';
+          if (typeof this.orderData?.progress[this.orderRouteData.orderProgress]?.status?.status_description != 'undefined') {
+            stat = this.orderData.progress[this.orderRouteData.orderProgress].status.status_description.toLowerCase();
+          }
+
           if (typeof this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultCode != 'undefined') {
             if (Number(this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.resultCode) == 20000) {
               stat = 'success';
@@ -130,7 +134,7 @@ export class DetailComponent {
             }
           }
           this.actionMessage.status = stat;
-          this.actionMessage.title = 'Result Message : ('+this.orderRouteData.orderProgress+' progress)';
+          this.actionMessage.title = 'Result Message : ('+this.orderRouteData.orderProgress+' progress).';
           if (typeof this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result != 'undefined') {
             this.actionMessage.message = this.orderData?.progress[this.orderRouteData.orderProgress]?.response?.result;
           }
@@ -140,7 +144,6 @@ export class DetailComponent {
 
           // because "create_contract" progress respone is [] other is {}
           if ('create_contract' == this.orderRouteData.orderProgress) {
-            let stat = '';
             if (typeof this.orderData?.progress['create_contract']?.response != 'undefined') {
               if (Number(this.orderData?.progress['create_contract']?.response[0]?.resultCode) == 20000) {
                 stat = 'success';
@@ -149,7 +152,7 @@ export class DetailComponent {
               }
             }
             this.actionMessage.status = stat;
-            this.actionMessage.title = 'Result Message : ('+this.orderRouteData.orderProgress+' progress)';
+            this.actionMessage.title = 'Result Message : ('+this.orderRouteData.orderProgress+' progress).';
             this.actionMessage.message = this.orderData?.progress['create_contract']?.response;
           }
 
@@ -246,7 +249,7 @@ export class DetailComponent {
       if (data.resultCode && Number(data.resultCode) == 20000) {
         if (data.result) {
           this.actionMessage.status = 'success';
-          this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress)';
+          this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress).';
           this.actionMessage.message = data.result;
         }
 
@@ -263,13 +266,13 @@ export class DetailComponent {
       } else {
         if (data.result) {
           this.actionMessage.status = 'fail';
-          this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress)';
+          this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress).';
           this.actionMessage.message = data.result;
         }
       }
     } catch (error: any) {
       this.actionMessage.status = 'fail';
-      this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress)';
+      this.actionMessage.title = 'Result Message (' + this.orderRouteData.orderProgress + ' progress).';
       this.actionMessage.message = error.error.toString();
     }
 
@@ -304,7 +307,7 @@ export class DetailComponent {
       if (dataUpdate.resultCode && Number(dataUpdate.resultCode) == 20000) {
         this.updateProgressMessage.display = true;
         this.updateProgressMessage.status = 'success';
-        this.updateProgressMessage.title = '=> Update progress ' + this.orderRouteData.orderProgress +' : Success';
+        this.updateProgressMessage.title = '=> Update progress ' + this.orderRouteData.orderProgress +' : Success.';
         this.updateProgressMessage.statusMessage = dataUpdate.resultMessage;
         this.updateProgressMessage.resultData = dataUpdate.result;
       } else {
@@ -327,17 +330,23 @@ export class DetailComponent {
       try {
         const respRepairData = await lastValueFrom(this.orderService.callRepairDataDB());
         this.repairDataDB.display = true;
-        this.repairDataDB.title = '=> Repair order : Success, Next progress (todo automatic - repairDataDB By Job)';
+        this.repairDataDB.title = '=> Repair order : Success, Next progress (todo automatic - repairDataDB By Job).';
         this.repairDataDB.status = 'success';
         this.repairDataDB.statusMessage = 'Repair order success.';
         this.repairDataDB.resultData =  respRepairData;
       } catch (error: any) {
         this.repairDataDB.display = true;
-        this.repairDataDB.title = '=> Repair order : Fail';
+        this.repairDataDB.title = '=> Repair order : Fail.';
         this.repairDataDB.status = 'fail';
         this.repairDataDB.statusMessage = error.error.toString();
         this.repairDataDB.resultData = {};
       }
+    } else {
+        this.repairDataDB.display = false;
+        this.repairDataDB.title = '=> Repair order : Default.';
+        this.repairDataDB.status = '';
+        this.repairDataDB.statusMessage = 'Repair order default.';
+        this.repairDataDB.resultData =  {};
     }
 
     this.spinner = false;
