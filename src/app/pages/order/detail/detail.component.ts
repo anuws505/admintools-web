@@ -50,7 +50,7 @@ export class DetailComponent {
 
   constructor(
     private title: Title,
-    private activedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
     private logger: LogService
   ) {
@@ -58,7 +58,7 @@ export class DetailComponent {
   }
 
   ngOnInit() {
-    this.activedRoute.params.subscribe((event) => {
+    this.activatedRoute.params.subscribe((event) => {
       if (event['orderno'] && typeof event['orderno'] != 'undefined') {
         this.orderRouteData.orderNo = event['orderno'].trim();
       }
