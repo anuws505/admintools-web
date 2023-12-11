@@ -5,6 +5,8 @@ import { lastValueFrom } from 'rxjs';
 import { OrderService } from '../order.service';
 import { JsonEditorOptions } from 'ang-jsoneditor';
 import { LogService } from '../../../shared/log.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-detail',
@@ -52,7 +54,8 @@ export class DetailComponent {
     private title: Title,
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
-    private logger: LogService
+    private logger: LogService,
+    public dialog: MatDialog
   ) {
     this.title.setTitle('Order Detail - LEGO Admintools');
   }
@@ -351,4 +354,24 @@ export class DetailComponent {
 
     this.spinner = false;
   }
+
+  openResendDialog() {
+    const dialogRef = this.dialog.open(DialogContentLogoutDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      if (result) {
+        this.actionJsonResend();
+      }
+    });
+  }
 }
+
+@Component({
+  selector: 'repair-data-dialog',
+  templateUrl: './repair-data-dialog.html',
+  styleUrls: ['./detail.component.scss'],
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+})
+export class DialogContentLogoutDialog {}

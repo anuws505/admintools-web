@@ -15,7 +15,7 @@ export class LogoutComponent {
 
   constructor(
     private title: Title,
-    private authenService: AuthenService,
+    private authenService: AuthenService
   ) {
     this.title.setTitle('Authenticate Logout - LEGO Admintools');
   }

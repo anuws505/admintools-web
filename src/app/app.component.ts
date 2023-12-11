@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(
     private title: Title,
     private authenService: AuthenService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {
     this.title.setTitle('App - LEGO Admintools');
   }
