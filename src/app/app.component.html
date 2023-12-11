@@ -3,8 +3,8 @@
     <div class="aside">
       <div class="list-ctn">
         <div class="list-block">
-          <div class="list-title">Hi, Pepper</div>
-          <div class="list-item"><a [routerLink]="['/']">Logout</a></div>
+          <div class="list-title">Hi, <span class="disp-uname">{{userData.userName}}</span></div>
+          <div class="list-item"><a [routerLink]="" class="hover-a" (click)="openDialog()">Logout</a></div>
         </div>
         <div class="list-block">
           <div class="list-title">Orders</div>
@@ -26,7 +26,8 @@
       <button mat-icon-button aria-label="Example icon button with a menu icon" (click)="activeClass()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h1 class="head-title">Admintools Lego <a mat-button [routerLink]="['/']" class="click-login">/ Login</a></h1>
+      <a [routerLink]="['/']" class="app-name"><h1 class="title-name">Admintools Lego</h1></a>
+      <a mat-button href="/login" class="click-login">/ Login</a>
     </header>
     <mat-divider></mat-divider>
 

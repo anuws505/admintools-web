@@ -1,0 +1,10 @@
+<div class="component-content">
+  <p>{{displayMessage}}</p>
+  <div *ngIf="userData.userName != ''">
+    <div class="disp-uname">Username: {{userData.userName}}</div>
+    <div class="disp-uname">Email: {{userData.email}}</div>
+    <div class="disp-uname">Role: {{userData.role}}</div>
+  </div>
+</div>
+
+<div class="spinner-on-page" *ngIf="spinner"><mat-spinner></mat-spinner></div>

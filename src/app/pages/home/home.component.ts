@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthenService } from '../../shared/authen/authen.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,12 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  userData: any = {};
+  userData: any = { nameID: '', userName: 'visitors', email: '', sessionIndex: '', role: 'guests' };
 
-  constructor(private title: Title) {
+  constructor(
+    private title: Title,
+    private authenService: AuthenService
+  ) {
     this.title.setTitle('Home - LEGO Admintools');
   }
 
@@ -18,8 +22,8 @@ export class HomeComponent {
   }
 
   getUserData() {
-    this.userData.username = 'pepper';
-    this.userData.name = 'Pepper';
-    this.userData.role = 'admin';
+    if (this.authenService.loggedIn()) {
+      this.userData = this.authenService.getUserLoginData();
+    }
   }
 }

@@ -1,4 +1,4 @@
 <div class="component-content">
   <div>Welcome to order management system.</div>
-  <div>{{userData.name}}'s roles are {{userData.role}}.</div>
+  <div *ngIf="userData.userName != ''"><span class="disp-uname">{{userData.userName}}</span> role are {{userData.role}}.</div>
 </div>

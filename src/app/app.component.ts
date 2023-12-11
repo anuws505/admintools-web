@@ -1,5 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthenService } from './shared/authen/authen.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +12,12 @@ import { Title } from '@angular/platform-browser';
 export class AppComponent {
   activeNavbar: any = '';
   innerWidth: any;
+  userData: any = { nameID: '', userName: 'visitors', email: '', sessionIndex: '', role: 'guests' };
 
   constructor(
-    private title: Title
+    private title: Title,
+    private authenService: AuthenService,
+    public dialog: MatDialog,
   ) {
     this.title.setTitle('App - LEGO Admintools');
   }
@@ -24,6 +30,10 @@ export class AppComponent {
   ngOnInit() {
     this.innerWidth = window.innerWidth;
     this.setActiveByWidth();
+
+    if (this.authenService.loggedIn()) {
+      this.userData = this.authenService.getUserLoginData();
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -39,4 +49,24 @@ export class AppComponent {
       this.activeNavbar = '';
     }
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentLogoutDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result) {
+        window.location.href = '/logout';
+      }
+    });
+  }
 }
+
+@Component({
+  selector: 'app-logout-dialog',
+  templateUrl: './app-logout-dialog.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+})
+export class DialogContentLogoutDialog {}

@@ -12,10 +12,6 @@
     float: left;
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
 
-    .txt-title {
-      margin: 0.2em 0.6em;
-    }
-
     .list-ctn {
       .list-block {
         padding: 0.3em 1.1em;
@@ -32,9 +28,17 @@
           font-size: 1.3em;
           letter-spacing: -0.005em;
           margin: 0.67em 0 0.25em 0;
+
+          .disp-uname {
+            text-transform: capitalize;
+          }
         }
         .list-item {
           padding: 0.3rem 0;
+
+          .hover-a {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -72,16 +76,25 @@
       align-items: center;
       min-height: 54px;
 
-      .head-title {
-        font-family: "Noto Sans Thai Looped Light";
-        font-size: 2em;
-        margin: 0.2em 0;
+      .app-name {
+        color: #222;
 
-        .click-login {
-          font-size: 0.96rem;
-          letter-spacing: initial;
-          color: #006be8;
+        &:hover {
+          color: #000;
         }
+
+        .title-name {
+          margin: 0 3px;
+          letter-spacing: 0.012em;
+        }
+      }
+
+      .click-login {
+        font-family: 'Noto Sans Thai Looped Light';
+        font-size: 0.96rem;
+        letter-spacing: initial;
+        color: #006be8;
+        margin: 6px 0 0 2px;
       }
     }
   }
@@ -105,4 +118,14 @@
       color: #777;
     }
   }
+}
+
+.mat-typography {
+  width: calc(100vw - 56px);
+  max-width: 320px;
+  min-height: 76px;
+  font-family: 'Noto Sans Thai Looped';
+  font-size: 1.05em;
+  line-height: 1.5;
+  color: #121212;
 }

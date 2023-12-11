@@ -15,6 +15,7 @@ import { NgJsonEditorModule } from 'ang-jsoneditor';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,9 @@ import { OrderComponent } from './pages/order/order.component';
 import { ListComponent } from './pages/order/list/list.component';
 import { DetailComponent } from './pages/order/detail/detail.component';
 import { ReserveComponent } from './pages/order/reserve/reserve.component';
+import { AuthenComponent } from './shared/authen/authen.component';
+import { LoginComponent } from './shared/authen/login/login.component';
+import { LogoutComponent } from './shared/authen/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { ReserveComponent } from './pages/order/reserve/reserve.component';
     OrderComponent,
     ListComponent,
     DetailComponent,
-    ReserveComponent
+    ReserveComponent,
+    AuthenComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,8 @@ import { ReserveComponent } from './pages/order/reserve/reserve.component';
     NgJsonEditorModule,
     MatPaginatorModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
