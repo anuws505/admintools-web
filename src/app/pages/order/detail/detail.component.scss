@@ -157,7 +157,7 @@
 
     .zone-resend-message {
       margin-top: 20px;
-      padding: 10px 14px 18px 14px;
+      padding: 16px 14px;
       color: #383d41;
       background-color: #f0f0f0;
       border-color: #e2e3e5;
@@ -165,6 +165,11 @@
 
       .txt-title {
         font-family: 'Noto Sans Thai Looped Semi Bold';
+        margin: 0;
+
+        &.mgr-btm {
+          margin-bottom: 10px;
+        }
       }
 
       &.success {

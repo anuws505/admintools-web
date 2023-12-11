@@ -41,7 +41,7 @@
     <!-- <pre>{{ actionMessage | json }}</pre> -->
     <div class="zone-resend-message {{actionMessage.status}}">
       <h4 class="txt-title">{{actionMessage.title}}</h4>
-      <h4 class="txt-title">Status : {{actionMessage.status}}</h4>
+      <h4 class="txt-title mgr-btm">Status : {{actionMessage.status}}</h4>
       <json-editor [options]="msgDisplayOptions"
                    [data]="actionMessage.message"></json-editor>
     </div>
@@ -49,7 +49,7 @@
     <!-- <pre>{{ updateProgressMessage | json }}</pre> -->
     <div class="zone-resend-message {{ updateProgressMessage.status }}" *ngIf="updateProgressMessage.display">
       <h4 class="txt-title">{{updateProgressMessage.title}}</h4>
-      <h4 class="txt-title">Status : {{updateProgressMessage.status}}</h4>
+      <h4 class="txt-title mgr-btm">Status : {{updateProgressMessage.status}}</h4>
       <p>Message : {{updateProgressMessage.statusMessage}}</p>
       <pre>{{ updateProgressMessage.resultData | json }}</pre>
     </div>
@@ -57,7 +57,7 @@
     <!-- <pre>{{ repairDataDB | json }}</pre> -->
     <div class="zone-resend-message {{ repairDataDB.status }}" *ngIf="repairDataDB.display">
       <h4 class="txt-title">{{repairDataDB.title}}</h4>
-      <h4 class="txt-title">Status : {{repairDataDB.status}}</h4>
+      <h4 class="txt-title mgr-btm">Status : {{repairDataDB.status}}</h4>
       <p>Message : {{repairDataDB.statusMessage}}</p>
       <pre>{{ repairDataDB.resultData | json }}</pre>
     </div>
