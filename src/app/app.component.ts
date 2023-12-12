@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { AuthenService } from './shared/authen/authen.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,33 +14,38 @@ export class AppComponent {
   activeNavbar: any = '';
   innerWidth: any;
   userData: any = { nameID: '', userName: 'visitors', email: '', sessionIndex: '', role: 'guests' };
+  loggedin: boolean = this.authenService.loggedIn();
 
   constructor(
     private title: Title,
     private authenService: AuthenService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public router: Router
   ) {
     this.title.setTitle('App - LEGO Admintools');
   }
 
   activeClass() {
-    if (this.activeNavbar === '') { this.activeNavbar = 'active'; }
-    else if (this.activeNavbar === 'active') { this.activeNavbar = ''; }
+    if (this.loggedin) {
+      if (this.activeNavbar == '') { this.activeNavbar = 'active'; }
+      else if (this.activeNavbar == 'active') { this.activeNavbar = ''; }
+    }
   }
 
   ngOnInit() {
-    this.innerWidth = window.innerWidth;
-    this.setActiveByWidth();
-
-    if (this.authenService.loggedIn()) {
+    if (this.loggedin) {
+      this.innerWidth = window.innerWidth;
+      this.setActiveByWidth();
       this.userData = this.authenService.getUserLoginData();
     }
   }
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.innerWidth = window.innerWidth;
-    this.setActiveByWidth();
+    if (this.loggedin) {
+      this.innerWidth = window.innerWidth;
+      this.setActiveByWidth();
+    }
   }
 
   setActiveByWidth() {
@@ -56,7 +62,7 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);
       if (result) {
-        window.location.href = '/logout';
+        this.router.navigate(['/logout']);
       }
     });
   }

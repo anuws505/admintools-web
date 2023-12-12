@@ -1,5 +1,5 @@
 <div class="main-container {{activeNavbar}}">
-  <aside>
+  <aside *ngIf="loggedin">
     <div class="aside">
       <div class="list-ctn">
         <div class="list-block">
@@ -27,7 +27,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <a [routerLink]="['/']" class="app-name"><h1 class="title-name">Admintools Lego</h1></a>
-      <a mat-button href="/login" class="click-login">/ Login</a>
+      <a mat-button href="/login" class="click-login" *ngIf="!loggedin">/ Login</a>
     </header>
     <mat-divider></mat-divider>
 

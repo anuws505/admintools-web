@@ -9,6 +9,7 @@ import { ReserveComponent } from './pages/order/reserve/reserve.component';
 import { AuthenComponent } from './shared/authen/authen.component';
 import { LoginComponent } from './shared/authen/login/login.component';
 import { LogoutComponent } from './shared/authen/logout/logout.component';
+import { authGuard } from './shared/authen/auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
       // { path: 'status/:orderno', component: StatusComponent },
       { path: ':orderno', component: DetailComponent },
       { path: ':orderno/:progress', component: DetailComponent }
-    ]
+    ],
+    canActivate: [authGuard]
   },
   {
     path: 'login', component: AuthenComponent,
@@ -35,7 +37,8 @@ const routes: Routes = [
     children: [
       { path: '', component: LogoutComponent },
       { path: ':authentoken', component: LogoutComponent }
-    ]
+    ],
+    canActivate: [authGuard]
   },
   { path: '**', component: PagenotfoundComponent }
 ];
