@@ -93,7 +93,7 @@
               *ngIf="!exportCSV.flag">Export order require search from field</button>
       <button mat-raised-button
               class="search-btn export-btn"
-              *ngIf="exportCSV.flag" (click)="exportOrder()">Export Order</button>
+              *ngIf="exportCSV.flag" (click)="openExportDataDialog()">Export Order</button>
     </div>
   </form>
 

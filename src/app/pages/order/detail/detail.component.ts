@@ -7,6 +7,7 @@ import { JsonEditorOptions } from 'ang-jsoneditor';
 import { LogService } from '../../../shared/log.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthenService } from '../../../shared/authen/authen.service';
 
 @Component({
   selector: 'app-detail',
@@ -55,7 +56,8 @@ export class DetailComponent {
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
     private logger: LogService,
-    public dialog: MatDialog
+    private dialog: MatDialog,
+    private authenService: AuthenService
   ) {
     this.title.setTitle('Order Detail - LEGO Admintools');
   }
@@ -245,9 +247,8 @@ export class DetailComponent {
       logData.progressName = this.orderRouteData.orderProgress;
       logData.requestData = this.jsonDataDoAction;
       logData.responseData = data;
-      logData.username = {'username':'anuwas49','role':'admin101','name':'megapom101'};
+      logData.username = this.authenService.getUserLoginData();
       this.logger.log('RESEND ORDER DATA', logData);
-      // this.logger.writelog(this.authenService.getTokenData(), logData);
 
       if (data.resultCode && Number(data.resultCode) == 20000) {
         if (data.result) {
@@ -359,7 +360,7 @@ export class DetailComponent {
     const dialogRef = this.dialog.open(DialogContentLogoutDialog);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
       if (result) {
         this.actionJsonResend();
       }

@@ -6,6 +6,9 @@ import { lastValueFrom } from 'rxjs';
 import { OrderService } from '../order.service';
 import { PageEvent } from '@angular/material/paginator';
 import { LogService } from '../../../shared/log.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { AuthenService } from '../../../shared/authen/authen.service';
 
 @Component({
   selector: 'app-list',
@@ -87,7 +90,9 @@ export class ListComponent {
   constructor(
     private title: Title,
     private orderService: OrderService,
-    private logger: LogService
+    private logger: LogService,
+    private dialog: MatDialog,
+    private authenService: AuthenService
   ) {
     this.title.setTitle('Order List - LEGO Admintools');
   }
@@ -349,9 +354,8 @@ export class ListComponent {
         xBar.resultData = [{'exportdata':'force mark xxx data'}];
         xBar.resultRows = data.resultRows;
         logData.responseData = xBar;
-        logData.username = {'username':'anuwas49','role':'admin101','name':'megapom101'};
+        logData.username = this.authenService.getUserLoginData();
         this.logger.log('EXPORT ORDER DATA', logData);
-        // this.logger.writelog(this.authenService.getTokenData(), logData);
 
         if (data.resultData && data.resultData.length > 0) {
           this.exportCSV.data = data.resultData;
@@ -398,4 +402,24 @@ export class ListComponent {
 
     this.spinner = false;
   }
+
+  openExportDataDialog() {
+    const dialogRef = this.dialog.open(DialogContentLogoutDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      if (result) {
+        this.exportOrder();
+      }
+    });
+  }
 }
+
+@Component({
+  selector: 'export-data-dialog',
+  templateUrl: './export-data-dialog.html',
+  styleUrls: ['./list.component.scss'],
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+})
+export class DialogContentLogoutDialog {}
