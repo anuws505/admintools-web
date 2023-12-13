@@ -335,7 +335,7 @@ export class ListComponent {
     this.getOrders(this.reqOrderList);
   }
 
-  async exportOrder() {
+  async exportOrderData() {
     if (this.exportCSV.flag) {
       this.spinner = true;
 
@@ -346,12 +346,12 @@ export class ListComponent {
       if (data.resultCode && Number(data.resultCode) === 20000) {
         // save logs data
         const logData: any = {};
-        logData.progressName = 'exportOrders';
+        logData.progressName = 'exportOrderData';
         logData.requestData = expObj;
         let xBar: any = {};
         xBar.resultCode = data.resultCode;
         xBar.resultMessage = data.resultMessage;
-        xBar.resultData = [{'exportdata':'force mark xxx data'}];
+        xBar.resultData = [{'exportorderdata':'force mark xxx data'}];
         xBar.resultRows = data.resultRows;
         logData.responseData = xBar;
         logData.username = this.authenService.getUserLoginData();
@@ -403,13 +403,13 @@ export class ListComponent {
     this.spinner = false;
   }
 
-  openExportDataDialog() {
+  openExportOrderDataDialog() {
     const dialogRef = this.dialog.open(DialogContentLogoutDialog);
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);
       if (result) {
-        this.exportOrder();
+        this.exportOrderData();
       }
     });
   }

@@ -23,9 +23,8 @@ export class OrderService {
   constructor(private httpClient: HttpClient) {}
 
   getTransactionID(): any {
-    const dateNow: Date = new Date();
     const pipe = new DatePipe('en-US');
-    const myFormattedDate = pipe.transform(dateNow, 'yyyyMMddHHmmssSSS');
+    const myFormattedDate = pipe.transform(new Date(), 'yyyyMMddHHmmssSSS');
     return 'LGO'+myFormattedDate;
   }
 
