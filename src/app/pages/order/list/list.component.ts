@@ -64,6 +64,7 @@ export class ListComponent {
     'customerContact',
     'simMobileNo',
     'statusProvisioning',
+    'updateOrderStatus',
     'progressApi',
     'statusProgress',
     'trackingData',

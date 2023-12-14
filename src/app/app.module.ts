@@ -30,6 +30,7 @@ import { ReserveComponent } from './pages/order/reserve/reserve.component';
 import { AuthenComponent } from './shared/authen/authen.component';
 import { LoginComponent } from './shared/authen/login/login.component';
 import { LogoutComponent } from './shared/authen/logout/logout.component';
+import { StatusupdateComponent } from './pages/order/statusupdate/statusupdate.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LogoutComponent } from './shared/authen/logout/logout.component';
     ReserveComponent,
     AuthenComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    StatusupdateComponent
   ],
   imports: [
     BrowserModule,

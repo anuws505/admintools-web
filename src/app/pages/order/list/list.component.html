@@ -169,6 +169,14 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="updateOrderStatus">
+        <th mat-header-cell *matHeaderCellDef>Update Order Status</th>
+        <td mat-cell *matCellDef="let element">
+          <a [routerLink]="['/orderstatusupdate', element.orderNo]"
+             mat-raised-button color="primary">UpdateStatus</a>
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="progressApi">
         <th mat-header-cell *matHeaderCellDef>Progress API Name</th>
         <td mat-cell *matCellDef="let element">{{element.progressApi}}</td>
@@ -196,7 +204,8 @@
       <ng-container matColumnDef="repairData">
         <th mat-header-cell *matHeaderCellDef>Repair Order Data</th>
         <td mat-cell *matCellDef="let element">
-          <a [routerLink]="['/order', element.orderNo]" mat-raised-button color="primary">{{element.orderNo}}</a>
+          <a [routerLink]="['/order', element.orderNo]"
+             mat-raised-button color="primary">{{element.orderNo}}</a>
         </td>
       </ng-container>
 

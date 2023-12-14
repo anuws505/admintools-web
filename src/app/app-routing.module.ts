@@ -9,6 +9,7 @@ import { ReserveComponent } from './pages/order/reserve/reserve.component';
 import { AuthenComponent } from './shared/authen/authen.component';
 import { LoginComponent } from './shared/authen/login/login.component';
 import { LogoutComponent } from './shared/authen/logout/logout.component';
+import { StatusupdateComponent } from './pages/order/statusupdate/statusupdate.component';
 import { authGuard } from './shared/authen/auth.guard';
 
 const routes: Routes = [
@@ -17,12 +18,16 @@ const routes: Routes = [
   {
     path: 'order', component: OrderComponent,
     children: [
-      { path: '', component: ListComponent },
+      { path: '', redirectTo: 'list', pathMatch: 'full' },
+      { path: 'list', component: ListComponent },
       { path: 'reserve', component: ReserveComponent },
-      // { path: 'status/:orderno', component: StatusComponent },
       { path: ':orderno', component: DetailComponent },
       { path: ':orderno/:progress', component: DetailComponent }
     ],
+    canActivate: [authGuard]
+  },
+  {
+    path: 'orderstatusupdate/:orderno', component: StatusupdateComponent,
     canActivate: [authGuard]
   },
   {
