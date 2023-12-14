@@ -1,5 +1,55 @@
 <div class="component-content">
   <h3 class="comp-title">Order Status Update</h3>
+
+  <div class="block-show-entries">
+    <mat-form-field class="api-name">
+      <mat-label>Choose API Name</mat-label>
+      <mat-select value="{{apiName}}" (valueChange)="setApiName($event)">
+        <mat-option>-- None --</mat-option>
+        <mat-option *ngFor="let apiName of apiNameDisp" [value]="apiName.apiname">{{apiName.apipath}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="status-code">
+      <mat-label>Choose Status Code</mat-label>
+      <mat-select value="{{statusCode}}" (valueChange)="setStatusCode($event)">
+        <mat-option>-- None --</mat-option>
+        <mat-option *ngFor="let statusCode of statusCodeDisp" [value]="statusCode.code">{{statusCode.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="status-msg">
+      <mat-label>Choose Status Message</mat-label>
+      <mat-select value="{{statusMsg}}" (valueChange)="setStatusMsg($event)">
+        <mat-option>-- None --</mat-option>
+        <mat-option *ngFor="let statusMsg of statusMsgDisp" [value]="statusMsg.msgcode">{{statusMsg.msgtext}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="block-wrapper">
+    <json-editor [options]="jsonOrderStatusRequest"
+                 [data]="jsonDataToDisplay"
+                 (change)="changeJsonOrderStatusData($event)"></json-editor>
+  </div>
+
+  <div class="block-wrapper set-center">
+    <button mat-raised-button color="default" disabled
+            class="c-button"
+            *ngIf="!updateOrderStatusButton">Update Order Status</button>
+    <button mat-raised-button color="primary"
+            class="c-button"
+            *ngIf="updateOrderStatusButton"
+            (click)="openStatusUpdateDialog()">Update Order Status</button>
+  </div>
+
+  <div class="block-wrapper" *ngIf="jsonResponseToDisplay.display === 'Y'">
+    <div class="the-message {{jsonResponseToDisplay.colorcode}}">
+      <h4 class="txt-title mgr-btm">{{jsonResponseToDisplay.title}}</h4>
+      <json-editor [options]="jsonOrderStatusResponse"
+                   [data]="jsonResponseToDisplay.result"></json-editor>
+    </div>
+  </div>
 </div>
 
 <div class="spinner-on-page" *ngIf="spinner"><mat-spinner></mat-spinner></div>

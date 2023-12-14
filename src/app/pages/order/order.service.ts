@@ -76,24 +76,27 @@ export class OrderService {
   }
 
   // order status update page
-  /* callUpdateOrderStatus(request: any): Observable<any> {
+  callUpdateOrderStatus(request: any): Observable<any> {
+    return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE + '/be-updateorderstatus/action/updateOrderStatus',
       request, this.httpOptions
     );
   }
   callGetOrderStatusUpdate(request: any): Observable<any> {
+    return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE + '/be/getorderstatusupdate/action/getOrderStatusUpdate',
       request, this.httpOptions
     );
   }
   callShipmentStatus(request: any): Observable<any> {
+    return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE + '/be/shipmentstatus/action/shipment_status',
       request, this.httpOptions
     );
-  } */
+  }
 
   // order progress all action
   actionDoResendData(progressName: any, request: any): Observable<any> {

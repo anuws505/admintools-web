@@ -10,5 +10,7 @@ export const environment = {
   location_host: 'https://ons-admintools-stg.intra.ais',
   saml_destination: 'https://test-ids.ais.co.th/samlsso',
   saml_assertion_url: 'https://ons-admintools-stg.intra.ais/action/login/callback',
-  saml_issuer: 'ONSStgAdmToolBE'
+  saml_issuer: 'ONSStgAdmToolBE',
+  disp_api_be: 'https://lego-stg.ais.co.th/nocpbe/staging',
+  disp_api_be_intra: 'https://lego-stg.intra.ais/nocpbe/staging'
 };

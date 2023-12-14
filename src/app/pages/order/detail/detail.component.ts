@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
 import { OrderService } from '../order.service';
+import { lastValueFrom } from 'rxjs';
 import { JsonEditorOptions } from 'ang-jsoneditor';
 import { LogService } from '../../../shared/log.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -32,7 +32,7 @@ export class DetailComponent {
     message: {}
   };
   orderProgress: any = [];
-  resendButton = false;
+  resendButton: boolean = false;
 
   updateProgressMessage: any = {
     display: false,
