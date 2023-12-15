@@ -9,4 +9,32 @@
     margin-left: 6px;
     margin-right: 6px;
   }
+
+  .inner-block {
+    padding: 11px;
+    margin: 10px 0;
+    border: 1px #888 dashed;
+    border-radius: 3px;
+
+    .date-clear {
+      width: 100px;
+    }
+    .log-clear {
+      min-width: 66px;
+    }
+
+    .font-light {
+      font-family: 'Noto Sans Thai Looped Light';
+    }
+  }
+}
+
+.mat-typography {
+  width: calc(100vw - 56px);
+  max-width: 320px;
+  min-height: 76px;
+  font-family: 'Noto Sans Thai Looped';
+  font-size: 1.05em;
+  line-height: 1.5;
+  color: #121212;
 }

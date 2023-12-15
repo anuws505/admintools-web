@@ -1,3 +1,18 @@
 <div class="component-content">
   <h3 class="comp-title">Action Logs - Configuration</h3>
+
+  <div class="inner-block">
+    <p>Today : {{ dateNowLbl }}</p>
+    <p>Clear "Action Logs" older than
+    <mat-form-field class="date-clear">
+      <mat-label>Num of day(s)</mat-label>
+      <input matInput type="number" value="{{numOfDay}}" (change)="numOfDayChange($event)">
+    </mat-form-field> day(s)
+    <button mat-raised-button color="primary" class="log-clear"
+            (click)="openActionlogconfigDialog()">Clear</button> (default is 60 days)
+    </p>
+    <p class="font-light">"Action Logs" older than : {{ dateClearLbl }} will be delete!</p>
+  </div>
 </div>
+
+<div class="spinner-on-page" *ngIf="spinner"><mat-spinner></mat-spinner></div>
