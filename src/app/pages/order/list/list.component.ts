@@ -355,8 +355,7 @@ export class ListComponent {
         xBar.resultData = [{'exportorderdata':'force mark xxx data'}];
         xBar.resultRows = data.resultRows;
         logData.responseData = xBar;
-        logData.username = this.authenService.getUserLoginData();
-        this.logger.log('EXPORT ORDER DATA', logData);
+        this.logger.writelog(this.authenService.getUserLoginData(), logData);
 
         if (data.resultData && data.resultData.length > 0) {
           this.exportCSV.data = data.resultData;

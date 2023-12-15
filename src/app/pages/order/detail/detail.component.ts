@@ -247,8 +247,7 @@ export class DetailComponent {
       logData.progressName = this.orderRouteData.orderProgress;
       logData.requestData = this.jsonDataDoAction;
       logData.responseData = data;
-      logData.username = this.authenService.getUserLoginData();
-      this.logger.log('RESEND ORDER DATA', logData);
+      this.logger.writelog(this.authenService.getUserLoginData(), logData);
 
       if (data.resultCode && Number(data.resultCode) == 20000) {
         if (data.result) {

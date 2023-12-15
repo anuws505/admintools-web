@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-  admin_config: 'gifnoc_nimda',
   admin_user: 'resu_nimda',
   api_be_url: 'https://ons-admintools.intra.ais/nocpbe',
   api_be_intra_url: 'https://ons-admintools.intra.ais/nocpbe-intra',

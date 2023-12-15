@@ -130,8 +130,7 @@ export class StatusupdateComponent {
         logData.progressName = this.apiName;
         logData.requestData = this.jsonDataDoAction;
         logData.responseData = data;
-        logData.username = this.authenService.getUserLoginData();
-        this.logger.log('DO ACTION : UPDATEORDERSTATUS', logData);
+        this.logger.writelog(this.authenService.getUserLoginData(), logData);
 
         // prepare response data
         this.jsonResponseToDisplay.display = 'Y';
@@ -156,8 +155,7 @@ export class StatusupdateComponent {
         logData.progressName = this.apiName;
         logData.requestData = this.jsonDataDoAction;
         logData.responseData = data;
-        logData.username = this.authenService.getUserLoginData();
-        this.logger.log('DO ACTION : GETORDERSTATUSUPDATE', logData);
+        this.logger.writelog(this.authenService.getUserLoginData(), logData);
 
         // prepare response data
         this.jsonResponseToDisplay.display = 'Y';
@@ -182,8 +180,7 @@ export class StatusupdateComponent {
         logData.progressName = this.apiName;
         logData.requestData = this.jsonDataDoAction;
         logData.responseData = data;
-        logData.username = this.authenService.getUserLoginData();
-        this.logger.log('DO ACTION : SHIPMENT_STATUS', logData);
+        this.logger.writelog(this.authenService.getUserLoginData(), logData);
 
         // prepare response data
         this.jsonResponseToDisplay.display = 'Y';
