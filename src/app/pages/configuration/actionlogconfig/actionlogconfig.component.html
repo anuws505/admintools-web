@@ -12,6 +12,7 @@
             (click)="openActionlogconfigDialog()">Clear</button> (default is 60 days)
     </p>
     <p class="font-light">"Action Logs" older than : {{ dateClearLbl }} will be delete!</p>
+    <p *ngIf="logMessage.display" class="response {{logMessage.status}}">{{logMessage.message}}</p>
   </div>
 </div>
 

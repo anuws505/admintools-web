@@ -26,6 +26,17 @@
     .font-light {
       font-family: 'Noto Sans Thai Looped Light';
     }
+
+    .response {
+      margin-top: 16px;
+
+      &.success {
+        color: #4ec753;
+      }
+      &.fail {
+        color: #ff6060;
+      }
+    }
   }
 }
 

@@ -16,6 +16,12 @@ export class ActionlogconfigComponent {
   dateClearLbl: any = '';
   numOfDay: number = 60;
 
+  logMessage: any = {
+    display: false,
+    status: '',
+    message: ''
+  };
+
   spinner: boolean = false;
 
   constructor(
@@ -57,9 +63,20 @@ export class ActionlogconfigComponent {
   }
 
   async clickClearActionLogs() {
-    if (parseInt(this.dateClearLbl) >= 0) {
-      await lastValueFrom(this.logger.clearlog({'dateclear':this.dateClearLbl}));
+    try {
+      if (parseInt(this.dateClearLbl) >= 0) {
+        await lastValueFrom(this.logger.clearlog({'dateclear':this.dateClearLbl}));
+        this.logMessage.display = true;
+        this.logMessage.status = 'success';
+        this.logMessage.message = 'Action logs clear success.';
+      }
+    } catch (error) {
+      console.log(error);
+      this.logMessage.display = true;
+      this.logMessage.status = 'fail';
+      this.logMessage.message = 'Unknown Error, please try again.';
     }
+
     this.spinner = false;
   }
 
