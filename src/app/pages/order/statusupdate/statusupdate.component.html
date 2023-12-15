@@ -14,7 +14,9 @@
       <mat-label>Choose Status Code</mat-label>
       <mat-select value="{{statusCode}}" (valueChange)="setStatusCode($event)">
         <mat-option>-- None --</mat-option>
-        <mat-option *ngFor="let statusCode of statusCodeDisp" [value]="statusCode.code">{{statusCode.value}}</mat-option>
+        <mat-option *ngFor="let statusCode of statusCodeDisp" [value]="statusCode.code">
+          {{statusCode.value}} <span style="font-family: 'Noto Sans Thai Looped Light'; font-size: 12px;">({{statusCode.label}})</span>
+        </mat-option>
       </mat-select>
     </mat-form-field>
 

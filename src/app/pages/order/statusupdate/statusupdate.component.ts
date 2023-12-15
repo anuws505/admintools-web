@@ -86,10 +86,10 @@ export class StatusupdateComponent {
     this.apiNameDisp.push({'apiname':'getOrderStatusUpdate','apipath':this.DISP_API_BE + '/be/getorderstatusupdate/action/getOrderStatusUpdate'});
     this.apiNameDisp.push({'apiname':'shipment_status','apipath':this.DISP_API_BE + '/be/shipmentstatus/action/shipment_status'});
 
-    this.statusCodeDisp.push({'code':'02','value':'02'});
-    this.statusCodeDisp.push({'code':'03','value':'03'});
-    this.statusCodeDisp.push({'code':'06','value':'06'});
-    this.statusCodeDisp.push({'code':'09','value':'09'});
+    this.statusCodeDisp.push({'code':'02','value':'02','label':'Pick Pack'});
+    this.statusCodeDisp.push({'code':'03','value':'03','label':'Home WaitingDelivery / Shop WaitingShopPickup'});
+    this.statusCodeDisp.push({'code':'06','value':'06','label':'Customer Received'});
+    this.statusCodeDisp.push({'code':'09','value':'09','label':'Order Cancel'});
 
     this.statusMsgDisp.push({'msgcode':'Customer Received','msgtext':'Customer Received'});
     this.statusMsgDisp.push({'msgcode':'Order Complete','msgtext':'Order Complete'});
