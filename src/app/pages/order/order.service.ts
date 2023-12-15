@@ -31,28 +31,28 @@ export class OrderService {
   // call api from lego-be
   // example const result = await lastValueFrom(this.orderService.getOrders(request));
   getOrders(request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/testorders.json');
+    // return this.httpClient.get<any>('assets/testorders.json');
     return this.httpClient.post<any>(
       this.API_BE_ADMIN + '/be/admintoolsservice/action/queryOrderByKey',
       request, this.httpOptions
     );
   }
   getOrderDetail(request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/testorderdetail.json');
+    // return this.httpClient.get<any>('assets/testorderdetail.json');
     return this.httpClient.post<any>(
       this.API_BE_ADMIN + '/be/admintoolsservice/action/queryOrderDetail',
       request, this.httpOptions
     );
   }
   callUpdateProgress(request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/errornodata.json');
+    // return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE_INTRA + '/be/admintoolsservice/action/callUpdateProgress',
       request, this.httpOptions
     );
   }
   callRepairDataDB(): Observable<any> {
-    return this.httpClient.get<any>('assets/errornodata.json');
+    // return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE + '/be/repairDataDb/action/repairDataDB',
       {}, this.httpOptions
@@ -61,14 +61,14 @@ export class OrderService {
 
   // export order and reserve order data
   getExportOrder(request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/testorders.json');
+    // return this.httpClient.get<any>('assets/testorders.json');
     return this.httpClient.post<any>(
       this.API_BE_ADMIN + '/be/admintoolsservice/action/getExportAnOrders',
       request, this.httpOptions
     );
   }
   getReserveOrder(request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/testordersreserve.json');
+    // return this.httpClient.get<any>('assets/testordersreserve.json');
     return this.httpClient.post<any>(
       this.API_BE_ADMIN + '/be/admintoolsservice/action/getReserveOrder',
       request, this.httpOptions
@@ -77,21 +77,21 @@ export class OrderService {
 
   // order status update page
   callUpdateOrderStatus(request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/errornodata.json');
+    // return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE + '/be-updateorderstatus/action/updateOrderStatus',
       request, this.httpOptions
     );
   }
   callGetOrderStatusUpdate(request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/errornodata.json');
+    // return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE + '/be/getorderstatusupdate/action/getOrderStatusUpdate',
       request, this.httpOptions
     );
   }
   callShipmentStatus(request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/errornodata.json');
+    // return this.httpClient.get<any>('assets/errornodata.json');
     return this.httpClient.post<any>(
       this.API_BE + '/be/shipmentstatus/action/shipment_status',
       request, this.httpOptions
@@ -100,7 +100,7 @@ export class OrderService {
 
   // order progress all action
   actionDoResendData(progressName: any, request: any): Observable<any> {
-    return this.httpClient.get<any>('assets/errornodata.json');
+    // return this.httpClient.get<any>('assets/errornodata.json');
     const progName = progressName.trim().toLowerCase();
 
     switch (progName) {
