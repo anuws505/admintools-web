@@ -31,6 +31,8 @@ import { AuthenComponent } from './shared/authen/authen.component';
 import { LoginComponent } from './shared/authen/login/login.component';
 import { LogoutComponent } from './shared/authen/logout/logout.component';
 import { StatusupdateComponent } from './pages/order/statusupdate/statusupdate.component';
+import { ActionlogComponent } from './pages/logger/actionlog/actionlog.component';
+import { ActionlogconfigComponent } from './pages/configuration/actionlogconfig/actionlogconfig.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { StatusupdateComponent } from './pages/order/statusupdate/statusupdate.c
     AuthenComponent,
     LoginComponent,
     LogoutComponent,
-    StatusupdateComponent
+    StatusupdateComponent,
+    ActionlogComponent,
+    ActionlogconfigComponent
   ],
   imports: [
     BrowserModule,

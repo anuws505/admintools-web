@@ -1,6 +1,9 @@
 .component-content {
   padding: 11px;
   min-height: calc(100vh - 54px - 40px);
+  position: relative;
+  overflow: auto;
+  max-width: 1040px;
 
   .comp-title {
     margin-left: 6px;
@@ -15,19 +18,6 @@
     mat-form-field {
       width: 220px;
       margin: 6px;
-
-      &.order-code {
-        width: 176px;
-      }
-      &.kyc-result {
-        width: 140px;
-      }
-      &.order-status {
-        width: 200px;
-      }
-      &.progress-status {
-        width: 200px;
-      }
     }
 
     .form-button {
@@ -47,16 +37,6 @@
             min-width: 220px;
             height: 44px;
           }
-          &.disabled-btn {
-            min-width: 220px;
-            height: 44px;
-          }
-          &.export-btn {
-            min-width: 220px;
-            height: 44px;
-            background-color: #39973c;
-            color: #fff;
-          }
         }
       }
     }
@@ -70,59 +50,21 @@
       font-family: 'Noto Sans Thai Looped Semi Bold';
     }
 
-    .custom-mat-icon {
-      width: 20px;
-      height: 20px;
-      font-size: 20px;
-      margin-left: 3px;
-      position: relative;
-      top: 4px;
-    }
-
     .mdc-data-table__header-cell {
       font-family: 'Noto Sans Thai Looped Semi Bold';
       vertical-align: middle;
-      max-width: 320px;
 
-      &.mat-column-orderNo {
-        min-width: 166px;
-      }
       &.mat-column-createTime {
-        min-width: 180px;
-      }
-      &.mat-column-updateTime {
-        min-width: 180px;
-      }
-      &.mat-column-customerName {
         min-width: 186px;
       }
-      &.mat-column-customerContact {
-        min-width: 140px;
-      }
-      &.mat-column-simMobileNo {
-        min-width: 140px;
-      }
-      &.mat-column-statusProvisioning {
-        min-width: 140px;
-      }
-      &.mat-column-updateOrderStatus {
-        min-width: 176px;
-      }
-      &.mat-column-progressApi {
-        min-width: 140px;
-      }
-      &.mat-column-statusProgress {
-        min-width: 150px;
-      }
-      &.mat-column-trackingData {
-        min-width: 146px;
+      &.mat-column-userName {
+        min-width: 260px;
       }
     }
 
     .mdc-data-table__cell {
       font-family: 'Noto Sans Thai Looped';
       vertical-align: middle;
-      max-width: 320px;
     }
 
     .mat-mdc-row {
@@ -139,24 +81,6 @@
       &:hover {
         background-color: #f8f8f8;
       }
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .txt-stat-success, .txt-stat-repair-success {
-      color: #4ec753;
-    }
-    .txt-stat-fail {
-      font-family: 'Noto Sans Thai Looped Semi Bold';
-      color: #fd2424;
-    }
-    .txt-stat-waiting {
-      color: #ff9800;
-    }
-    .txt-stat-in-progress {
-      color: #03a9f4;
     }
 
     .order-paginator {

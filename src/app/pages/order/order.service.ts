@@ -29,7 +29,7 @@ export class OrderService {
   }
 
   // call api from lego-be
-  // const result = await lastValueFrom(this.orderService.getOrders(request));
+  // example const result = await lastValueFrom(this.orderService.getOrders(request));
   getOrders(request: any): Observable<any> {
     return this.httpClient.get<any>('assets/testorders.json');
     return this.httpClient.post<any>(

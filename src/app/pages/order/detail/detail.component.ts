@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../order.service';
 import { lastValueFrom } from 'rxjs';
 import { JsonEditorOptions } from 'ang-jsoneditor';
-import { LogService } from '../../../shared/log.service';
+import { LogService } from '../../logger/log.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthenService } from '../../../shared/authen/authen.service';

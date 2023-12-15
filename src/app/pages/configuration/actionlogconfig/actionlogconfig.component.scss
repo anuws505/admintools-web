@@ -1,0 +1,12 @@
+.component-content {
+  padding: 11px;
+  min-height: calc(100vh - 54px - 40px);
+  position: relative;
+  overflow: auto;
+  max-width: 1040px;
+
+  .comp-title {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+}

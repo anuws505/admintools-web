@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { OrderService } from '../order.service';
 import { lastValueFrom } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
-import { LogService } from '../../../shared/log.service';
+import { LogService } from '../../logger/log.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthenService } from '../../../shared/authen/authen.service';

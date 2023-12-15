@@ -11,6 +11,8 @@ import { LoginComponent } from './shared/authen/login/login.component';
 import { LogoutComponent } from './shared/authen/logout/logout.component';
 import { StatusupdateComponent } from './pages/order/statusupdate/statusupdate.component';
 import { authGuard } from './shared/authen/auth.guard';
+import { ActionlogComponent } from './pages/logger/actionlog/actionlog.component';
+import { ActionlogconfigComponent } from './pages/configuration/actionlogconfig/actionlogconfig.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,6 +30,14 @@ const routes: Routes = [
   },
   {
     path: 'orderstatusupdate/:orderno', component: StatusupdateComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'logger/actionlog', component: ActionlogComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'configuration/actionlog', component: ActionlogconfigComponent,
     canActivate: [authGuard]
   },
   {

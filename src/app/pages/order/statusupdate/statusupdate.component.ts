@@ -6,7 +6,7 @@ import { lastValueFrom } from 'rxjs';
 import { JsonEditorOptions } from 'ang-jsoneditor';
 import { environment } from '../../../../environments/environment';
 import { AuthenService } from '../../../shared/authen/authen.service';
-import { LogService } from '../../../shared/log.service';
+import { LogService } from '../../logger/log.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
