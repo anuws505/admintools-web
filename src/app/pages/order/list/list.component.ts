@@ -383,9 +383,8 @@ export class ListComponent {
 
           csvContent += rows.join('\n');
 
-          let dateNow: Date = new Date();
           let pipe = new DatePipe('en-US');
-          let myFormattedDate = pipe.transform(dateNow, 'yyyyMMddHHmmss');
+          let myFormattedDate = pipe.transform(new Date(), 'yyyyMMddHHmmss');
 
           let hiddenElement = document.createElement('a');
           hiddenElement.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURI(csvContent);

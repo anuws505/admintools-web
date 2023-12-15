@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Observable, lastValueFrom } from 'rxjs';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 export enum LogLevel {
   All = 0,
@@ -16,6 +19,14 @@ export enum LogLevel {
 export class LogService {
   level: LogLevel = LogLevel.All;
   logWithDate: boolean = true;
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8'
+    })
+  };
+
+  constructor(private httpClient: HttpClient) {}
 
   debug(msg: string, ...optionalParams: any[]) {
     this.writeToLog(msg, LogLevel.Debug, optionalParams);
@@ -41,14 +52,23 @@ export class LogService {
     this.writeToLog(msg, LogLevel.All, optionalParams);
   }
 
-  private writeToLog(msg: string, level: LogLevel, params: any[]) {
+  private async writeToLog(msg: string, level: LogLevel, params: any[]) {
     if (this.shouldLog(level)) {
       let entry: LogEntry = new LogEntry();
       entry.message = msg;
       entry.level = level;
       entry.extraInfo = params;
       entry.logWithDate = this.logWithDate;
-      console.log(entry.buildLogString());
+      entry.logDate = new Date();
+      // console.log(entry.buildLogString());
+
+      let logger: any = {};
+      let pipe = new DatePipe('en-US');
+      let logDate = pipe.transform(entry.logDate, 'yyyy-MM-dd HH:mm:ss');
+      logger.logdate = logDate;
+      logger.logdata = entry.buildLogString();
+      console.log(logger);
+      // await lastValueFrom(this.sendLogData(logger));
     }
   }
 
@@ -59,6 +79,14 @@ export class LogService {
     }
     return ret;
   }
+
+  sendLogData(request: any): Observable<any> {
+    return this.httpClient.get<any>('assets/testorders.json');
+    // return this.httpClient.post<any>(
+    //   this.API_BE_ADMIN + '/be/admintoolsservice/action/queryOrderByKey',
+    //   request, this.httpOptions
+    // );
+  }
 }
 
 export class LogEntry {
@@ -67,12 +95,13 @@ export class LogEntry {
   level: LogLevel = LogLevel.Debug;
   extraInfo: any[] = [];
   logWithDate: boolean = true;
+  logDate: any = '';
 
   buildLogString(): string {
     let ret: string = '';
 
     if (this.logWithDate) {
-      ret = new Date() + ' - ';
+      ret = this.logDate + ' - ';
     }
 
     ret += 'Type: ' + LogLevel[this.level];

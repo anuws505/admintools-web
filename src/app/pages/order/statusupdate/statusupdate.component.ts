@@ -120,9 +120,6 @@ export class StatusupdateComponent {
   // click edit order status button
   async doSendStatusOrder() {
     this.spinner = true;
-    console.log(this.apiName);
-    console.log(this.statusCode);
-    console.log(this.statusMsg);
 
     try {
       if (this.apiName.toUpperCase() === 'UPDATEORDERSTATUS' && this.statusCode !== '' && this.jsonDataDoAction) {
