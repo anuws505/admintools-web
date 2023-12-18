@@ -36,7 +36,7 @@ export class ActionlogComponent {
     'no',
     'createTime',
     'userName',
-    'actionLog'
+    'message'
   ];
   dataSource: any = [];
 
@@ -129,7 +129,7 @@ export class ActionlogComponent {
               someObj.no = this.pageSize * this.pageIndex + no;
               someObj.createTime = prop.datelog;
               someObj.userName = prop.user;
-              someObj.actionLog = prop.message;
+              someObj.message = prop.message;
             }
             someList.push(someObj);
             no++;

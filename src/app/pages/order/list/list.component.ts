@@ -78,6 +78,11 @@ export class ListComponent {
     data: [],
     rows: 0
   };
+  exportData: any = {
+    flag: false,
+    status: '',
+    message: ''
+  };
 
   pageEvent: PageEvent = new PageEvent;
   length = 0;
@@ -148,6 +153,10 @@ export class ListComponent {
   }
 
   clearSearch() {
+    this.exportData.flag = false;
+    this.exportData.status = '';
+    this.exportData.message = '';
+
     Object.keys(this.search).forEach((prop: any) => {
       this.search[prop] = '';
     });
@@ -159,6 +168,10 @@ export class ListComponent {
   }
 
   submitSearch() {
+    this.exportData.flag = false;
+    this.exportData.status = '';
+    this.exportData.message = '';
+
     let findObj: any = {};
     findObj['status_provisioning.status_code'] = {$in: ['001','002','003','004','007','018']};
 
@@ -170,7 +183,7 @@ export class ListComponent {
 
     Object.keys(this.search).forEach((prop: any) => {
       if (this.search[prop] && this.search[prop] !== '') {
-        if (this.searchKey[prop] === 'created_at') {
+        if (this.searchKey[prop] == 'created_at') {
           if (this.search.dateCreated && this.search.dateCreated !== null) {
             let thisDate = new Date();
             thisDate.setDate(this.search.dateCreated.getDate() - configDays);
@@ -178,17 +191,17 @@ export class ListComponent {
             findObj['created_at'] = {$gte: thisPipe.transform(thisDate, 'yyyy-MM-dd'+' 00:00:00'), $lte: thisPipe.transform(this.search.dateCreated, 'yyyy-MM-dd'+' 23:59:59')};
           }
         }
-        else if (this.searchKey[prop] === 'data_order.shipping.mobileNo') {
+        else if (this.searchKey[prop] == 'data_order.shipping.mobileNo') {
           findObj['data_order.shipping.mobileNo'] = {$regex: this.search.customerContact.trim(), $options: "i"};
           findObj['data_order.receipt.mobileNo'] = {$regex: this.search.customerContact.trim(), $options: "i"};
         }
-        else if (this.searchKey[prop] === 'data_order.items.orderCode') {
+        else if (this.searchKey[prop] == 'data_order.items.orderCode') {
           findObj[this.searchKey[prop]] = {$in: [parseInt(this.search[prop].trim())]};
         }
-        else if (this.searchKey[prop] === 'status_provisioning.status_code') {
+        else if (this.searchKey[prop] == 'status_provisioning.status_code') {
           findObj[this.searchKey[prop]] = {$in: [this.search.orderStatus.trim()]};
         }
-        else if (this.searchKey[prop] === 'status_progress.status_code') {
+        else if (this.searchKey[prop] == 'status_progress.status_code') {
           findObj[this.searchKey[prop]] = {$in: [this.search.progressApiStatus.trim()]};
         }
         else {
@@ -213,7 +226,7 @@ export class ListComponent {
   async getOrders(request: any) {
     try {
       const data = await lastValueFrom(this.orderService.getOrders(request));
-      if (data.resultCode && Number(data.resultCode) === 20000) {
+      if (data.resultCode && Number(data.resultCode) == 20000) {
         if (data.result && data.result.data.length > 0) {
           let someList: any = [];
           let no = 1;
@@ -228,14 +241,14 @@ export class ListComponent {
               someObj.createTime = prop.createTime;
               someObj.updateTime = prop.updateTime;
               someObj.kycResult = prop.kycResult;
-              someObj.kycResultTextColor = (prop.kycResult.trim().toUpperCase() === 'N') ? 'txt-stat-fail' : '';
+              someObj.kycResultTextColor = (prop.kycResult && prop.kycResult.trim().toUpperCase() == 'N') ? 'txt-stat-fail' : '';
               someObj.customerName = (prop.customerName) ? this.markCusName(prop.customerName, true, ' ') : prop.customerName;
               someObj.customerContact = (prop.customerContact) ? this.markMobileNo(prop.customerContact, true, ',') : prop.customerContact;
               someObj.simMobileNo = (prop.simMobileNo) ? this.markMobileNo(prop.simMobileNo, true, ',') : prop.simMobileNo;
               someObj.statusProvisioning = prop.statusProvisioning;
               someObj.statusProvisioningTextColor = this.setStatusColor(prop.statusProvisioning),
               someObj.statusProgress = prop.statusProgress;
-              someObj.statusProgressTextColor = (prop.statusProgress.trim().toUpperCase() === 'FAIL') ? 'txt-stat-fail' : '';
+              someObj.statusProgressTextColor = (prop.statusProgress && prop.statusProgress.trim().toUpperCase() == 'FAIL') ? 'txt-stat-fail' : '';
               someObj.progressApi = (prop.progressApi?.progress?.api) ? prop.progressApi.progress.api : '';
               someObj.trackingData = (prop.trackingData) ? prop.trackingData : { trackingNo: '', trackingURL: '' };
             }
@@ -253,7 +266,7 @@ export class ListComponent {
           }
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
     }
 
@@ -264,16 +277,16 @@ export class ListComponent {
     let resp: any = '';
     const keyStr: any = keyStat.trim().toUpperCase();
 
-    if ('SUCCESS' === keyStr || 'REPAIRSUCCESS' === keyStr) {
+    if ('SUCCESS' == keyStr || 'REPAIRSUCCESS' == keyStr || 'REPAIR SUCCESS' == keyStr) {
       resp = 'txt-stat-success';
     }
-    else if ('FAIL' === keyStr) {
+    else if ('FAIL' == keyStr) {
       resp = 'txt-stat-fail';
     }
-    else if ('WAITING' === keyStr) {
+    else if ('WAITING' == keyStr) {
       resp = 'txt-stat-waiting';
     }
-    else if ('IN PROGRESS' === keyStr) {
+    else if ('IN PROGRESS' == keyStr) {
       resp = 'txt-stat-in-progress';
     }
 
@@ -340,62 +353,73 @@ export class ListComponent {
     if (this.exportCSV.flag) {
       this.spinner = true;
 
-      let expObj: any = {
-        find: this.exportCSV.queryObj
-      };
-      const data = await lastValueFrom(this.orderService.getExportOrder(expObj));
-      if (data.resultCode && Number(data.resultCode) === 20000) {
-        // save logs data
-        const logData: any = {};
-        logData.progressName = 'exportOrderData';
-        logData.requestData = expObj;
-        let xBar: any = {};
-        xBar.resultCode = data.resultCode;
-        xBar.resultMessage = data.resultMessage;
-        xBar.resultData = [{'exportorderdata':'force mark xxx data'}];
-        xBar.resultRows = data.resultRows;
-        logData.responseData = xBar;
-        this.logger.writelog(this.authenService.getUserLoginData(), logData);
+      try {
+        let expObj: any = {
+          find: this.exportCSV.queryObj
+        };
+        const data = await lastValueFrom(this.orderService.getExportOrder(expObj));
+        if (data.resultCode && Number(data.resultCode) == 20000) {
+          // save logs data
+          const logData: any = {};
+          logData.progressName = 'exportOrderData';
+          logData.requestData = expObj.toString();
+          let xBar: any = {};
+          xBar.resultCode = data.resultCode;
+          xBar.resultMessage = data.resultMessage;
+          xBar.resultData = [{'exportorderdata':'force mark xxx data'}];
+          xBar.resultRows = data.resultRows;
+          logData.responseData = xBar;
+          this.logger.writelog(this.authenService.getUserLoginData(), logData);
 
-        if (data.resultData && data.resultData.length > 0) {
-          this.exportCSV.data = data.resultData;
-          this.exportCSV.rows = data.resultRows;
+          if (data.resultData && data.resultData.length > 0) {
+            this.exportCSV.data = data.resultData;
+            this.exportCSV.rows = data.resultRows;
 
-          let propNames = Object.keys(this.exportCSV.data[0]);
-          let rowWithPropNames: any = propNames.join(',')+'\n';
-          let csvContent = rowWithPropNames;
-          let rows: any = [];
+            let propNames = Object.keys(this.exportCSV.data[0]);
+            let rowWithPropNames: any = propNames.join(',')+'\n';
+            let csvContent = rowWithPropNames;
+            let rows: any = [];
 
-          this.exportCSV.data.forEach((item: any) => {
-            let values: any = [];
-            propNames.forEach((key: any) => {
-              let val = item[key];
-              if (val !== undefined && val !== null) {
-                val = JSON.stringify(val);
-              } else {
-                val = '';
-              }
-              values.push(val);
+            this.exportCSV.data.forEach((item: any) => {
+              let values: any = [];
+              propNames.forEach((key: any) => {
+                let val = item[key];
+                if (val !== undefined && val !== null) {
+                  val = JSON.stringify(val);
+                } else {
+                  val = '';
+                }
+                values.push(val);
+              });
+              rows.push(values.join(','));
             });
-            rows.push(values.join(','));
-          });
 
-          csvContent += rows.join('\n');
+            csvContent += rows.join('\n');
 
-          let pipe = new DatePipe('en-US');
-          let myFormattedDate = pipe.transform(new Date(), 'yyyyMMddHHmmss');
+            let pipe = new DatePipe('en-US');
+            let myFormattedDate = pipe.transform(new Date(), 'yyyyMMddHHmmss');
 
-          let hiddenElement = document.createElement('a');
-          hiddenElement.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURI(csvContent);
-          hiddenElement.target = '_blank';
-          hiddenElement.download = 'NCP_Admintools_Orders_Report_'+myFormattedDate+'.csv';
-          hiddenElement.click();
+            let hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURI(csvContent);
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'NCP_Admintools_Orders_Report_'+myFormattedDate+'.csv';
+            hiddenElement.click();
+          }
+
+          this.exportCSV.flag = false;
+          this.exportCSV.queryObj = {};
+          this.exportCSV.data = [];
+          this.exportCSV.rows = 0;
+
+          this.exportData.flag = true;
+          this.exportData.status = 'success';
+          this.exportData.message = 'Export success.';
         }
-
-        this.exportCSV.flag = false;
-        this.exportCSV.queryObj = {};
-        this.exportCSV.data = [];
-        this.exportCSV.rows = 0;
+      } catch (error: any) {
+        console.log(error);
+        this.exportData.flag = true;
+        this.exportData.status = 'error';
+        this.exportData.message = 'Error data export file, please ty again.';
       }
     }
 

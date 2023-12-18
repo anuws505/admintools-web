@@ -150,7 +150,8 @@ export class ReserveComponent {
               someObj.statusOrder = prop.status.status_description;
               someObj.statusOrderTextColor = this.setStatusColor(prop.status.status_description);
               someObj.statusProgress = prop.status_progress.status_description;
-              someObj.statusProgressTextColor = (prop.status_progress.status_description.trim().toUpperCase() == 'FAIL') ? 'txt-stat-fail' : '';
+              let statLbl = prop.status_progress?.status_description;
+              someObj.statusProgressTextColor = (statLbl && statLbl.trim().toUpperCase() == 'FAIL') ? 'txt-stat-fail' : '';
             }
             someList.push(someObj);
             no++;

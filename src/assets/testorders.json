@@ -1,482 +1,608 @@
 {
-    "transactionID": "xx1234",
+    "transactionID": "LGO20231218142332067",
     "resultCode": "20000",
     "resultMessage": "success",
     "result": {
-        "recordsFiltered": 106,
+        "recordsFiltered": 78,
         "data": [
             {
-                "orderNo": "WSA1008040027",
-                "reserveId": "reserveWSA1008040027",
-                "orderCode": "6",
-                "transactionId": "201909240927123201909240927123201909240927123201909240927123201909240927123",
-                "createTime": "11-09-2020 16:53:06",
-                "updateTime": "11-09-2020 16:53:06",
-                "kycResult": "N",
-                "customerName": "Paktest TEST",
-                "customerContact": "0937019776",
-                "simMobileNo": "0937019776",
-                "statusProgress": "Waiting",
-                "statusProvisioning": "Waiting",
-                "progressApi": {
-                    "key": "",
-                    "progress": {}
-                },
-                "trackingData": {
-                    "trackingNo": "KERRY1234",
-                    "trackingURL": "https://kerry123.com/KERRY1234"
-                }
-            },
-            {
-                "orderNo": "WSA100804002701",
-                "reserveId": "reserve201909240927123",
-                "orderCode": "6",
-                "transactionId": "201909240927123",
-                "createTime": "11-09-2020 16:53:06",
-                "updateTime": "11-09-2020 16:53:06",
-                "kycResult": "Y",
-                "customerName": "Paktest TEST",
-                "customerContact": "0937019776",
-                "simMobileNo": "0937019776",
-                "statusProgress": "Waiting",
-                "statusProvisioning": "Waiting",
-                "progressApi": {
-                    "key": "",
-                    "progress": {}
-                },
-                "trackingData": {
-                    "trackingNo": "KERRY5678",
-                    "trackingURL": ""
-                }
-            },
-            {
-                "orderNo": "WS2010210500300",
-                "reserveId": "reserveWS2010210500300",
-                "orderCode": "6",
-                "transactionId": "APM2010221326000002",
-                "createTime": "01-12-2020 13:29:45",
-                "updateTime": "01-12-2020 16:53:06",
-                "kycResult": "N",
-                "customerName": "Kanin Adam",
-                "customerContact": "0812399990",
-                "simMobileNo": "0812399990",
-                "statusProgress": "Fail",
+                "transactionId": "LEGOts202305230010",
+                "orderNo": "WS202309071666",
+                "reserveId": "202312180011",
+                "orderCode": 5,
+                "createTime": "2023-12-18 12:17:16",
+                "updateTime": "2023-12-18 14:09:58",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0934000998",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
                 "statusProvisioning": "Fail",
                 "progressApi": {
-                    "key": "order_list",
+                    "key": "modify_promotion_and_service",
                     "progress": {
-                        "sequence": 1,
-                        "api": "createOrderList",
+                        "sequence": 5,
+                        "api": "SKY:createOrder",
+                        "action": {
+                            "limit": "0",
+                            "number_of_times": "0",
+                            "change_status_flag": "N",
+                            "status_progress": {
+                                "status_code": "000",
+                                "status_description": "init status"
+                            },
+                            "gen_act_flag": "Y",
+                            "gen_act_fn_name": "changePromotionDB",
+                            "gen_act_fn_number": "0",
+                            "status_update_channel": "",
+                            "status_update_flag": "N",
+                            "status_update": "n/a",
+                            "last_progress": false
+                        },
                         "status": {
                             "status_code": "003",
                             "status_description": "Fail"
                         },
+                        "update_at": "2023-12-18T07:09:58.009Z",
                         "request": {
-                            "soId": "136529",
-                            "locationSource": "4289",
-                            "transactionID": "202012011606795647990",
-                            "locationReceipt": "4289",
-                            "grandTotalAmt": "5048.00",
-                            "userId": "OCP",
-                            "saleCode": "",
-                            "queueNo": "",
-                            "cusNameOrder": "Kanin Adam",
-                            "taxCardId": "7207874380288",
-                            "cusMobileNoOrder": "081239999",
-                            "paymentRemark": "[DV][CC],[T]TP20093558,[D]0,[RC],",
-                            "paymentMethod": "",
-                            "bankCode": "",
-                            "installmentTerm": "",
-                            "installmentRate": "",
-                            "focCode": "",
-                            "bankAbbr": "",
-                            "preBookingNo": "",
-                            "depositAmt": "",
-                            "qrAmt": "",
-                            "soChannelType": "OCP",
-                            "soDocumentType": "RECEIPT",
-                            "shipCusName": "- Kanin Adam",
-                            "shipCusAddr": "เลขที่ 17/4 อาคาร Bann suan thon ถ.Bamoongrat RoadBamoongrat Road Pibulsongkram Bangkok 10400 ",
-                            "shipLocation": "",
-                            "receiptType": "",
-                            "customerType": "N",
-                            "taxBranchNo": "",
-                            "taxPassportId": "",
-                            "saleEmpId": "",
-                            "orderNo": "WS2010210500300",
-                            "kycFlg": "",
-                            "productList": [
+                            "transactionID": "LEGOts202305230010",
+                            "actionType": "1",
+                            "customerOrderType": "Change Product",
+                            "publicIdType": "mobileNo",
+                            "publicIdValue": "0934000996",
+                            "privateIdType": "NCPRefId",
+                            "privateIdValue": "LEGOts202305230010",
+                            "orderDate": "07/09/2023 12:59:59",
+                            "channel": "NCP",
+                            "reasonCode": "109",
+                            "productOrderItem": [
                                 {
-                                    "productType": "DEVICE",
-                                    "productSubType": "HANDSET",
-                                    "brand": "REALME",
-                                    "model": "5I(4/64)CDMSL",
-                                    "color": "AQUA BLUE",
-                                    "matCode": "NEW0RM5I6XL-AB01",
-                                    "affProductName": "",
-                                    "qty": "1",
-                                    "matAirTime": "",
-                                    "soCompany": "AWN",
-                                    "priceIncAmt": "4999.00",
-                                    "priceDiscountAmt": "0",
-                                    "tradeNo": "TP20093558",
-                                    "tradeDiscountId": "142549",
-                                    "tradeAirtimeId": "",
-                                    "ussdCode": "",
-                                    "returnCode": "",
-                                    "orderCode": "5",
-                                    "listMatFreeGoods": []
+                                    "idType": "sffProductCode",
+                                    "idValue": "P200902660",
+                                    "action": "Add",
+                                    "effectiveType": "B"
                                 }
                             ],
-                            "customerAddress": {}
-                        },
-                        "response": {
-                            "resultCode": "50000",
-                            "resultMessage": "Fail",
-                            "transactionID": "202012011606795647990",
-                            "result": {
-                                "msg": "Error : Not found item in cart.(NEW0RM5I6XL-AB01|5I(4/64)CDMSL)"
-                            }
-                        }
-                    }
-                },
-                "trackingData": {
-                    "trackingNo": "",
-                    "trackingURL": ""
-                }
-            },
-            {
-                "orderNo": "WS2010210510",
-                "reserveId": "reserveTESTWS2010210510",
-                "orderCode": "6",
-                "transactionId": "201909240927123",
-                "createTime": "24-11-2020 16:53:06",
-                "updateTime": "24-11-2020 16:53:06",
-                "customerName": "",
-                "kycResult": "",
-                "simMobileNo": "",
-                "customerContact": "0880220376",
-                "statusProgress": "In Progress",
-                "statusProvisioning": "In Progress",
-                "progressApi": {
-                    "key": "",
-                    "progress": {}
-                },
-                "trackingData": {
-                    "trackingNo": "",
-                    "trackingURL": ""
-                }
-            },
-            {
-                "orderNo": "WS2010210511",
-                "reserveId": "reserveWS2010210511WS2010210511",
-                "orderCode": "6",
-                "transactionId": "201909240927124",
-                "createTime": "21-08-2020 16:53:06",
-                "updateTime": "21-08-2020 16:53:06",
-                "customerName": "Paktest TEST",
-                "kycResult": "",
-                "simMobileNo": "0880220376, 0880220376",
-                "customerContact": "0880220376, 0880220376",
-                "statusProgress": "Customer Received",
-                "statusProvisioning": "Fail",
-                "progressApi": {
-                    "key": "auto_sale_trans",
-                    "progress": {
-                        "status": {
-                            "status_code": "003",
-                            "status_description": "Fail"
-                        },
-                        "request": {
-                            "receiptNo": null,
-                            "company": "AWN",
-                            "transactionID": "201909240927124",
-                            "serialNo": "999999999",
-                            "returnCode": "AE6031619"
-                        },
-                        "response": {
-                            "resultCode": "50000",
-                            "resultMessage": "Fail.",
-                            "transactionID": "201909240927124",
-                            "result": {
-                                "message": "Receipt No. is empty"
-                            }
-                        }
-                    }
-                },
-                "trackingData": {
-                    "trackingNo": "",
-                    "trackingURL": ""
-                }
-            },
-            {
-                "orderNo": "WS201215050111",
-                "reserveId": "2020121500002",
-                "orderCode": "6",
-                "transactionId": "APM2019092409271113",
-                "createTime": "15-12-2020 09:44:06",
-                "updateTime": "15-12-2020",
-                "kycResult": "Y",
-                "customerName": "Botest TEST",
-                "customerContact": "0937019779",
-                "simMobileNo": "0937019779",
-                "statusProgress": "Shop Received",
-                "statusProvisioning": "Success",
-                "progressApi": {
-                    "key": "",
-                    "progress": {}
-                },
-                "trackingData": {
-                    "trackingNo": "",
-                    "trackingURL": ""
-                }
-            },
-            {
-                "orderNo": "WS201215050110",
-                "reserveId": "2020121500001",
-                "orderCode": "6",
-                "transactionId": "APM2019092409271113",
-                "createTime": "15-12-2020 09:43:06",
-                "updateTime": "15-12-2020",
-                "kycResult": "Y",
-                "customerName": "Botest TEST",
-                "customerContact": "0937019779",
-                "simMobileNo": "0937019779",
-                "statusProgress": "Fail",
-                "statusProvisioning": "Fail",
-                "progressApi": {
-                    "key": "create_receipt",
-                    "progress": {
-                        "sequence": 3,
-                        "api": "createReceipts",
-                        "status": {
-                            "status_code": "003",
-                            "status_description": "Fail"
-                        },
-                        "request": {
-                            "orderDate": "15/12/2020 09:43:06",
-                            "locationCode": "4289",
-                            "transactionID": "APM2019092409271113",
-                            "shiftId": "",
-                            "shiftNum": "",
-                            "terminalId": "",
-                            "channelType": "OLS",
-                            "saleType": "PRE",
-                            "documentType": "RECEIPT",
-                            "receiptType": "ABB",
-                            "customerTitle": "-",
-                            "customerName": "Botest TEST",
-                            "cusMobileNo": "0937019779",
-                            "cusNetworkType": "",
-                            "saleCode": null,
-                            "saleEmpId": null,
-                            "ascCode": null,
-                            "soId": "148577",
-                            "shipCusName": "- botest TEST",
-                            "trackingNo": "KAOS220130576",
-                            "shipCusAddr": "เลขที่ 3 อาคาร ห้างโลตัส ระยอง สาขาโลตัส ระยอง ",
-                            "shipCustAddr2": "ท่าประดู่ เมืองระยอง ระยอง 21000 ",
-                            "mobilePhone": "0937019779",
-                            "qrOrderId": "",
-                            "chargeType": "",
-                            "instanceName": "",
-                            "receiptAddr": {
-                                "mobileNo": "0937019779",
-                                "addrNo": "12",
-                                "moo": "",
-                                "mooban": "",
-                                "buildingName": "",
-                                "floor": "",
-                                "room": "",
-                                "soi": "",
-                                "streetName": "ดินแดง",
-                                "tumbon": "จตุจักร",
-                                "amphur": "จตุจักร",
-                                "province": "กรุงเทพ",
-                                "postCode": "10900",
-                                "country": ""
-                            },
-                            "shiptoAddr": "1100",
-                            "orderNo": "WS201215050110",
-                            "mobileNo": "",
-                            "pickupLocation": "4289",
-                            "customerType": "N",
-                            "taxBranchNo": "",
-                            "passportNo": "",
-                            "citizenId": "7207874380288",
-                            "taxNo": "",
-                            "taxPassportId": "",
-                            "taxCardId": "7207874380288",
-                            "preBookingNo": "",
-                            "channelTransection": "OCP",
-                            "contactEmail": "",
-                            "userId": "OCP",
-                            "remark": "",
-                            "affCampaignID": "",
-                            "affClickRef": "",
-                            "affCustomerType": "",
-                            "affPubId": "",
-                            "listReceipt": [
+                            "serviceOrderItem": [
                                 {
-                                    "posNo": "",
-                                    "vatRate": "",
-                                    "grandTotalAmt": "6990.00",
-                                    "pointMobileNo": "",
-                                    "pointUssd": "",
-                                    "pointReturnCode": "",
-                                    "pointDiscAmt": "",
-                                    "pointAmt": "",
-                                    "products": [
+                                    "idType": "sffProductCode",
+                                    "idValue": "P10070166",
+                                    "action": "Add",
+                                    "effectiveType": "B",
+                                    "characteristics": [
                                         {
-                                            "productType": "DEVICE",
-                                            "company": "AWN",
-                                            "brand": "APPLE",
-                                            "model": "IPHONEXS256",
-                                            "color": "SILVER",
-                                            "matcode": "NEW0APXS256-SV01",
-                                            "matcodeAirTime": null,
-                                            "subStock": "OLS",
-                                            "freeGoodsFlg": "N",
-                                            "qty": "1",
-                                            "ussdCode": null,
-                                            "returnCode": null,
-                                            "incAmt": "45900.00",
-                                            "totalAmt": "45900.00",
-                                            "discount": "0.00",
-                                            "voucherAmt": null,
-                                            "voucherCode": null,
-                                            "voucherCampaignId": null,
-                                            "groupPrice": "EUP",
-                                            "tradeNo": null,
-                                            "focCode": null,
-                                            "contractId": null,
-                                            "projectCode": null,
-                                            "tradeProductId": null,
-                                            "tradeDiscountId": null,
-                                            "matAirtimeId": "",
-                                            "refMatCode": null,
-                                            "tradeInNo": null,
-                                            "depositAmt": null,
-                                            "simMobileNo": null,
-                                            "serviceFeature": null,
-                                            "affProductName": ""
-                                        }
-                                    ],
-                                    "receiptMethods": [
+                                            "name": "SIMLock",
+                                            "value": "N",
+                                            "action": "Add"
+                                        },
                                         {
-                                            "paymentMethod": "CC",
-                                            "cardType": "CREDIT",
-                                            "docType": "CREDIT",
-                                            "docDate": null,
-                                            "creditCardNo": "455596xxxxxx0006",
-                                            "cardExpireDate": "09/25",
-                                            "installmentTerm": "",
-                                            "installmentRate": "",
-                                            "paidAmt": "45900.00",
-                                            "bankRefNo": null
+                                            "name": "Duration",
+                                            "value": 12,
+                                            "action": "Add"
+                                        },
+                                        {
+                                            "name": "StartDate",
+                                            "value": "07/09/2023 12:59:59",
+                                            "action": "Add"
+                                        },
+                                        {
+                                            "name": "IMEI",
+                                            "value": null,
+                                            "action": "Add"
                                         }
-                                    ],
-                                    "kycFlg": null
+                                    ]
+                                }
+                            ],
+                            "relateParty": {
+                                "orderCreator": {
+                                    "name": "SFFBATCH",
+                                    "locationCode": "4289"
+                                }
+                            }
+                        },
+                        "response": {
+                            "message": "Validation errors in your request",
+                            "errors": [
+                                {
+                                    "message": "Missing or invalid required field",
+                                    "field": "serviceOrderItem[0].characteristics[3].value"
                                 }
                             ]
+                        }
+                    }
+                },
+                "trackingData": {
+                    "trackingNo": "KAOS241041253",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041253"
+                }
+            },
+            {
+                "transactionId": "LEGOts202305230010",
+                "orderNo": "WS202309071625",
+                "reserveId": "202312180010",
+                "orderCode": 5,
+                "createTime": "2023-12-18 11:10:45",
+                "updateTime": "2023-12-18 11:10:08",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0934000998",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
+                "statusProvisioning": "Fail",
+                "progressApi": {
+                    "key": "modify_promotion_and_service",
+                    "progress": {
+                        "sequence": 5,
+                        "api": "SKY:createOrder",
+                        "action": {
+                            "limit": "0",
+                            "number_of_times": "0",
+                            "change_status_flag": "N",
+                            "status_progress": {
+                                "status_code": "000",
+                                "status_description": "init status"
+                            },
+                            "gen_act_flag": "Y",
+                            "gen_act_fn_name": "changePromotionDB",
+                            "gen_act_fn_number": "0",
+                            "status_update_channel": "",
+                            "status_update_flag": "N",
+                            "status_update": "n/a",
+                            "last_progress": false
+                        },
+                        "status": {
+                            "status_code": "003",
+                            "status_description": "Fail"
+                        },
+                        "update_at": "2023-12-18T04:10:08.355Z",
+                        "request": {
+                            "transactionID": "LEGOts202305230010",
+                            "actionType": "1",
+                            "customerOrderType": "Change Product",
+                            "publicIdType": "mobileNo",
+                            "publicIdValue": "0934000996",
+                            "privateIdType": "NCPRefId",
+                            "privateIdValue": "LEGOts202305230010",
+                            "orderDate": "07/09/2023 12:59:59",
+                            "channel": "NCP",
+                            "reasonCode": "109",
+                            "productOrderItem": [
+                                {
+                                    "idType": "sffProductCode",
+                                    "idValue": "P200902660",
+                                    "action": "Add",
+                                    "effectiveType": "B"
+                                }
+                            ],
+                            "relateParty": {
+                                "orderCreator": {
+                                    "name": "SFFBATCH",
+                                    "locationCode": "4289"
+                                }
+                            }
                         },
                         "response": {
+                            "message": "privateIdType and privateIdValue must unique constraint"
+                        }
+                    }
+                },
+                "trackingData": {
+                    "trackingNo": "KAOS241041252",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041252"
+                }
+            },
+            {
+                "transactionId": "LEGOts202305230010",
+                "orderNo": "WS202309071624",
+                "reserveId": "202312180008",
+                "orderCode": 5,
+                "createTime": "2023-12-18 11:05:02",
+                "updateTime": "2023-12-18 11:03:32",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0934000998",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
+                "statusProvisioning": "Success",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "KAOS241041251",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041251"
+                }
+            },
+            {
+                "transactionId": "LEGOts202305230010",
+                "orderNo": "WS202309071623",
+                "reserveId": "202312180007",
+                "orderCode": 5,
+                "createTime": "2023-12-18 11:04:03",
+                "updateTime": "2023-12-18 11:02:32",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0934000998",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
+                "statusProvisioning": "Success",
+                "progressApi": {
+                    "key": "",
+                    "progress": {}
+                },
+                "trackingData": {
+                    "trackingNo": "KAOS241041250",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041250"
+                }
+            },
+            {
+                "transactionId": "f621efff-88cc-47b5-9b41-885743e96b55",
+                "orderNo": "AS231218005542",
+                "reserveId": "202312180001",
+                "orderCode": 8,
+                "createTime": "2023-12-18 09:40:10",
+                "updateTime": "2023-12-18 09:40:35",
+                "kycResult": "N",
+                "customerName": "ออนไลน์  สโตร์",
+                "customerContact": "0970008081",
+                "simMobileNo": "0970008081",
+                "statusProgress": "Payment Complete",
+                "statusProvisioning": "Fail",
+                "progressApi": {
+                    "key": "perso_order_multi_mobile",
+                    "progress": {
+                        "sequence": 4,
+                        "api": "persoOrderMultiMobile",
+                        "action": {
+                            "limit": "0",
+                            "number_of_times": "0",
+                            "change_status_flag": "Y",
+                            "status_progress": {
+                                "status_code": "010",
+                                "status_description": "Waiting Pick&Pack"
+                            },
+                            "gen_act_flag": "N",
+                            "gen_act_fn_name": "n/a",
+                            "gen_act_fn_number": "",
+                            "status_update_channel": "NCP",
+                            "status_update_flag": "Y",
+                            "status_update": {
+                                "statusCode": "010",
+                                "statusDescription": "Waiting Pick&Pack"
+                            },
+                            "last_progress": true
+                        },
+                        "status": {
+                            "status_code": "003",
+                            "status_description": "Fail"
+                        },
+                        "update_at": "2023-12-18T02:40:35.478Z",
+                        "request": {
+                            "option": "ADD",
+                            "transactionID": "f621efff-88cc-47b5-9b41-885743e96b55",
+                            "processType": "1",
+                            "channel": "NCP",
+                            "orderNo": "AS231218005542",
+                            "orderDateTime": "18/12/2023 09:14:56",
+                            "locationCode": "4289",
+                            "mobileList": [
+                                {
+                                    "newMobileNo": "0970008081",
+                                    "simType": "Sales",
+                                    "orderCode": "8",
+                                    "chargeType": "prepaid",
+                                    "billingSystem": "CBS",
+                                    "simService": "Normal",
+                                    "activateSimWithIn": "30",
+                                    "product": "3PPXA0",
+                                    "simMatcode": "DSA0SIM3POHNOCP",
+                                    "jacketMatCode": "",
+                                    "displayJacketName": "SIM2Fly 49THB",
+                                    "promotionName": null,
+                                    "invSeq": "1",
+                                    "networkType": "03"
+                                }
+                            ],
+                            "letter": {
+                                "forwarderName": "KERRY",
+                                "trackingNo": "AISO241041249",
+                                "customerName": "Online Store Co.,Ltd Online Store Co.,Ltd",
+                                "contactPhoneNo": "0811227765",
+                                "address": "เลขที่ 199/44  คลองหนึ่ง คลองหลวง ปทุมธานี TH 12120 ",
+                                "zipCode": "12120",
+                                "deliveryProvince": "UPC",
+                                "shippingMethod": "normal"
+                            },
+                            "other": {
+                                "receiptNo": "4289231200012975",
+                                "subStock": "OLS",
+                                "company": "AWN"
+                            },
+                            "packageFee": "49.00",
+                            "logisticCost": "45.00"
+                        },
+                        "response": {
+                            "transactionID": "f621efff-88cc-47b5-9b41-885743e96b55",
                             "resultCode": "50000",
                             "resultMessage": "Fail.",
-                            "transactionID": "APM2019092409271113",
                             "result": {
-                                "msg": "Create Receipt Fail. Grand Total Amount will be = 45900.00"
+                                "resultCode": "OPTIMUS00142200",
+                                "resultDescription": "ValidationError",
+                                "developerMessage": "child \"mobileList\" fails because [\"mobileList\" at position 0 fails because [child \"jacketMatCode\" fails because [\"jacketMatCode\" is not allowed to be empty]]]",
+                                "errors": [
+                                    {
+                                        "message": "\"jacketMatCode\" is not allowed to be empty",
+                                        "path": "mobileList.0.jacketMatCode",
+                                        "type": "any.empty"
+                                    }
+                                ]
                             }
                         }
                     }
                 },
                 "trackingData": {
-                    "trackingNo": "",
-                    "trackingURL": ""
+                    "trackingNo": "AISO241041249",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=AISO241041249"
                 }
             },
             {
-                "orderNo": "WS201214050023",
-                "reserveId": "2020121400023",
-                "orderCode": "6",
-                "transactionId": "APM20201103024",
-                "createTime": "14-12-2020 07:43:45",
-                "updateTime": "14-12-2020",
-                "kycResult": "Y",
-                "customerName": "chanita hdndepo",
-                "customerContact": "0937019773",
-                "simMobileNo": "0937019773",
-                "statusProgress": "Order Complete",
+                "transactionId": "70af80ab-479b-4c18-95d0-9e99dd126693",
+                "orderNo": "WS231215005541",
+                "reserveId": "202312150066",
+                "orderCode": 5,
+                "createTime": "2023-12-15 16:19:10",
+                "updateTime": "2023-12-15 16:20:36",
+                "customerName": "เตรียมดาต้า supportSIT",
+                "customerContact": "0934001292",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
                 "statusProvisioning": "Success",
                 "progressApi": {
                     "key": "",
                     "progress": {}
                 },
                 "trackingData": {
-                    "trackingNo": "",
-                    "trackingURL": ""
+                    "trackingNo": "KAOS241041248",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041248"
                 }
             },
             {
-                "orderNo": "WS201214050022",
-                "reserveId": "2020121400022",
-                "orderCode": "6",
-                "transactionId": "APM20201103024",
-                "createTime": "14-12-2020 07:43:45",
-                "updateTime": "14-12-2020",
-                "kycResult": "Y",
+                "transactionId": "LEGOts202305230010",
+                "orderNo": "WS202309071622",
+                "reserveId": "202312150064",
+                "orderCode": 5,
+                "createTime": "2023-12-15 15:46:09",
+                "updateTime": "2023-12-15 15:44:43",
                 "customerName": "chanita hdndepo",
-                "customerContact": "0937019771",
-                "simMobileNo": "0937019771",
-                "statusProgress": "Order Complete",
+                "customerContact": "0934000998",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
                 "statusProvisioning": "Success",
                 "progressApi": {
                     "key": "",
                     "progress": {}
                 },
                 "trackingData": {
-                    "trackingNo": "",
-                    "trackingURL": ""
+                    "trackingNo": "KAOS241041246",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041246"
                 }
             },
             {
-                "orderNo": "WS201214050130",
-                "reserveId": "2020121400021",
-                "orderCode": "6",
-                "transactionId": "APM2019092409271113",
-                "createTime": "14-12-2020 16:54:06",
-                "updateTime": "14-12-2020",
-                "kycResult": "Y",
-                "customerName": "Botest TEST",
-                "customerContact": "0937019779",
-                "simMobileNo": "0937019779",
-                "statusProgress": "Delivery",
-                "statusProvisioning": "Success",
+                "transactionId": "LEGOts202305230010",
+                "orderNo": "WS202309071621",
+                "reserveId": "202312150063",
+                "orderCode": 5,
+                "createTime": "2023-12-15 15:40:49",
+                "updateTime": "2023-12-15 15:40:17",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0934000998",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
+                "statusProvisioning": "Fail",
                 "progressApi": {
-                    "key": "",
-                    "progress": {}
+                    "key": "modify_promotion_and_service",
+                    "progress": {
+                        "sequence": 5,
+                        "api": "SKY:createOrder",
+                        "action": {
+                            "limit": "0",
+                            "number_of_times": "0",
+                            "change_status_flag": "N",
+                            "status_progress": {
+                                "status_code": "000",
+                                "status_description": "init status"
+                            },
+                            "gen_act_flag": "Y",
+                            "gen_act_fn_name": "changePromotionDB",
+                            "gen_act_fn_number": "0",
+                            "status_update_channel": "",
+                            "status_update_flag": "N",
+                            "status_update": "n/a",
+                            "last_progress": false
+                        },
+                        "status": {
+                            "status_code": "003",
+                            "status_description": "Fail"
+                        },
+                        "update_at": "2023-12-15T08:40:17.541Z",
+                        "request": {
+                            "transactionID": "LEGOts202305230010",
+                            "actionType": "1",
+                            "customerOrderType": "Change Product",
+                            "publicIdType": "mobileNo",
+                            "publicIdValue": "0934000996",
+                            "privateIdType": "NCPRefId",
+                            "privateIdValue": "LEGOts202305230010",
+                            "orderDate": "07/09/2023 12:59:59",
+                            "channel": "NCP",
+                            "reasonCode": "109",
+                            "productOrderItem": [
+                                {
+                                    "idType": "sffProductCode",
+                                    "idValue": "P200902660",
+                                    "action": "Add",
+                                    "effectiveType": "B"
+                                }
+                            ],
+                            "relateParty": {
+                                "orderCreator": {
+                                    "name": "SFFBATCH",
+                                    "locationCode": "4289"
+                                }
+                            }
+                        },
+                        "response": {
+                            "message": "privateIdType and privateIdValue must unique constraint"
+                        }
+                    }
                 },
                 "trackingData": {
-                    "trackingNo": "",
-                    "trackingURL": ""
+                    "trackingNo": "KAOS241041245",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041245"
                 }
             },
             {
-                "orderNo": "WS201214050020",
-                "reserveId": "2020121400020",
-                "orderCode": "6",
-                "transactionId": "APM20201103024",
-                "createTime": "14-12-2020 07:43:45",
-                "updateTime": "14-12-2020",
-                "kycResult": "Y",
+                "transactionId": "LEGOts202305230010",
+                "orderNo": "WS202309071620",
+                "reserveId": "202312150061",
+                "orderCode": 5,
+                "createTime": "2023-12-15 15:22:38",
+                "updateTime": "2023-12-15 15:22:05",
                 "customerName": "chanita hdndepo",
-                "customerContact": "0937019776",
-                "simMobileNo": "0937019776",
-                "statusProgress": "Customer Received",
-                "statusProvisioning": "In Progress",
+                "customerContact": "0934000998",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
+                "statusProvisioning": "Fail",
                 "progressApi": {
-                    "key": "",
-                    "progress": {}
+                    "key": "modify_promotion_and_service",
+                    "progress": {
+                        "sequence": 5,
+                        "api": "SKY:createOrder",
+                        "action": {
+                            "limit": "0",
+                            "number_of_times": "0",
+                            "change_status_flag": "N",
+                            "status_progress": {
+                                "status_code": "000",
+                                "status_description": "init status"
+                            },
+                            "gen_act_flag": "Y",
+                            "gen_act_fn_name": "changePromotionDB",
+                            "gen_act_fn_number": "0",
+                            "status_update_channel": "",
+                            "status_update_flag": "N",
+                            "status_update": "n/a",
+                            "last_progress": false
+                        },
+                        "status": {
+                            "status_code": "003",
+                            "status_description": "Fail"
+                        },
+                        "update_at": "2023-12-15T08:22:05.857Z",
+                        "request": {
+                            "transactionID": "LEGOts202305230010",
+                            "actionType": "1",
+                            "customerOrderType": "Change Product",
+                            "publicIdType": "mobileNo",
+                            "publicIdValue": "0934000996",
+                            "privateIdType": "NCPRefId",
+                            "privateIdValue": "LEGOts202305230010",
+                            "orderDate": "07/09/2023 12:59:59",
+                            "channel": "NCP",
+                            "reasonCode": "109",
+                            "productOrderItem": [
+                                {
+                                    "idType": "sffProductCode",
+                                    "idValue": "P200902660",
+                                    "action": "Add",
+                                    "effectiveType": "B"
+                                }
+                            ],
+                            "relateParty": {
+                                "orderCreator": {
+                                    "name": "SFFBATCH",
+                                    "locationCode": "4289"
+                                }
+                            }
+                        },
+                        "response": {
+                            "message": "privateIdType and privateIdValue must unique constraint"
+                        }
+                    }
+                },
+                "trackingData": {
+                    "trackingNo": "KAOS241041243",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041243"
+                }
+            },
+            {
+                "transactionId": "LEGOts202305230010",
+                "orderNo": "WS202309071619",
+                "reserveId": "202312150060",
+                "orderCode": 5,
+                "createTime": "2023-12-15 15:18:37",
+                "updateTime": "2023-12-15 15:18:04",
+                "customerName": "chanita hdndepo",
+                "customerContact": "0934000998",
+                "simMobileNo": "",
+                "statusProgress": "Waiting Pick&Pack",
+                "statusProvisioning": "Fail",
+                "progressApi": {
+                    "key": "modify_promotion_and_service",
+                    "progress": {
+                        "sequence": 5,
+                        "api": "SKY:createOrder",
+                        "action": {
+                            "limit": "0",
+                            "number_of_times": "0",
+                            "change_status_flag": "N",
+                            "status_progress": {
+                                "status_code": "000",
+                                "status_description": "init status"
+                            },
+                            "gen_act_flag": "Y",
+                            "gen_act_fn_name": "changePromotionDB",
+                            "gen_act_fn_number": "0",
+                            "status_update_channel": "",
+                            "status_update_flag": "N",
+                            "status_update": "n/a",
+                            "last_progress": false
+                        },
+                        "status": {
+                            "status_code": "003",
+                            "status_description": "Fail"
+                        },
+                        "update_at": "2023-12-15T08:18:04.934Z",
+                        "request": {
+                            "transactionID": "LEGOts202305230010",
+                            "actionType": "1",
+                            "customerOrderType": "Change Product",
+                            "publicIdType": "mobileNo",
+                            "publicIdValue": "0934000996",
+                            "privateIdType": "NCPRefId",
+                            "privateIdValue": "LEGOts202305230010",
+                            "orderDate": "07/09/2023 12:59:59",
+                            "channel": "NCP",
+                            "reasonCode": "109",
+                            "productOrderItem": [
+                                {
+                                    "idType": "sffProductCode",
+                                    "idValue": "P200902660",
+                                    "action": "Add",
+                                    "effectiveType": "B"
+                                }
+                            ],
+                            "relateParty": {
+                                "orderCreator": {
+                                    "name": "SFFBATCH",
+                                    "locationCode": "4289"
+                                }
+                            }
+                        },
+                        "response": {
+                            "message": "privateIdType and privateIdValue must unique constraint"
+                        }
+                    }
+                },
+                "trackingData": {
+                    "trackingNo": "KAOS241041242",
+                    "trackingURL": "https://th.kerryexpress.com/th/track/?track=KAOS241041242"
                 }
             }
         ]

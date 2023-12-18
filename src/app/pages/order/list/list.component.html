@@ -8,13 +8,13 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Transaction Id</mat-label>
-      <input matInput value="{{search.transactionId}}" (change)="searchTransactionId($event)">
+      <mat-label>Reserve Id</mat-label>
+      <input matInput value="{{search.reserveId}}" (change)="searchReserveId($event)">
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Reserve Id</mat-label>
-      <input matInput value="{{search.reserveId}}" (change)="searchReserveId($event)">
+      <mat-label>Transaction Id</mat-label>
+      <input matInput value="{{search.transactionId}}" (change)="searchTransactionId($event)">
     </mat-form-field>
 
     <mat-form-field class="order-code">
@@ -94,6 +94,7 @@
       <button mat-raised-button
               class="search-btn export-btn"
               *ngIf="exportCSV.flag" (click)="openExportOrderDataDialog()">Export Order</button>
+      <p *ngIf="exportData.flag" class="label-message {{exportData.status}}">{{exportData.message}}</p>
     </div>
   </form>
 

@@ -76,11 +76,14 @@
       vertical-align: middle;
       max-width: 320px;
 
-      &.mat-column-orderNo {
-        min-width: 166px;
+      &.mat-column-reserveId {
+        min-width: 170px;
       }
       &.mat-column-transactionId {
         min-width: 180px;
+      }
+      &.mat-column-orderNo {
+        min-width: 170px;
       }
       &.mat-column-createdDate {
         min-width: 180px;
