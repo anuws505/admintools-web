@@ -143,7 +143,7 @@ export class ReserveComponent {
               someObj.no = this.pageSize * this.pageIndex + no;
               someObj.reserveId = prop.reserve_id;
               someObj.transactionId = prop.transaction_id;
-              someObj.orderNo = prop.order_no;
+              someObj.orderNo = (prop.order_no && prop.order_no != '') ? prop.order_no : '-';
               someObj.channel = prop.channel;
               someObj.createdDate = prop.created_at;
               someObj.updatedDate = prop.updated_at;

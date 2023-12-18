@@ -229,7 +229,6 @@ export class StatusupdateComponent {
 
   // set dropdown api name
   setApiName($event: any) {
-    console.log($event);
     this.updateOrderStatusButton = true;
     this.jsonDataToDisplay = {};
     this.jsonDataDoAction = this.jsonDataToDisplay;
