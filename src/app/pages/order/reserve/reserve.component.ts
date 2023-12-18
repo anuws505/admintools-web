@@ -147,10 +147,10 @@ export class ReserveComponent {
               someObj.channel = prop.channel;
               someObj.createdDate = prop.created_at;
               someObj.updatedDate = prop.updated_at;
-              someObj.statusOrder = prop.status;
-              someObj.statusOrderTextColor = this.setStatusColor(prop.status);
-              someObj.statusProgress = prop.status_progress;
-              someObj.statusProgressTextColor = (prop.status_progress.trim().toUpperCase() == 'FAIL') ? 'txt-stat-fail' : '';
+              someObj.statusOrder = prop.status.status_description;
+              someObj.statusOrderTextColor = this.setStatusColor(prop.status.status_description);
+              someObj.statusProgress = prop.status_progress.status_description;
+              someObj.statusProgressTextColor = (prop.status_progress.status_description.trim().toUpperCase() == 'FAIL') ? 'txt-stat-fail' : '';
             }
             someList.push(someObj);
             no++;
@@ -174,7 +174,7 @@ export class ReserveComponent {
     let resp: any = '';
     const keyStr: any = keyStat.trim().toUpperCase();
 
-    if (keyStr == 'SUCCESS' || keyStr == 'REPAIRSUCCESS') {
+    if (keyStr == 'SUCCESS' || keyStr == 'REPAIRSUCCESS' || keyStr == 'REPAIR SUCCESS') {
       resp = 'txt-stat-success';
     }
     else if (keyStr == 'FAIL') {

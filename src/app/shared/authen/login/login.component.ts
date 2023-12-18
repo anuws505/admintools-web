@@ -37,7 +37,7 @@ export class LoginComponent {
           this.userData = this.authenService.getUserLoginData();
         } else {
           this.displayMessage = 'Logging in...';
-          // this.authenService.doLogin();
+          this.authenService.doLogin();
           // this.doLogin();
           // this.authenService.makeLocalData();
           // window.location.href = '/login';
