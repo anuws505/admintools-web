@@ -267,7 +267,7 @@ export class ListComponent {
         }
       }
     } catch (error: any) {
-      console.log(error);
+      console.log(error.error);
     }
 
     this.spinner = false;
@@ -416,7 +416,7 @@ export class ListComponent {
           this.exportData.message = 'Export success.';
         }
       } catch (error: any) {
-        console.log(error);
+        console.log(error.error);
         this.exportData.flag = true;
         this.exportData.status = 'error';
         this.exportData.message = 'Error data export file, please ty again.';

@@ -70,8 +70,8 @@ export class ActionlogconfigComponent {
         this.logMessage.status = 'success';
         this.logMessage.message = 'Action logs clear success.';
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.error);
       this.logMessage.display = true;
       this.logMessage.status = 'fail';
       this.logMessage.message = 'Unknown Error, please try again.';

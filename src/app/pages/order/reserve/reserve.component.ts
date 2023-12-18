@@ -164,8 +164,8 @@ export class ReserveComponent {
           }
         }
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.error);
     }
 
     this.spinner = false;

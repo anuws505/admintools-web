@@ -173,8 +173,8 @@ export class DetailComponent {
           }
         }
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.error);
     }
 
     this.spinner = false;
