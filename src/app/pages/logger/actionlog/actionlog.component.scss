@@ -48,6 +48,10 @@
     .zero-order-data {
       text-align: center;
       font-family: 'Noto Sans Thai Looped Semi Bold';
+
+      &.no-data {
+        color: #fd2424;
+      }
     }
 
     .mdc-data-table__header-cell {

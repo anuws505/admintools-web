@@ -74,7 +74,7 @@ export class ActionlogconfigComponent {
       console.log(error.error);
       this.logMessage.display = true;
       this.logMessage.status = 'fail';
-      this.logMessage.message = 'Unknown Error, please try again.';
+      this.logMessage.message = 'Unknown error! please try again.';
     }
 
     this.spinner = false;

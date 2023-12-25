@@ -90,6 +90,7 @@ export class ListComponent {
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
   zeroDataMessage = 'List of data';
+  zeroDataColor = '';
 
   spinner: boolean = false;
 
@@ -224,6 +225,8 @@ export class ListComponent {
   }
 
   async getOrders(request: any) {
+    this.zeroDataColor = '';
+
     try {
       const data = await lastValueFrom(this.orderService.getOrders(request));
       if (data.resultCode && Number(data.resultCode) == 20000) {
@@ -261,13 +264,16 @@ export class ListComponent {
           this.exportCSV.flag = true;
 
           if (this.length == 0) {
-            this.zeroDataMessage = 'No data found';
+            this.zeroDataMessage = 'No data found! please try again.';
+            this.zeroDataColor = 'no-data';
             this.exportCSV.flag = false;
           }
         }
       }
     } catch (error: any) {
       console.log(error.error);
+      this.zeroDataMessage = 'Unknown error! please try again.';
+      this.zeroDataColor = 'no-data';
     }
 
     this.spinner = false;
