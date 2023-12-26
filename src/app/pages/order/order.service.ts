@@ -370,6 +370,20 @@ export class OrderService {
         );
         break;
 
+      case 'modify_promotion':
+        return this.httpClient.post<any>(
+          this.API_BE_INTRA + 'sky/createOrder/action/createOrder',
+          request, this.httpOptions
+        );
+        break;
+
+      case 'delete_contract_tamp':
+        return this.httpClient.post<any>(
+          this.API_BE_INTRA + 'sky/contract/deletecontractmobile/action/deleteContractMobile',
+          request, this.httpOptions
+        );
+        break;
+
       default:
         return this.httpClient.get<any>('assets/errornodata.json');
         break;
